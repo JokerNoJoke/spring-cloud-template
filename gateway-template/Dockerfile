@@ -1,7 +1,4 @@
 FROM openjdk:17
-LABEL BUILD_ID=$BUILD_ID JOB_NAME=$JOB_NAME
-ARG JAR_NAME
-WORKDIR /data/app
-COPY ./target/$JAR_NAME .
-CMD ["java", "-jar", "$JAR_NAME"]
+COPY ./target/*.jar /data/app/
+CMD ["java", "-jar", "/data/app/*.jar"]
 EXPOSE 8000
