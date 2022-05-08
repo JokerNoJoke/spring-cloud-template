@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-gateway-template
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-cloud-gateway-template
+  template:
+    metadata:
+      labels:
+        app: spring-cloud-gateway-template
+    spec:
+      containers:
+        - name: spring-cloud-gateway-template
+          # sed -i 's/{IMAGE}/10.0.0.1:5000/$MAVEN_PROJECT_NAME:$MAVEN_PROJECT_VERSION-$BUILD_ID/' k8s.yaml
+          image: "{IMAGE}"
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-gateway-template
+spec:
+  selector:
+    app: spring-cloud-gateway-template
+  ports:
+    - port: 8000
+      targetPort: 8000
