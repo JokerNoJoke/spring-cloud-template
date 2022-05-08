@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-agent
+  labels:
+    name: jenkins-agent
+spec:
+  containers:
+    - name: maven
+      image: maven:3.8.5-openjdk-17
+      command:
+        - cat
+      tty: true
+      resources:
+        limits:
+          memory: "256Mi"
+          cpu: "400m"
+      volumeMounts:
+        - mountPath: /root/.m2/repository
+          name: maven-repo
+        - mountPath: /root/.m2
+          name: maven-settings-file
+    - name: docker
+      image: docker:20.10.14
+      command:
+        - cat
+      tty: true
+      resources:
+        limits:
+          memory: "256Mi"
+          cpu: "100m"
+      volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: docker-sock
+    - name: kubernetes
+      image: bitnami/kubectl:1.23
+      # bitnami/kubectl:1.23指定了USER=1001，在用jenkins-agent时容器进不去，这里覆盖一下
+      securityContext:
+        runAsUser: 0
+      command:
+        - cat
+      tty: true
+      resources:
+        limits:
+          memory: "256Mi"
+          cpu: "100m"
+      volumeMounts:
+        - mountPath: /.kube/config
+          name: kube-config
+  volumes:
+    - name: maven-repo
+      hostPath:
+        path: /data/maven/repo
+    - name: maven-settings-file
+      configMap:
+        name: jenkins-agent
+        items:
+          - key: settings-file
+            path: settings.xml
+    - name: docker-sock
+      hostPath:
+        path: /var/run/docker.sock
+    - name: kube-config
+      hostPath:
+        path: /root/.kube/config

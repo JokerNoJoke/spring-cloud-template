@@ -1,0 +1,21 @@
+---
+# jenkins agent expected a single document in the stream
+# 提前执行所需配置
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-agent
+data:
+  settings-file: |
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+      <mirrors>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云公共仓库</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+      </mirrors>
+    </settings>
