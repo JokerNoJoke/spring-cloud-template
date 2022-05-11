@@ -8,16 +8,16 @@ pipeline {
         }
     }
     stages {
-        stage('checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    userRemoteConfigs: [[url: 'https://gitee.com/jokerekoj/spring-cloud-template.git']],
-                    branches: [[name: '*/main']],
-                    extensions: []
-                ])
-            }
-        }
+        // stage('checkout') {
+        //     steps {
+        //         checkout([
+        //             $class: 'GitSCM',
+        //             userRemoteConfigs: [[url: 'https://gitee.com/jokerekoj/spring-cloud-template.git']],
+        //             branches: [[name: '*/main']],
+        //             extensions: []
+        //         ])
+        //     }
+        // }
         stage('build jar') {
             steps {
                 dir(env.PROJECT_NAME) {

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: spring-cloud-gateway-template
-          # sed -i 's/{IMAGE}/10.0.0.1:5000/$MAVEN_PROJECT_NAME:$MAVEN_PROJECT_VERSION-$BUILD_ID/' k8s.yaml
+          # sed -i 's#{IMAGE}#10.0.0.1:5000/$MAVEN_PROJECT_NAME:$MAVEN_PROJECT_VERSION-$BUILD_ID#' k8s.yaml
           image: "{IMAGE}"
           resources:
             limits:
@@ -35,3 +35,22 @@ spec:
   ports:
     - port: 8000
       targetPort: 8000
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-cloud-gateway-template
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: gateway.cloud.spring
+      http:
+        paths:
+          - backend:
+              service:
+                name: spring-cloud-gateway-template
+                port:
+                  number: 8000
+            path: /
+            pathType: Prefix

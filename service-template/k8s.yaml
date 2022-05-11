@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: spring-cloud-service-template
-          # sed -i 's/{IMAGE}/10.0.0.1:5000/$MAVEN_PROJECT_NAME:$MAVEN_PROJECT_VERSION-$BUILD_ID/' k8s.yaml
+          # sed -i 's#{IMAGE}#10.0.0.1:5000/$MAVEN_PROJECT_NAME:$MAVEN_PROJECT_VERSION-$BUILD_ID#' k8s.yaml
           image: "{IMAGE}"
           resources:
             limits:
