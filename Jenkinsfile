@@ -31,6 +31,7 @@ pipeline {
                             env.MAVEN_PROJECT_VERSION = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout:true)
                         }
                     }
+                    archiveArtifacts(artifacts: '**/*.jar', followSymlinks: false)
                 }
             }
         }
