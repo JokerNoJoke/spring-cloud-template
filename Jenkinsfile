@@ -2,6 +2,9 @@ pipeline {
     parameters {
         choice(name: 'PROJECT_NAME', choices: ['gateway-template', 'service-template'], description: 'Pick something')
     }
+    options {
+        buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '14', daysToKeepStr: '', numToKeepStr: '7'))
+    }
     agent {
         kubernetes {
             yamlFile: 'jenkins-agent.yaml'
