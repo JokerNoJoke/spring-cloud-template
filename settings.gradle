@@ -1,0 +1,9 @@
+rootProject.name = 'spring-cloud-template'
+
+include(":api-server")
+include(":authorization-server")
+include(":gateway-server")
+include(":repositories:demo-repository-client")
+include(":repositories:demo-repository-server")
+include(":repositories:system-repository-client")
+include(":repositories:system-repository-server")
