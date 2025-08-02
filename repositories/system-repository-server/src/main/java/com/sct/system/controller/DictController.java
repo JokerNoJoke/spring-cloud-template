@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sct.system.controller.dto.DictBasicDto;
 import com.sct.system.controller.dto.DictDto;
 import com.sct.system.controller.dto.DictQueryDto;
 import com.sct.system.entities.Dict;
@@ -41,9 +42,9 @@ public class DictController {
     }
 
     @GetMapping("basic")
-    public ResponseEntity<List<DictDto>> findAllDictBasicBy(DictQueryDto dto) {
+    public ResponseEntity<List<DictBasicDto>> findAllDictBasicBy(DictQueryDto dto) {
         List<Dict> list = repository.findAll(dto.toExample());
-        List<DictDto> dtos = list.stream().map(DictDto::fromEntity).toList();
+        List<DictBasicDto> dtos = list.stream().map(DictBasicDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 

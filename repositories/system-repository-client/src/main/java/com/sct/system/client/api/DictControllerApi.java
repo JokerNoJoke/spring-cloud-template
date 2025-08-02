@@ -8,6 +8,7 @@ package com.sct.system.client.api;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
+import com.sct.system.client.model.DictBasicDto;
 import com.sct.system.client.model.DictDto;
 import com.sct.system.client.model.DictQueryDto;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ import java.util.Optional;
 import jakarta.annotation.Generated;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:25:21.114600400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
 public interface DictControllerApi {
 
     /**
@@ -92,7 +93,7 @@ public interface DictControllerApi {
         value = "/dict/basic",
         accept = { "*/*" }
     )
-    Flux<DictDto> findAllDictBasicBy(
+    Flux<DictBasicDto> findAllDictBasicBy(
         @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictQueryDto dto
     );
 

@@ -59,6 +59,50 @@ public class {EntityName} {
 }
 ```
 
+### 基础DTO模板（用于关联关系）
+```java
+package com.sct.{module}.controller.dto;
+
+import java.time.Instant;
+
+import com.sct.{module}.entities.{EntityName};
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class {EntityName}BasicDto {
+
+    private Long id;
+    private String {field1};
+    private String {field2};
+    // ... 其他字段
+    @Schema(format = "instant")
+    private Instant createdTime;
+    @Schema(format = "instant")
+    private Instant updatedTime;
+
+    public static {EntityName}BasicDto fromEntity({EntityName} entity) {
+        {EntityName}BasicDto dto = new {EntityName}BasicDto();
+        dto.setId(entity.getId());
+        dto.set{Field1}(entity.get{Field1}());
+        dto.set{Field2}(entity.get{Field2}());
+        // ... 其他字段映射
+        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setUpdatedTime(entity.getUpdatedTime());
+        return dto;
+    }
+
+    public {EntityName} toReferencedEntity() {
+        {EntityName} referencedEntity = new {EntityName}();
+        referencedEntity.setId(this.id);
+        return referencedEntity;
+    }
+}
+```
+
 ### DTO模板
 ```java
 package com.sct.{module}.controller.dto;
@@ -117,50 +161,6 @@ public class {EntityName}Dto {
         // ... 其他字段映射
         updatedEntity.set{RelatedEntity}(Optional.ofNullable(this.{relatedEntityPlural}).orElse(List.of()).stream().map({RelatedEntity}BasicDto::toReferencedEntity).toList());
         return updatedEntity;
-    }
-}
-```
-
-### 基础DTO模板（用于关联关系）
-```java
-package com.sct.{module}.controller.dto;
-
-import java.time.Instant;
-
-import com.sct.{module}.entities.{EntityName};
-
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-public class {EntityName}BasicDto {
-
-    private Long id;
-    private String {field1};
-    private String {field2};
-    // ... 其他字段
-    @Schema(format = "instant")
-    private Instant createdTime;
-    @Schema(format = "instant")
-    private Instant updatedTime;
-
-    public static {EntityName}BasicDto fromEntity({EntityName} entity) {
-        {EntityName}BasicDto dto = new {EntityName}BasicDto();
-        dto.setId(entity.getId());
-        dto.set{Field1}(entity.get{Field1}());
-        dto.set{Field2}(entity.get{Field2}());
-        // ... 其他字段映射
-        dto.setCreatedTime(entity.getCreatedTime());
-        dto.setUpdatedTime(entity.getUpdatedTime());
-        return dto;
-    }
-
-    public {EntityName} toReferencedEntity() {
-        {EntityName} referencedEntity = new {EntityName}();
-        referencedEntity.setId(this.id);
-        return referencedEntity;
     }
 }
 ```

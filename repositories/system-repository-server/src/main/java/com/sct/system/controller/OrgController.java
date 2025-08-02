@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sct.system.controller.dto.OrgBasicDto;
 import com.sct.system.controller.dto.OrgDto;
 import com.sct.system.controller.dto.OrgQueryDto;
 import com.sct.system.entities.Org;
@@ -41,9 +42,9 @@ public class OrgController {
     }
 
     @GetMapping("basic")
-    public ResponseEntity<List<OrgDto>> findAllOrgBasicBy(OrgQueryDto dto) {
+    public ResponseEntity<List<OrgBasicDto>> findAllOrgBasicBy(OrgQueryDto dto) {
         List<Org> list = repository.findAll(dto.toExample());
-        List<OrgDto> dtos = list.stream().map(OrgDto::fromEntity).toList();
+        List<OrgBasicDto> dtos = list.stream().map(OrgBasicDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 

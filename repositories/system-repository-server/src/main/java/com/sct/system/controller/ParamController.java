@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sct.system.controller.dto.ParamBasicDto;
 import com.sct.system.controller.dto.ParamDto;
 import com.sct.system.controller.dto.ParamQueryDto;
 import com.sct.system.entities.Param;
@@ -41,9 +42,9 @@ public class ParamController {
     }
 
     @GetMapping("basic")
-    public ResponseEntity<List<ParamDto>> findAllParamBasicBy(ParamQueryDto dto) {
+    public ResponseEntity<List<ParamBasicDto>> findAllParamBasicBy(ParamQueryDto dto) {
         List<Param> list = repository.findAll(dto.toExample());
-        List<ParamDto> dtos = list.stream().map(ParamDto::fromEntity).toList();
+        List<ParamBasicDto> dtos = list.stream().map(ParamBasicDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 
