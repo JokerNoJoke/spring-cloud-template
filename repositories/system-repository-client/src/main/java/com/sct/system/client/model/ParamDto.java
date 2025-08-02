@@ -16,27 +16,25 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * UserBasicDto
+ * ParamDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:25:21.114600400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
-public class UserBasicDto {
+public class ParamDto {
 
   private @Nullable Long id;
 
-  private @Nullable String username;
+  private @Nullable String label;
 
-  private @Nullable String password;
+  private @Nullable String key;
 
-  private @Nullable String nickname;
-
-  private @Nullable String mobile;
+  private @Nullable String value;
 
   private @Nullable Instant createdTime;
 
   private @Nullable Instant updatedTime;
 
-  public UserBasicDto id(Long id) {
+  public ParamDto id(Long id) {
     this.id = id;
     return this;
   }
@@ -56,87 +54,67 @@ public class UserBasicDto {
     this.id = id;
   }
 
-  public UserBasicDto username(String username) {
-    this.username = username;
+  public ParamDto label(String label) {
+    this.label = label;
     return this;
   }
 
   /**
-   * Get username
-   * @return username
+   * Get label
+   * @return label
    */
   
-  @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
+  @Schema(name = "label", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("label")
+  public String getLabel() {
+    return label;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setLabel(String label) {
+    this.label = label;
   }
 
-  public UserBasicDto password(String password) {
-    this.password = password;
+  public ParamDto key(String key) {
+    this.key = key;
     return this;
   }
 
   /**
-   * Get password
-   * @return password
+   * Get key
+   * @return key
    */
   
-  @Schema(name = "password", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("password")
-  public String getPassword() {
-    return password;
+  @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("key")
+  public String getKey() {
+    return key;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setKey(String key) {
+    this.key = key;
   }
 
-  public UserBasicDto nickname(String nickname) {
-    this.nickname = nickname;
+  public ParamDto value(String value) {
+    this.value = value;
     return this;
   }
 
   /**
-   * Get nickname
-   * @return nickname
+   * Get value
+   * @return value
    */
   
-  @Schema(name = "nickname", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("nickname")
-  public String getNickname() {
-    return nickname;
+  @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
   }
 
-  public void setNickname(String nickname) {
-    this.nickname = nickname;
+  public void setValue(String value) {
+    this.value = value;
   }
 
-  public UserBasicDto mobile(String mobile) {
-    this.mobile = mobile;
-    return this;
-  }
-
-  /**
-   * Get mobile
-   * @return mobile
-   */
-  
-  @Schema(name = "mobile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("mobile")
-  public String getMobile() {
-    return mobile;
-  }
-
-  public void setMobile(String mobile) {
-    this.mobile = mobile;
-  }
-
-  public UserBasicDto createdTime(Instant createdTime) {
+  public ParamDto createdTime(Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -156,7 +134,7 @@ public class UserBasicDto {
     this.createdTime = createdTime;
   }
 
-  public UserBasicDto updatedTime(Instant updatedTime) {
+  public ParamDto updatedTime(Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -184,30 +162,28 @@ public class UserBasicDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserBasicDto userBasicDto = (UserBasicDto) o;
-    return Objects.equals(this.id, userBasicDto.id) &&
-        Objects.equals(this.username, userBasicDto.username) &&
-        Objects.equals(this.password, userBasicDto.password) &&
-        Objects.equals(this.nickname, userBasicDto.nickname) &&
-        Objects.equals(this.mobile, userBasicDto.mobile) &&
-        Objects.equals(this.createdTime, userBasicDto.createdTime) &&
-        Objects.equals(this.updatedTime, userBasicDto.updatedTime);
+    ParamDto paramDto = (ParamDto) o;
+    return Objects.equals(this.id, paramDto.id) &&
+        Objects.equals(this.label, paramDto.label) &&
+        Objects.equals(this.key, paramDto.key) &&
+        Objects.equals(this.value, paramDto.value) &&
+        Objects.equals(this.createdTime, paramDto.createdTime) &&
+        Objects.equals(this.updatedTime, paramDto.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, password, nickname, mobile, createdTime, updatedTime);
+    return Objects.hash(id, label, key, value, createdTime, updatedTime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserBasicDto {\n");
+    sb.append("class ParamDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    nickname: ").append(toIndentedString(nickname)).append("\n");
-    sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");

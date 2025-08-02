@@ -54,7 +54,7 @@ public class {EntityName} {
         @JoinColumn(name = "{entity_name_lower}_id", referencedColumnName = "id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "{related_entity_lower}_id", referencedColumnName = "id")
-    }, foreignKey = @ForeignKey(name = "fk_{entity_name_lower}_id"), inverseForeignKey = @ForeignKey(name = "fk_{related_entity_lower}_id"))
+    }, foreignKey = @ForeignKey(name = "fk_{entity_name_lower}_{related_entity_lower}_{entity_name_lower}_id"), inverseForeignKey = @ForeignKey(name = "fk_{entity_name_lower}_{related_entity_lower}_{related_entity_lower}_id"))
     private List<{RelatedEntity}> {relatedEntityPlural};
 }
 ```
@@ -105,7 +105,7 @@ public class {EntityName}Dto {
         createdEntity.set{Field1}(this.{field1});
         createdEntity.set{Field2}(this.{field2});
         // ... 其他字段映射
-        createdEntity.set{RelatedEntity}(Optional.ofNullable({relatedEntityPlural}).orElse(List.of()).stream().map({RelatedEntity}BasicDto::toReferencedEntity).toList());
+        createdEntity.set{RelatedEntity}(Optional.ofNullable(this.{relatedEntityPlural}).orElse(List.of()).stream().map({RelatedEntity}BasicDto::toReferencedEntity).toList());
         return createdEntity;
     }
 
@@ -272,11 +272,11 @@ public class {EntityName}Controller {
 
     @PutMapping("{id}")
     public ResponseEntity<Void> update{EntityName}ById(@PathVariable("id") Long id, @RequestBody {EntityName}Dto dto) {
-        return repository.findById(id).map(sourceEntity -> {
-            {EntityName} updatedEntity = dto.toUpdatedEntity(sourceEntity);
-            repository.save(updatedEntity);
-            return ResponseEntity.ok().<Void>build();
-        }).orElseGet(() -> ResponseEntity.notFound().build());
+        return repository.findById(id)
+                .map(dto::toUpdatedEntity)
+                .map(repository::save)
+                .map(__ -> ResponseEntity.ok().<Void>build())
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("{id}")

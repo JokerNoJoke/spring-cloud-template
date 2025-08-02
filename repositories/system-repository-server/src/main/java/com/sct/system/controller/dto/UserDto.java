@@ -18,6 +18,7 @@ public class UserDto {
 
     private String username;
 
+    @Schema(accessMode = Schema.AccessMode.WRITE_ONLY)
     private String password;
 
     private String nickname;
@@ -30,6 +31,8 @@ public class UserDto {
     @Schema(format = "instant")
     private Instant updatedTime;
 
+    private OrgBasicDto org;
+
     private List<RoleBasicDto> roles;
 
     public static UserDto fromEntity(User entity) {
@@ -41,6 +44,7 @@ public class UserDto {
         dto.setMobile(entity.getMobile());
         dto.setCreatedTime(entity.getCreatedTime());
         dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setOrg(OrgBasicDto.fromEntity(entity.getOrg()));
         dto.setRoles(Optional.ofNullable(entity.getRoles()).orElse(List.of()).stream().map(RoleBasicDto::fromEntity).toList());
         return dto;
     }
@@ -51,7 +55,8 @@ public class UserDto {
         createdEntity.setPassword(this.password);
         createdEntity.setNickname(this.nickname);
         createdEntity.setMobile(this.mobile);
-        createdEntity.setRoles(Optional.ofNullable(roles).orElse(List.of()).stream().map(RoleBasicDto::toReferencedEntity).toList());
+        createdEntity.setOrg(Optional.ofNullable(this.org).map(OrgBasicDto::toReferencedEntity).orElse(null));
+        createdEntity.setRoles(Optional.ofNullable(this.roles).orElse(List.of()).stream().map(RoleBasicDto::toReferencedEntity).toList());
         return createdEntity;
     }
 
@@ -62,6 +67,7 @@ public class UserDto {
         updatedEntity.setPassword(Optional.ofNullable(this.password).orElse(sourceEntity.getPassword()));
         updatedEntity.setNickname(Optional.ofNullable(this.nickname).orElse(sourceEntity.getNickname()));
         updatedEntity.setMobile(Optional.ofNullable(this.mobile).orElse(sourceEntity.getMobile()));
+        updatedEntity.setOrg(Optional.ofNullable(this.org).map(OrgBasicDto::toReferencedEntity).orElse(null));
         updatedEntity.setRoles(Optional.ofNullable(this.roles).orElse(List.of()).stream().map(RoleBasicDto::toReferencedEntity).toList());
         return updatedEntity;
     }

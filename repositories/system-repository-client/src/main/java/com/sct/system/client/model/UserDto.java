@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.sct.system.client.model.OrgBasicDto;
 import com.sct.system.client.model.RoleBasicDto;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import jakarta.annotation.Generated;
  * UserDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T15:12:37.973410500+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:25:21.114600400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
 public class UserDto {
 
   private @Nullable Long id;
@@ -39,6 +40,8 @@ public class UserDto {
   private @Nullable Instant createdTime;
 
   private @Nullable Instant updatedTime;
+
+  private @Nullable OrgBasicDto org;
 
   
   private List<RoleBasicDto> roles = new ArrayList<>();
@@ -183,6 +186,26 @@ public class UserDto {
     this.updatedTime = updatedTime;
   }
 
+  public UserDto org(OrgBasicDto org) {
+    this.org = org;
+    return this;
+  }
+
+  /**
+   * Get org
+   * @return org
+   */
+  
+  @Schema(name = "org", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("org")
+  public OrgBasicDto getOrg() {
+    return org;
+  }
+
+  public void setOrg(OrgBasicDto org) {
+    this.org = org;
+  }
+
   public UserDto roles(List<RoleBasicDto> roles) {
     this.roles = roles;
     return this;
@@ -227,12 +250,13 @@ public class UserDto {
         Objects.equals(this.mobile, userDto.mobile) &&
         Objects.equals(this.createdTime, userDto.createdTime) &&
         Objects.equals(this.updatedTime, userDto.updatedTime) &&
+        Objects.equals(this.org, userDto.org) &&
         Objects.equals(this.roles, userDto.roles);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, password, nickname, mobile, createdTime, updatedTime, roles);
+    return Objects.hash(id, username, password, nickname, mobile, createdTime, updatedTime, org, roles);
   }
 
   @Override
@@ -246,6 +270,7 @@ public class UserDto {
     sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
+    sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -16,25 +16,21 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleDto
+ * OrgBasicDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:25:21.114600400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
-public class RoleDto {
+public class OrgBasicDto {
 
   private @Nullable Long id;
 
-  private @Nullable String code;
-
   private @Nullable String name;
-
-  private @Nullable String description;
 
   private @Nullable Instant createdTime;
 
   private @Nullable Instant updatedTime;
 
-  public RoleDto id(Long id) {
+  public OrgBasicDto id(Long id) {
     this.id = id;
     return this;
   }
@@ -54,27 +50,7 @@ public class RoleDto {
     this.id = id;
   }
 
-  public RoleDto code(String code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  
-  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("code")
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public RoleDto name(String name) {
+  public OrgBasicDto name(String name) {
     this.name = name;
     return this;
   }
@@ -94,27 +70,7 @@ public class RoleDto {
     this.name = name;
   }
 
-  public RoleDto description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public RoleDto createdTime(Instant createdTime) {
+  public OrgBasicDto createdTime(Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -134,7 +90,7 @@ public class RoleDto {
     this.createdTime = createdTime;
   }
 
-  public RoleDto updatedTime(Instant updatedTime) {
+  public OrgBasicDto updatedTime(Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -162,28 +118,24 @@ public class RoleDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleDto roleDto = (RoleDto) o;
-    return Objects.equals(this.id, roleDto.id) &&
-        Objects.equals(this.code, roleDto.code) &&
-        Objects.equals(this.name, roleDto.name) &&
-        Objects.equals(this.description, roleDto.description) &&
-        Objects.equals(this.createdTime, roleDto.createdTime) &&
-        Objects.equals(this.updatedTime, roleDto.updatedTime);
+    OrgBasicDto orgBasicDto = (OrgBasicDto) o;
+    return Objects.equals(this.id, orgBasicDto.id) &&
+        Objects.equals(this.name, orgBasicDto.name) &&
+        Objects.equals(this.createdTime, orgBasicDto.createdTime) &&
+        Objects.equals(this.updatedTime, orgBasicDto.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, name, description, createdTime, updatedTime);
+    return Objects.hash(id, name, createdTime, updatedTime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleDto {\n");
+    sb.append("class OrgBasicDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");

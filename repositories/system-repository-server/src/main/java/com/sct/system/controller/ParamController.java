@@ -14,56 +14,55 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sct.system.controller.dto.UserBasicDto;
-import com.sct.system.controller.dto.UserDto;
-import com.sct.system.controller.dto.UserQueryDto;
-import com.sct.system.entities.User;
-import com.sct.system.repositories.UserRepository;
+import com.sct.system.controller.dto.ParamDto;
+import com.sct.system.controller.dto.ParamQueryDto;
+import com.sct.system.entities.Param;
+import com.sct.system.repositories.ParamRepository;
 
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("param")
+public class ParamController {
 
     @Autowired
-    private UserRepository repository;
+    private ParamRepository repository;
 
     @PostMapping
-    public ResponseEntity<Void> createUser(@RequestBody UserDto dto) {
-        User createdEntity = dto.toCreatedEntity();
-        User savedEntity = repository.save(createdEntity);
+    public ResponseEntity<Void> createParam(@RequestBody ParamDto dto) {
+        Param createdEntity = dto.toCreatedEntity();
+        Param savedEntity = repository.save(createdEntity);
         return ResponseEntity.created(URI.create(savedEntity.getId().toString())).build();
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> findAllUserBy(UserQueryDto dto) {
-        List<User> list = repository.findAll(dto.toExample());
-        List<UserDto> dtos = list.stream().map(UserDto::fromEntity).toList();
+    public ResponseEntity<List<ParamDto>> findAllParamBy(ParamQueryDto dto) {
+        List<Param> list = repository.findAll(dto.toExample());
+        List<ParamDto> dtos = list.stream().map(ParamDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("basic")
-    public ResponseEntity<List<UserBasicDto>> findAllUserBasicBy(UserQueryDto dto) {
-        List<User> list = repository.findAll(dto.toExample());
-        List<UserBasicDto> dtos = list.stream().map(UserBasicDto::fromEntity).toList();
+    public ResponseEntity<List<ParamDto>> findAllParamBasicBy(ParamQueryDto dto) {
+        List<Param> list = repository.findAll(dto.toExample());
+        List<ParamDto> dtos = list.stream().map(ParamDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("count")
-    public ResponseEntity<Long> countAllUserBy(UserQueryDto dto) {
+    public ResponseEntity<Long> countAllParamBy(ParamQueryDto dto) {
         Long count = repository.count(dto.toExample());
         return ResponseEntity.ok(count);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<UserDto> findUserById(@PathVariable("id") Long id) {
+    public ResponseEntity<ParamDto> findParamById(@PathVariable("id") Long id) {
         return repository.findById(id)
-                .map(UserDto::fromEntity)
+                .map(ParamDto::fromEntity)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> updateUserById(@PathVariable("id") Long id, @RequestBody UserDto dto) {
+    public ResponseEntity<Void> updateParamById(@PathVariable("id") Long id, @RequestBody ParamDto dto) {
         return repository.findById(id)
                 .map(dto::toUpdatedEntity)
                 .map(repository::save)
@@ -72,9 +71,8 @@ public class UserController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteUserById(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteParamById(@PathVariable("id") Long id) {
         repository.deleteById(id);
         return ResponseEntity.ok().<Void>build();
     }
-
 }

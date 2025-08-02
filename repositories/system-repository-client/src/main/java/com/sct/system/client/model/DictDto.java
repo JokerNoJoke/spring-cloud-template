@@ -4,7 +4,11 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.sct.system.client.model.ValueDto;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -16,27 +20,26 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * UserBasicDto
+ * DictDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:25:21.114600400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
-public class UserBasicDto {
+public class DictDto {
 
   private @Nullable Long id;
 
-  private @Nullable String username;
+  private @Nullable String label;
 
-  private @Nullable String password;
+  private @Nullable String key;
 
-  private @Nullable String nickname;
-
-  private @Nullable String mobile;
+  
+  private List<ValueDto> values = new ArrayList<>();
 
   private @Nullable Instant createdTime;
 
   private @Nullable Instant updatedTime;
 
-  public UserBasicDto id(Long id) {
+  public DictDto id(Long id) {
     this.id = id;
     return this;
   }
@@ -56,87 +59,75 @@ public class UserBasicDto {
     this.id = id;
   }
 
-  public UserBasicDto username(String username) {
-    this.username = username;
+  public DictDto label(String label) {
+    this.label = label;
     return this;
   }
 
   /**
-   * Get username
-   * @return username
+   * Get label
+   * @return label
    */
   
-  @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
+  @Schema(name = "label", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("label")
+  public String getLabel() {
+    return label;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setLabel(String label) {
+    this.label = label;
   }
 
-  public UserBasicDto password(String password) {
-    this.password = password;
+  public DictDto key(String key) {
+    this.key = key;
     return this;
   }
 
   /**
-   * Get password
-   * @return password
+   * Get key
+   * @return key
    */
   
-  @Schema(name = "password", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("password")
-  public String getPassword() {
-    return password;
+  @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("key")
+  public String getKey() {
+    return key;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setKey(String key) {
+    this.key = key;
   }
 
-  public UserBasicDto nickname(String nickname) {
-    this.nickname = nickname;
+  public DictDto values(List<ValueDto> values) {
+    this.values = values;
+    return this;
+  }
+
+  public DictDto addValuesItem(ValueDto valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<>();
+    }
+    this.values.add(valuesItem);
     return this;
   }
 
   /**
-   * Get nickname
-   * @return nickname
+   * Get values
+   * @return values
    */
   
-  @Schema(name = "nickname", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("nickname")
-  public String getNickname() {
-    return nickname;
+  @Schema(name = "values", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("values")
+  public List<ValueDto> getValues() {
+    return values;
   }
 
-  public void setNickname(String nickname) {
-    this.nickname = nickname;
+  public void setValues(List<ValueDto> values) {
+    this.values = values;
   }
 
-  public UserBasicDto mobile(String mobile) {
-    this.mobile = mobile;
-    return this;
-  }
-
-  /**
-   * Get mobile
-   * @return mobile
-   */
-  
-  @Schema(name = "mobile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("mobile")
-  public String getMobile() {
-    return mobile;
-  }
-
-  public void setMobile(String mobile) {
-    this.mobile = mobile;
-  }
-
-  public UserBasicDto createdTime(Instant createdTime) {
+  public DictDto createdTime(Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -156,7 +147,7 @@ public class UserBasicDto {
     this.createdTime = createdTime;
   }
 
-  public UserBasicDto updatedTime(Instant updatedTime) {
+  public DictDto updatedTime(Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -184,30 +175,28 @@ public class UserBasicDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserBasicDto userBasicDto = (UserBasicDto) o;
-    return Objects.equals(this.id, userBasicDto.id) &&
-        Objects.equals(this.username, userBasicDto.username) &&
-        Objects.equals(this.password, userBasicDto.password) &&
-        Objects.equals(this.nickname, userBasicDto.nickname) &&
-        Objects.equals(this.mobile, userBasicDto.mobile) &&
-        Objects.equals(this.createdTime, userBasicDto.createdTime) &&
-        Objects.equals(this.updatedTime, userBasicDto.updatedTime);
+    DictDto dictDto = (DictDto) o;
+    return Objects.equals(this.id, dictDto.id) &&
+        Objects.equals(this.label, dictDto.label) &&
+        Objects.equals(this.key, dictDto.key) &&
+        Objects.equals(this.values, dictDto.values) &&
+        Objects.equals(this.createdTime, dictDto.createdTime) &&
+        Objects.equals(this.updatedTime, dictDto.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, password, nickname, mobile, createdTime, updatedTime);
+    return Objects.hash(id, label, key, values, createdTime, updatedTime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserBasicDto {\n");
+    sb.append("class DictDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    nickname: ").append(toIndentedString(nickname)).append("\n");
-    sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");

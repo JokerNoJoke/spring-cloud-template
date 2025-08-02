@@ -5,6 +5,9 @@
 */
 package com.sct.system.client.config;
 
+import com.sct.system.client.api.DictControllerApi;
+import com.sct.system.client.api.OrgControllerApi;
+import com.sct.system.client.api.ParamControllerApi;
 import com.sct.system.client.api.RoleControllerApi;
 import com.sct.system.client.api.UserControllerApi;
 
@@ -16,6 +19,27 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 public abstract class HttpInterfacesAbstractConfigurator {
 
     protected abstract WebClient getWebClient();
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.dictController")
+    DictControllerApi dictControllerHttpProxy() {
+        WebClientAdapter adapter = WebClientAdapter.create(getWebClient());
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+        return factory.createClient(DictControllerApi.class);
+    }
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.orgController")
+    OrgControllerApi orgControllerHttpProxy() {
+        WebClientAdapter adapter = WebClientAdapter.create(getWebClient());
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+        return factory.createClient(OrgControllerApi.class);
+    }
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.paramController")
+    ParamControllerApi paramControllerHttpProxy() {
+        WebClientAdapter adapter = WebClientAdapter.create(getWebClient());
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+        return factory.createClient(ParamControllerApi.class);
+    }
 
     @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.roleController")
     RoleControllerApi roleControllerHttpProxy() {

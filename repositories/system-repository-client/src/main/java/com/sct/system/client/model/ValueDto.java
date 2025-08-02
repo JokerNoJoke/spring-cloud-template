@@ -15,54 +15,54 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleQueryDto
+ * ValueDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:25:21.114600400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
-public class RoleQueryDto {
+public class ValueDto {
 
-  private @Nullable String code;
+  private @Nullable String key;
 
-  private @Nullable String name;
+  private @Nullable String value;
 
-  public RoleQueryDto code(String code) {
-    this.code = code;
+  public ValueDto key(String key) {
+    this.key = key;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * Get key
+   * @return key
    */
   
-  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("code")
-  public String getCode() {
-    return code;
+  @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("key")
+  public String getKey() {
+    return key;
   }
 
-  public void setCode(String code) {
-    this.code = code;
+  public void setKey(String key) {
+    this.key = key;
   }
 
-  public RoleQueryDto name(String name) {
-    this.name = name;
+  public ValueDto value(String value) {
+    this.value = value;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Get value
+   * @return value
    */
   
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setValue(String value) {
+    this.value = value;
   }
 
   @Override
@@ -73,22 +73,22 @@ public class RoleQueryDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleQueryDto roleQueryDto = (RoleQueryDto) o;
-    return Objects.equals(this.code, roleQueryDto.code) &&
-        Objects.equals(this.name, roleQueryDto.name);
+    ValueDto valueDto = (ValueDto) o;
+    return Objects.equals(this.key, valueDto.key) &&
+        Objects.equals(this.value, valueDto.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name);
+    return Objects.hash(key, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleQueryDto {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class ValueDto {\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

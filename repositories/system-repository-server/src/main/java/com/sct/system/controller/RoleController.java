@@ -64,11 +64,11 @@ public class RoleController {
 
     @PutMapping("{id}")
     public ResponseEntity<Void> updateRoleById(@PathVariable("id") Long id, @RequestBody RoleDto dto) {
-        return repository.findById(id).map(sourceEntity -> {
-            Role updatedEntity = dto.toUpdatedEntity(sourceEntity);
-            repository.save(updatedEntity);
-            return ResponseEntity.ok().<Void>build();
-        }).orElseGet(() -> ResponseEntity.notFound().build());
+        return repository.findById(id)
+                .map(dto::toUpdatedEntity)
+                .map(repository::save)
+                .map(__ -> ResponseEntity.ok().<Void>build())
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("{id}")

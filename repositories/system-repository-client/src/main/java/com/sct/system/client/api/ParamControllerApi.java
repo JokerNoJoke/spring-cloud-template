@@ -8,9 +8,8 @@ package com.sct.system.client.api;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
-import com.sct.system.client.model.RoleBasicDto;
-import com.sct.system.client.model.RoleDto;
-import com.sct.system.client.model.RoleQueryDto;
+import com.sct.system.client.model.ParamDto;
+import com.sct.system.client.model.ParamQueryDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -27,10 +26,10 @@ import jakarta.annotation.Generated;
 
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:25:21.114600400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
-public interface RoleControllerApi {
+public interface ParamControllerApi {
 
     /**
-     * GET /role/count
+     * GET /param/count
      *
      * @param dto  (required)
      * @return OK (status code 200)
@@ -38,34 +37,34 @@ public interface RoleControllerApi {
     @ResponseStatus(HttpStatus.OK)
     @HttpExchange(
         method = "GET",
-        value = "/role/count",
+        value = "/param/count",
         accept = { "*/*" }
     )
-    Mono<Long> countAllRoleBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto dto
+    Mono<Long> countAllParamBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) ParamQueryDto dto
     );
 
 
     /**
-     * POST /role
+     * POST /param
      *
-     * @param roleDto  (required)
+     * @param paramDto  (required)
      * @return OK (status code 200)
      */
     @ResponseStatus(HttpStatus.OK)
     @HttpExchange(
         method = "POST",
-        value = "/role",
+        value = "/param",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    Mono<Void> createRole(
-        @Parameter(name = "RoleDto", description = "", required = true) @RequestBody Mono<RoleDto> roleDto
+    Mono<Void> createParam(
+        @Parameter(name = "ParamDto", description = "", required = true) @RequestBody Mono<ParamDto> paramDto
     );
 
 
     /**
-     * DELETE /role/{id}
+     * DELETE /param/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
@@ -73,16 +72,16 @@ public interface RoleControllerApi {
     @ResponseStatus(HttpStatus.OK)
     @HttpExchange(
         method = "DELETE",
-        value = "/role/{id}",
+        value = "/param/{id}",
         accept = { "application/json" }
     )
-    Mono<Void> deleteRoleById(
+    Mono<Void> deleteParamById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * GET /role/basic
+     * GET /param/basic
      *
      * @param dto  (required)
      * @return OK (status code 200)
@@ -90,16 +89,16 @@ public interface RoleControllerApi {
     @ResponseStatus(HttpStatus.OK)
     @HttpExchange(
         method = "GET",
-        value = "/role/basic",
+        value = "/param/basic",
         accept = { "*/*" }
     )
-    Flux<RoleBasicDto> findAllRoleBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto dto
+    Flux<ParamDto> findAllParamBasicBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) ParamQueryDto dto
     );
 
 
     /**
-     * GET /role
+     * GET /param
      *
      * @param dto  (required)
      * @return OK (status code 200)
@@ -107,16 +106,16 @@ public interface RoleControllerApi {
     @ResponseStatus(HttpStatus.OK)
     @HttpExchange(
         method = "GET",
-        value = "/role",
+        value = "/param",
         accept = { "*/*" }
     )
-    Flux<RoleDto> findAllRoleBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto dto
+    Flux<ParamDto> findAllParamBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) ParamQueryDto dto
     );
 
 
     /**
-     * GET /role/{id}
+     * GET /param/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
@@ -124,31 +123,31 @@ public interface RoleControllerApi {
     @ResponseStatus(HttpStatus.OK)
     @HttpExchange(
         method = "GET",
-        value = "/role/{id}",
+        value = "/param/{id}",
         accept = { "*/*" }
     )
-    Mono<RoleDto> findRoleById(
+    Mono<ParamDto> findParamById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * PUT /role/{id}
+     * PUT /param/{id}
      *
      * @param id  (required)
-     * @param roleDto  (required)
+     * @param paramDto  (required)
      * @return OK (status code 200)
      */
     @ResponseStatus(HttpStatus.OK)
     @HttpExchange(
         method = "PUT",
-        value = "/role/{id}",
+        value = "/param/{id}",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    Mono<Void> updateRoleById(
+    Mono<Void> updateParamById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
-        @Parameter(name = "RoleDto", description = "", required = true) @RequestBody Mono<RoleDto> roleDto
+        @Parameter(name = "ParamDto", description = "", required = true) @RequestBody Mono<ParamDto> paramDto
     );
 
 }
