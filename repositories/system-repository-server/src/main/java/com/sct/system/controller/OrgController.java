@@ -4,21 +4,27 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sct.system.controller.dto.OrgBasicDto;
-import com.sct.system.controller.dto.OrgDto;
-import com.sct.system.controller.dto.OrgQueryDto;
-import com.sct.system.entities.Org;
-import com.sct.system.repositories.OrgRepository;
+import com.sct.system.common.PageResponseDto;
+import com.sct.system.dto.OrgBasicDto;
+import com.sct.system.dto.OrgDto;
+import com.sct.system.dto.OrgQueryDto;
+import com.sct.system.entity.Org;
+import com.sct.system.repository.OrgRepository;
 
 @RestController
 @RequestMapping("org")
@@ -35,23 +41,41 @@ public class OrgController {
     }
 
     @GetMapping
-    public ResponseEntity<List<OrgDto>> findAllOrgBy(OrgQueryDto dto) {
-        List<Org> list = repository.findAll(dto.toExample());
+    public ResponseEntity<List<OrgDto>> findAllOrgBy(@ModelAttribute OrgQueryDto dto) {
+        List<Org> list = (List<Org>) repository.findAll(dto.toPredicate());
         List<OrgDto> dtos = list.stream().map(OrgDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("basic")
-    public ResponseEntity<List<OrgBasicDto>> findAllOrgBasicBy(OrgQueryDto dto) {
-        List<Org> list = repository.findAll(dto.toExample());
+    public ResponseEntity<List<OrgBasicDto>> findAllOrgBasicBy(@ModelAttribute OrgQueryDto dto) {
+        List<Org> list = (List<Org>) repository.findAll(dto.toPredicate());
         List<OrgBasicDto> dtos = list.stream().map(OrgBasicDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("count")
-    public ResponseEntity<Long> countAllOrgBy(OrgQueryDto dto) {
-        Long count = repository.count(dto.toExample());
+    public ResponseEntity<Long> countAllOrgBy(@ModelAttribute OrgQueryDto dto) {
+        Long count = repository.count(dto.toPredicate());
         return ResponseEntity.ok(count);
+    }
+
+    @GetMapping("page")
+    public ResponseEntity<PageResponseDto<OrgDto>> findAllOrgPageBy(
+            @ModelAttribute OrgQueryDto queryDto,
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "10") Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
+        Page<Org> page = repository.findAll(queryDto.toPredicate(), pageable);
+
+        List<OrgDto> dtos = page.getContent().stream()
+                .map(OrgDto::fromEntity)
+                .toList();
+        PageResponseDto<OrgDto> response = new PageResponseDto<>(
+                dtos,
+                page.getTotalElements(),
+                page.getTotalPages());
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("{id}")
@@ -65,7 +89,7 @@ public class OrgController {
     @PutMapping("{id}")
     public ResponseEntity<Void> updateOrgById(@PathVariable("id") Long id, @RequestBody OrgDto dto) {
         return repository.findById(id)
-                .map(dto::toUpdatedEntity)
+                .map(dto::updateEntity)
                 .map(repository::save)
                 .map(__ -> ResponseEntity.ok().<Void>build())
                 .orElseGet(() -> ResponseEntity.notFound().build());

@@ -1,0 +1,2 @@
+## Gemini Added Memories
+- I have created a code generation template located at `.gemini/CODE_TEMPLATES.md`. When asked to generate Entity, Repository, DTO, or Controller code for this project, I must strictly follow the patterns defined in this file.
