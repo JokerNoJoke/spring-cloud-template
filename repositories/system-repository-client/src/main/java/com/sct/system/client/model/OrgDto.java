@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * OrgDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class OrgDto {
 
   private @Nullable Long id;
@@ -33,7 +33,7 @@ public class OrgDto {
 
   private @Nullable OrgBasicDto parent;
 
-  public OrgDto id(Long id) {
+  public OrgDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -45,15 +45,15 @@ public class OrgDto {
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public Long getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public OrgDto name(String name) {
+  public OrgDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -65,15 +65,15 @@ public class OrgDto {
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public OrgDto createdTime(Instant createdTime) {
+  public OrgDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -85,15 +85,15 @@ public class OrgDto {
   
   @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("createdTime")
-  public Instant getCreatedTime() {
+  public @Nullable Instant getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Instant createdTime) {
+  public void setCreatedTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
   }
 
-  public OrgDto updatedTime(Instant updatedTime) {
+  public OrgDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -105,15 +105,15 @@ public class OrgDto {
   
   @Schema(name = "updatedTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updatedTime")
-  public Instant getUpdatedTime() {
+  public @Nullable Instant getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Instant updatedTime) {
+  public void setUpdatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
   }
 
-  public OrgDto parent(OrgBasicDto parent) {
+  public OrgDto parent(@Nullable OrgBasicDto parent) {
     this.parent = parent;
     return this;
   }
@@ -125,11 +125,11 @@ public class OrgDto {
   
   @Schema(name = "parent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent")
-  public OrgBasicDto getParent() {
+  public @Nullable OrgBasicDto getParent() {
     return parent;
   }
 
-  public void setParent(OrgBasicDto parent) {
+  public void setParent(@Nullable OrgBasicDto parent) {
     this.parent = parent;
   }
 

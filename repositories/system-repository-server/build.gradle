@@ -1,6 +1,6 @@
 plugins {
-  id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
-  id("org.openapi.generator") version "7.13.0"
+  id 'org.springdoc.openapi-gradle-plugin' version '1.9.0'
+  id "org.openapi.generator" version "7.17.0"
 }
 
 group = 'com'
@@ -13,7 +13,7 @@ configurations {
 }
 
 dependencies {
-  implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.8'
+  implementation 'org.springdoc:springdoc-openapi-starter-webflux-api'
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
   implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -37,16 +37,13 @@ def openApiGeneratePackagePrefix = "com.sct.system.client"
 
 openApiGenerate {
   generatorName.set("spring")
-  inputSpec.set(file("$buildDir/openapi.json").toURI().toString())
+  inputSpec.set("$buildDir/openapi.json")
   configOptions.set([
     apiPackage: "${openApiGeneratePackagePrefix}.api",
     configPackage: "${openApiGeneratePackagePrefix}.config",
     library: "spring-http-interface", // For Spring HTTP Interface following options are disabled: documentProvider, annotationLibrary, useBeanValidation, performBeanValidation. useJakartaEe defaulted to 'true'
     modelPackage: "${openApiGeneratePackagePrefix}.model",
-    reactive: "true",
-    useResponseEntity: "false"
   ])
-  templateDir.set("$rootDir/openapi-generator/src/main/resources/JavaSpring")
   typeMappings.set([
     "local-time": "LocalTime",
     "local-date-time": "LocalDateTime",
@@ -59,11 +56,32 @@ openApiGenerate {
   ])
 }
 
-tasks.named("openApiGenerate").configure {
+tasks.named("openApiGenerate") {
   dependsOn tasks.named("generateOpenApiDocs")
+  doLast {
+    def configFile = file("$buildDir/generate-resources/main/src/main/java/com/sct/system/client/config/HttpInterfacesAbstractConfigurator.java")
+    if (configFile.exists()) {
+      def content = configFile.text
+      content = content.replace("HttpServiceProxyFactory.builder(WebClientAdapter.forClient(webClient)).build()", "HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build()")
+      configFile.text = content
+    }
+    
+    def apiDir = file("$buildDir/generate-resources/main/src/main/java/com/sct/system/client/api")
+    if (apiDir.exists()) {
+      apiDir.eachFile { apiFile ->
+        if (apiFile.name.endsWith(".java")) {
+          def content = apiFile.text
+          if (content.contains("@Parameter") && !content.contains("import io.swagger.v3.oas.annotations.Parameter;")) {
+            content = content.replace("import jakarta.annotation.Generated;", "import jakarta.annotation.Generated;\nimport io.swagger.v3.oas.annotations.Parameter;\nimport io.swagger.v3.oas.annotations.enums.ParameterIn;")
+            apiFile.text = content
+          }
+        }
+      }
+    }
+  }
 }
 
-task openapiGenerateAndCleanCopy(type: Copy) {
+task openapiBuild(type: Copy) {
   dependsOn tasks.named("openApiGenerate")
   from "$buildDir/generate-resources/main/src/main/java"
   into "$rootDir/repositories/system-repository-client/src/main/java"

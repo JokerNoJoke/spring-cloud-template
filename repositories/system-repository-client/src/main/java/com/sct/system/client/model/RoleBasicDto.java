@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  * RoleBasicDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class RoleBasicDto {
 
   private @Nullable Long id;
@@ -34,7 +34,7 @@ public class RoleBasicDto {
 
   private @Nullable Instant updatedTime;
 
-  public RoleBasicDto id(Long id) {
+  public RoleBasicDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -46,15 +46,15 @@ public class RoleBasicDto {
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public Long getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public RoleBasicDto code(String code) {
+  public RoleBasicDto code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -66,15 +66,15 @@ public class RoleBasicDto {
   
   @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public String getCode() {
+  public @Nullable String getCode() {
     return code;
   }
 
-  public void setCode(String code) {
+  public void setCode(@Nullable String code) {
     this.code = code;
   }
 
-  public RoleBasicDto name(String name) {
+  public RoleBasicDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -86,15 +86,15 @@ public class RoleBasicDto {
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public RoleBasicDto description(String description) {
+  public RoleBasicDto description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -106,15 +106,15 @@ public class RoleBasicDto {
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public String getDescription() {
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
-  public RoleBasicDto createdTime(Instant createdTime) {
+  public RoleBasicDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -126,15 +126,15 @@ public class RoleBasicDto {
   
   @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("createdTime")
-  public Instant getCreatedTime() {
+  public @Nullable Instant getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Instant createdTime) {
+  public void setCreatedTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
   }
 
-  public RoleBasicDto updatedTime(Instant updatedTime) {
+  public RoleBasicDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -146,11 +146,11 @@ public class RoleBasicDto {
   
   @Schema(name = "updatedTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updatedTime")
-  public Instant getUpdatedTime() {
+  public @Nullable Instant getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Instant updatedTime) {
+  public void setUpdatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
   }
 

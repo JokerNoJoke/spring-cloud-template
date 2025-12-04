@@ -30,24 +30,22 @@ public class HttpInterfacesConfig {
     @Configuration
     public class DemoRepositoryServerHttpInterfacesConfigurator
             extends com.sct.demo.client.config.HttpInterfacesAbstractConfigurator {
-        @Override
-        protected WebClient getWebClient() {
-            return loadBalancedWebClientBuilder()
+        public DemoRepositoryServerHttpInterfacesConfigurator() {
+            super(loadBalancedWebClientBuilder()
                     .baseUrl("http://demo-repository-server")
                     .filter(logResponse())
-                    .build();
+                    .build());
         }
     }
 
     @Configuration
     public class SystemRepositoryServerHttpInterfacesConfigurator
             extends com.sct.system.client.config.HttpInterfacesAbstractConfigurator {
-        @Override
-        protected WebClient getWebClient() {
-            return loadBalancedWebClientBuilder()
+        public SystemRepositoryServerHttpInterfacesConfigurator() {
+            super(loadBalancedWebClientBuilder()
                     .baseUrl("http://system-repository-server")
                     .filter(logResponse())
-                    .build();
+                    .build());
         }
     }
 

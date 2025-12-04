@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  * UserDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class UserDto {
 
   private @Nullable Long id;
@@ -46,7 +46,7 @@ public class UserDto {
   
   private List<RoleBasicDto> roles = new ArrayList<>();
 
-  public UserDto id(Long id) {
+  public UserDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -58,15 +58,15 @@ public class UserDto {
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public Long getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public UserDto username(String username) {
+  public UserDto username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -78,15 +78,15 @@ public class UserDto {
   
   @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
-  public String getUsername() {
+  public @Nullable String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
-  public UserDto password(String password) {
+  public UserDto password(@Nullable String password) {
     this.password = password;
     return this;
   }
@@ -98,15 +98,15 @@ public class UserDto {
   
   @Schema(name = "password", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("password")
-  public String getPassword() {
+  public @Nullable String getPassword() {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@Nullable String password) {
     this.password = password;
   }
 
-  public UserDto nickname(String nickname) {
+  public UserDto nickname(@Nullable String nickname) {
     this.nickname = nickname;
     return this;
   }
@@ -118,15 +118,15 @@ public class UserDto {
   
   @Schema(name = "nickname", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("nickname")
-  public String getNickname() {
+  public @Nullable String getNickname() {
     return nickname;
   }
 
-  public void setNickname(String nickname) {
+  public void setNickname(@Nullable String nickname) {
     this.nickname = nickname;
   }
 
-  public UserDto mobile(String mobile) {
+  public UserDto mobile(@Nullable String mobile) {
     this.mobile = mobile;
     return this;
   }
@@ -138,15 +138,15 @@ public class UserDto {
   
   @Schema(name = "mobile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("mobile")
-  public String getMobile() {
+  public @Nullable String getMobile() {
     return mobile;
   }
 
-  public void setMobile(String mobile) {
+  public void setMobile(@Nullable String mobile) {
     this.mobile = mobile;
   }
 
-  public UserDto createdTime(Instant createdTime) {
+  public UserDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -158,15 +158,15 @@ public class UserDto {
   
   @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("createdTime")
-  public Instant getCreatedTime() {
+  public @Nullable Instant getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Instant createdTime) {
+  public void setCreatedTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
   }
 
-  public UserDto updatedTime(Instant updatedTime) {
+  public UserDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -178,15 +178,15 @@ public class UserDto {
   
   @Schema(name = "updatedTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updatedTime")
-  public Instant getUpdatedTime() {
+  public @Nullable Instant getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Instant updatedTime) {
+  public void setUpdatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
   }
 
-  public UserDto org(OrgBasicDto org) {
+  public UserDto org(@Nullable OrgBasicDto org) {
     this.org = org;
     return this;
   }
@@ -198,11 +198,11 @@ public class UserDto {
   
   @Schema(name = "org", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("org")
-  public OrgBasicDto getOrg() {
+  public @Nullable OrgBasicDto getOrg() {
     return org;
   }
 
-  public void setOrg(OrgBasicDto org) {
+  public void setOrg(@Nullable OrgBasicDto org) {
     this.org = org;
   }
 

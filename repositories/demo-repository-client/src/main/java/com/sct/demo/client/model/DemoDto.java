@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
  * DemoDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-20T00:20:47.826522800+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:16:28.528767+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class DemoDto {
 
   private @Nullable Long id;
@@ -40,7 +40,7 @@ public class DemoDto {
 
   private @Nullable LocalTime column6;
 
-  public DemoDto id(Long id) {
+  public DemoDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -52,15 +52,15 @@ public class DemoDto {
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public Long getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public DemoDto column1(Integer column1) {
+  public DemoDto column1(@Nullable Integer column1) {
     this.column1 = column1;
     return this;
   }
@@ -72,15 +72,15 @@ public class DemoDto {
   
   @Schema(name = "column1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column1")
-  public Integer getColumn1() {
+  public @Nullable Integer getColumn1() {
     return column1;
   }
 
-  public void setColumn1(Integer column1) {
+  public void setColumn1(@Nullable Integer column1) {
     this.column1 = column1;
   }
 
-  public DemoDto column2(String column2) {
+  public DemoDto column2(@Nullable String column2) {
     this.column2 = column2;
     return this;
   }
@@ -92,15 +92,15 @@ public class DemoDto {
   
   @Schema(name = "column2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column2")
-  public String getColumn2() {
+  public @Nullable String getColumn2() {
     return column2;
   }
 
-  public void setColumn2(String column2) {
+  public void setColumn2(@Nullable String column2) {
     this.column2 = column2;
   }
 
-  public DemoDto column3(Boolean column3) {
+  public DemoDto column3(@Nullable Boolean column3) {
     this.column3 = column3;
     return this;
   }
@@ -112,15 +112,15 @@ public class DemoDto {
   
   @Schema(name = "column3", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column3")
-  public Boolean getColumn3() {
+  public @Nullable Boolean getColumn3() {
     return column3;
   }
 
-  public void setColumn3(Boolean column3) {
+  public void setColumn3(@Nullable Boolean column3) {
     this.column3 = column3;
   }
 
-  public DemoDto column4(Instant column4) {
+  public DemoDto column4(@Nullable Instant column4) {
     this.column4 = column4;
     return this;
   }
@@ -132,15 +132,15 @@ public class DemoDto {
   
   @Schema(name = "column4", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column4")
-  public Instant getColumn4() {
+  public @Nullable Instant getColumn4() {
     return column4;
   }
 
-  public void setColumn4(Instant column4) {
+  public void setColumn4(@Nullable Instant column4) {
     this.column4 = column4;
   }
 
-  public DemoDto column5(LocalDate column5) {
+  public DemoDto column5(@Nullable LocalDate column5) {
     this.column5 = column5;
     return this;
   }
@@ -152,15 +152,15 @@ public class DemoDto {
   
   @Schema(name = "column5", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column5")
-  public LocalDate getColumn5() {
+  public @Nullable LocalDate getColumn5() {
     return column5;
   }
 
-  public void setColumn5(LocalDate column5) {
+  public void setColumn5(@Nullable LocalDate column5) {
     this.column5 = column5;
   }
 
-  public DemoDto column6(LocalTime column6) {
+  public DemoDto column6(@Nullable LocalTime column6) {
     this.column6 = column6;
     return this;
   }
@@ -172,11 +172,11 @@ public class DemoDto {
   
   @Schema(name = "column6", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column6")
-  public LocalTime getColumn6() {
+  public @Nullable LocalTime getColumn6() {
     return column6;
   }
 
-  public void setColumn6(LocalTime column6) {
+  public void setColumn6(@Nullable LocalTime column6) {
     this.column6 = column6;
   }
 

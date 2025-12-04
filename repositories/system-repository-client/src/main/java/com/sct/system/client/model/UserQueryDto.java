@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * UserQueryDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class UserQueryDto {
 
   private @Nullable String username;
@@ -27,7 +27,7 @@ public class UserQueryDto {
 
   private @Nullable String mobile;
 
-  public UserQueryDto username(String username) {
+  public UserQueryDto username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -39,15 +39,15 @@ public class UserQueryDto {
   
   @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
-  public String getUsername() {
+  public @Nullable String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
-  public UserQueryDto nickname(String nickname) {
+  public UserQueryDto nickname(@Nullable String nickname) {
     this.nickname = nickname;
     return this;
   }
@@ -59,15 +59,15 @@ public class UserQueryDto {
   
   @Schema(name = "nickname", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("nickname")
-  public String getNickname() {
+  public @Nullable String getNickname() {
     return nickname;
   }
 
-  public void setNickname(String nickname) {
+  public void setNickname(@Nullable String nickname) {
     this.nickname = nickname;
   }
 
-  public UserQueryDto mobile(String mobile) {
+  public UserQueryDto mobile(@Nullable String mobile) {
     this.mobile = mobile;
     return this;
   }
@@ -79,11 +79,11 @@ public class UserQueryDto {
   
   @Schema(name = "mobile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("mobile")
-  public String getMobile() {
+  public @Nullable String getMobile() {
     return mobile;
   }
 
-  public void setMobile(String mobile) {
+  public void setMobile(@Nullable String mobile) {
     this.mobile = mobile;
   }
 

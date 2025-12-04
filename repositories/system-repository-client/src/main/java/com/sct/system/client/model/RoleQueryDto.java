@@ -18,14 +18,14 @@ import jakarta.annotation.Generated;
  * RoleQueryDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class RoleQueryDto {
 
   private @Nullable String code;
 
   private @Nullable String name;
 
-  public RoleQueryDto code(String code) {
+  public RoleQueryDto code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -37,15 +37,15 @@ public class RoleQueryDto {
   
   @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public String getCode() {
+  public @Nullable String getCode() {
     return code;
   }
 
-  public void setCode(String code) {
+  public void setCode(@Nullable String code) {
     this.code = code;
   }
 
-  public RoleQueryDto name(String name) {
+  public RoleQueryDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -57,11 +57,11 @@ public class RoleQueryDto {
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

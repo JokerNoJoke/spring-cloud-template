@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * DemoQueryDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-20T00:20:47.826522800+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:16:28.528767+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class DemoQueryDto {
 
   private @Nullable Integer column1;
@@ -27,7 +27,7 @@ public class DemoQueryDto {
 
   private @Nullable Boolean column3;
 
-  public DemoQueryDto column1(Integer column1) {
+  public DemoQueryDto column1(@Nullable Integer column1) {
     this.column1 = column1;
     return this;
   }
@@ -39,15 +39,15 @@ public class DemoQueryDto {
   
   @Schema(name = "column1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column1")
-  public Integer getColumn1() {
+  public @Nullable Integer getColumn1() {
     return column1;
   }
 
-  public void setColumn1(Integer column1) {
+  public void setColumn1(@Nullable Integer column1) {
     this.column1 = column1;
   }
 
-  public DemoQueryDto column2(String column2) {
+  public DemoQueryDto column2(@Nullable String column2) {
     this.column2 = column2;
     return this;
   }
@@ -59,15 +59,15 @@ public class DemoQueryDto {
   
   @Schema(name = "column2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column2")
-  public String getColumn2() {
+  public @Nullable String getColumn2() {
     return column2;
   }
 
-  public void setColumn2(String column2) {
+  public void setColumn2(@Nullable String column2) {
     this.column2 = column2;
   }
 
-  public DemoQueryDto column3(Boolean column3) {
+  public DemoQueryDto column3(@Nullable Boolean column3) {
     this.column3 = column3;
     return this;
   }
@@ -79,11 +79,11 @@ public class DemoQueryDto {
   
   @Schema(name = "column3", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column3")
-  public Boolean getColumn3() {
+  public @Nullable Boolean getColumn3() {
     return column3;
   }
 
-  public void setColumn3(Boolean column3) {
+  public void setColumn3(@Nullable Boolean column3) {
     this.column3 = column3;
   }
 

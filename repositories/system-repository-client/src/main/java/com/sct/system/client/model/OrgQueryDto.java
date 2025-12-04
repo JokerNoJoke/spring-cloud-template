@@ -18,12 +18,12 @@ import jakarta.annotation.Generated;
  * OrgQueryDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class OrgQueryDto {
 
   private @Nullable String name;
 
-  public OrgQueryDto name(String name) {
+  public OrgQueryDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -35,11 +35,11 @@ public class OrgQueryDto {
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

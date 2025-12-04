@@ -2,12 +2,12 @@ group = 'com'
 version = '0.0.1-SNAPSHOT'
 
 dependencies {
-  compileOnly 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.8'
+  compileOnly 'org.springdoc:springdoc-openapi-starter-webflux-api'
   compileOnly 'org.springframework.boot:spring-boot-starter-webflux'
   compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
   compileOnly 'jakarta.validation:jakarta.validation-api'
   compileOnly 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
-  compileOnly 'org.openapitools:jackson-databind-nullable:0.2.6'
+  compileOnly 'org.openapitools:jackson-databind-nullable:0.2.8'
 }
 
 bootJar {

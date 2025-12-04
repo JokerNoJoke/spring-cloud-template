@@ -18,14 +18,14 @@ import jakarta.annotation.Generated;
  * ValueDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class ValueDto {
 
   private @Nullable String key;
 
   private @Nullable String value;
 
-  public ValueDto key(String key) {
+  public ValueDto key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -37,15 +37,15 @@ public class ValueDto {
   
   @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
-  public String getKey() {
+  public @Nullable String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
-  public ValueDto value(String value) {
+  public ValueDto value(@Nullable String value) {
     this.value = value;
     return this;
   }
@@ -57,11 +57,11 @@ public class ValueDto {
   
   @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("value")
-  public String getValue() {
+  public @Nullable String getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@Nullable String value) {
     this.value = value;
   }
 

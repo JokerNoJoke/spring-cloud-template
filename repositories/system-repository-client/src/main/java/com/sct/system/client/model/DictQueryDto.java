@@ -18,14 +18,14 @@ import jakarta.annotation.Generated;
  * DictQueryDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class DictQueryDto {
 
   private @Nullable String label;
 
   private @Nullable String key;
 
-  public DictQueryDto label(String label) {
+  public DictQueryDto label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -37,15 +37,15 @@ public class DictQueryDto {
   
   @Schema(name = "label", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("label")
-  public String getLabel() {
+  public @Nullable String getLabel() {
     return label;
   }
 
-  public void setLabel(String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
-  public DictQueryDto key(String key) {
+  public DictQueryDto key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -57,11 +57,11 @@ public class DictQueryDto {
   
   @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
-  public String getKey() {
+  public @Nullable String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 

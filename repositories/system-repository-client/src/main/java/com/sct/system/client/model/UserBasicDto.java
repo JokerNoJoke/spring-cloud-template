@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  * UserBasicDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class UserBasicDto {
 
   private @Nullable Long id;
@@ -36,7 +36,7 @@ public class UserBasicDto {
 
   private @Nullable Instant updatedTime;
 
-  public UserBasicDto id(Long id) {
+  public UserBasicDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -48,15 +48,15 @@ public class UserBasicDto {
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public Long getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public UserBasicDto username(String username) {
+  public UserBasicDto username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -68,15 +68,15 @@ public class UserBasicDto {
   
   @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
-  public String getUsername() {
+  public @Nullable String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
-  public UserBasicDto password(String password) {
+  public UserBasicDto password(@Nullable String password) {
     this.password = password;
     return this;
   }
@@ -88,15 +88,15 @@ public class UserBasicDto {
   
   @Schema(name = "password", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("password")
-  public String getPassword() {
+  public @Nullable String getPassword() {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@Nullable String password) {
     this.password = password;
   }
 
-  public UserBasicDto nickname(String nickname) {
+  public UserBasicDto nickname(@Nullable String nickname) {
     this.nickname = nickname;
     return this;
   }
@@ -108,15 +108,15 @@ public class UserBasicDto {
   
   @Schema(name = "nickname", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("nickname")
-  public String getNickname() {
+  public @Nullable String getNickname() {
     return nickname;
   }
 
-  public void setNickname(String nickname) {
+  public void setNickname(@Nullable String nickname) {
     this.nickname = nickname;
   }
 
-  public UserBasicDto mobile(String mobile) {
+  public UserBasicDto mobile(@Nullable String mobile) {
     this.mobile = mobile;
     return this;
   }
@@ -128,15 +128,15 @@ public class UserBasicDto {
   
   @Schema(name = "mobile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("mobile")
-  public String getMobile() {
+  public @Nullable String getMobile() {
     return mobile;
   }
 
-  public void setMobile(String mobile) {
+  public void setMobile(@Nullable String mobile) {
     this.mobile = mobile;
   }
 
-  public UserBasicDto createdTime(Instant createdTime) {
+  public UserBasicDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -148,15 +148,15 @@ public class UserBasicDto {
   
   @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("createdTime")
-  public Instant getCreatedTime() {
+  public @Nullable Instant getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Instant createdTime) {
+  public void setCreatedTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
   }
 
-  public UserBasicDto updatedTime(Instant updatedTime) {
+  public UserBasicDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -168,11 +168,11 @@ public class UserBasicDto {
   
   @Schema(name = "updatedTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updatedTime")
-  public Instant getUpdatedTime() {
+  public @Nullable Instant getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Instant updatedTime) {
+  public void setUpdatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
   }
 

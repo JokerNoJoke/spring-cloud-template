@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  * ParamBasicDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-02T16:30:52.304240400+08:00[Asia/Shanghai]", comments = "Generator version: 7.13.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class ParamBasicDto {
 
   private @Nullable Long id;
@@ -34,7 +34,7 @@ public class ParamBasicDto {
 
   private @Nullable Instant updatedTime;
 
-  public ParamBasicDto id(Long id) {
+  public ParamBasicDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -46,15 +46,15 @@ public class ParamBasicDto {
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public Long getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public ParamBasicDto label(String label) {
+  public ParamBasicDto label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -66,15 +66,15 @@ public class ParamBasicDto {
   
   @Schema(name = "label", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("label")
-  public String getLabel() {
+  public @Nullable String getLabel() {
     return label;
   }
 
-  public void setLabel(String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
-  public ParamBasicDto key(String key) {
+  public ParamBasicDto key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -86,15 +86,15 @@ public class ParamBasicDto {
   
   @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
-  public String getKey() {
+  public @Nullable String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
-  public ParamBasicDto value(String value) {
+  public ParamBasicDto value(@Nullable String value) {
     this.value = value;
     return this;
   }
@@ -106,15 +106,15 @@ public class ParamBasicDto {
   
   @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("value")
-  public String getValue() {
+  public @Nullable String getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@Nullable String value) {
     this.value = value;
   }
 
-  public ParamBasicDto createdTime(Instant createdTime) {
+  public ParamBasicDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -126,15 +126,15 @@ public class ParamBasicDto {
   
   @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("createdTime")
-  public Instant getCreatedTime() {
+  public @Nullable Instant getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Instant createdTime) {
+  public void setCreatedTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
   }
 
-  public ParamBasicDto updatedTime(Instant updatedTime) {
+  public ParamBasicDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -146,11 +146,11 @@ public class ParamBasicDto {
   
   @Schema(name = "updatedTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updatedTime")
-  public Instant getUpdatedTime() {
+  public @Nullable Instant getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Instant updatedTime) {
+  public void setUpdatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
   }
 
