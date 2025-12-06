@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  * DictBasicDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class DictBasicDto {
 
   private @Nullable Long id;

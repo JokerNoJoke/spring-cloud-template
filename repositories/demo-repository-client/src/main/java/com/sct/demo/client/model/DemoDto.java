@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
  * DemoDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:16:28.528767+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:31:38.331141900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class DemoDto {
 
   private @Nullable Long id;

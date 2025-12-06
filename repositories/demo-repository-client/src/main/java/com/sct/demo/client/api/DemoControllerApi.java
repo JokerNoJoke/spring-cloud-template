@@ -7,6 +7,8 @@ package com.sct.demo.client.api;
 
 import com.sct.demo.client.model.DemoDto;
 import com.sct.demo.client.model.DemoQueryDto;
+import org.springframework.lang.Nullable;
+import com.sct.demo.client.model.PageResponseDtoDemoDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -20,13 +22,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:16:28.528767+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:31:38.331141900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface DemoControllerApi {
 
     /**
      * GET /demo/count
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -35,7 +37,7 @@ public interface DemoControllerApi {
         accept = { "*/*" }
     )
     ResponseEntity<Long> countAllDemoBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DemoQueryDto dto
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DemoQueryDto queryDto
     );
 
 
@@ -75,7 +77,7 @@ public interface DemoControllerApi {
     /**
      * GET /demo
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -84,7 +86,27 @@ public interface DemoControllerApi {
         accept = { "*/*" }
     )
     ResponseEntity<List<DemoDto>> findAllDemoBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DemoQueryDto dto
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DemoQueryDto queryDto
+    );
+
+
+    /**
+     * GET /demo/page
+     *
+     * @param queryDto  (required)
+     * @param pageNum  (optional, default to 1)
+     * @param pageSize  (optional, default to 10)
+     * @return OK (status code 200)
+     */
+    @HttpExchange(
+        method = "GET",
+        value = "/demo/page",
+        accept = { "*/*" }
+    )
+    ResponseEntity<PageResponseDtoDemoDto> findAllDemoPageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DemoQueryDto queryDto,
+        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
+        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 

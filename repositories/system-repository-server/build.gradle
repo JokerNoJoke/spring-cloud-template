@@ -43,7 +43,8 @@ def openApiGeneratePackagePrefix = "com.sct.system.client"
 
 openApiGenerate {
   generatorName.set("spring")
-  inputSpec.set("$buildDir/openapi.json")
+  // inputSpec.set("$buildDir/openapi.json")
+  inputSpec.set(file("$buildDir/openapi.json").toURI().toString())
   configOptions.set([
     apiPackage: "${openApiGeneratePackagePrefix}.api",
     configPackage: "${openApiGeneratePackagePrefix}.config",

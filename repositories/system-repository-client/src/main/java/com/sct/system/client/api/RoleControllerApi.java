@@ -5,6 +5,8 @@
  */
 package com.sct.system.client.api;
 
+import org.springframework.lang.Nullable;
+import com.sct.system.client.model.PageResponseDtoRoleDto;
 import com.sct.system.client.model.RoleBasicDto;
 import com.sct.system.client.model.RoleDto;
 import com.sct.system.client.model.RoleQueryDto;
@@ -21,7 +23,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface RoleControllerApi {
 
     /**
@@ -102,6 +104,26 @@ public interface RoleControllerApi {
     )
     ResponseEntity<List<RoleDto>> findAllRoleBy(
         @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto dto
+    );
+
+
+    /**
+     * GET /role/page
+     *
+     * @param queryDto  (required)
+     * @param pageNum  (optional, default to 1)
+     * @param pageSize  (optional, default to 10)
+     * @return OK (status code 200)
+     */
+    @HttpExchange(
+        method = "GET",
+        value = "/role/page",
+        accept = { "*/*" }
+    )
+    ResponseEntity<PageResponseDtoRoleDto> findAllRolePageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto queryDto,
+        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
+        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 

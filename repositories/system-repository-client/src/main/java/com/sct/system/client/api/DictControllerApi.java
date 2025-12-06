@@ -8,6 +8,8 @@ package com.sct.system.client.api;
 import com.sct.system.client.model.DictBasicDto;
 import com.sct.system.client.model.DictDto;
 import com.sct.system.client.model.DictQueryDto;
+import org.springframework.lang.Nullable;
+import com.sct.system.client.model.PageResponseDtoDictDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -21,7 +23,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-04T14:12:20.739110+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface DictControllerApi {
 
     /**
@@ -102,6 +104,26 @@ public interface DictControllerApi {
     )
     ResponseEntity<List<DictDto>> findAllDictBy(
         @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictQueryDto dto
+    );
+
+
+    /**
+     * GET /dict/page
+     *
+     * @param queryDto  (required)
+     * @param pageNum  (optional, default to 1)
+     * @param pageSize  (optional, default to 10)
+     * @return OK (status code 200)
+     */
+    @HttpExchange(
+        method = "GET",
+        value = "/dict/page",
+        accept = { "*/*" }
+    )
+    ResponseEntity<PageResponseDtoDictDto> findAllDictPageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DictQueryDto queryDto,
+        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
+        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 
