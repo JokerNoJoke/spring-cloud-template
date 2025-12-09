@@ -1,4 +1,4 @@
-# Code Generation Templates for Lurvo Casual Worker Domain
+# Code Generation Templates
 
 Use these templates when generating new domain objects. Replace placeholders like `${EntityName}`, `${Module}`, and `${PathName}` accordingly.
 
