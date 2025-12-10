@@ -2,21 +2,21 @@ package com.sct.system.dto;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
-import com.sct.system.entity.QRole;
+import com.sct.system.entity.QDictType;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class RoleQueryDto {
+public class DictTypeQueryDto {
 
     private String name;
     private String code;
     private Boolean enabled;
 
     public Predicate toPredicate() {
-        QRole qEntity = QRole.role;
+        QDictType qEntity = QDictType.dictType;
         BooleanBuilder builder = new BooleanBuilder();
 
         if (name != null && !name.isBlank()) {

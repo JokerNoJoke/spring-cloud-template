@@ -2,7 +2,7 @@ package com.sct.system.dto;
 
 import java.time.Instant;
 
-import com.sct.system.entity.User;
+import com.sct.system.entity.SystemConfig;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -10,17 +10,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserBasicDto {
+public class SystemConfigBasicDto {
 
     private Long id;
     private Long tenantId;
-    private Long deptId;
-    private String username;
-    private String password;
-    private String nickname;
-    private String mobile;
-    private String avatar;
-    private Boolean enabled;
+    private String name;
+    private String code;
+    private String value;
+    private Boolean builtIn;
 
     @Schema(format = "instant")
     private Instant createdTime;
@@ -29,17 +26,14 @@ public class UserBasicDto {
     private Instant updatedTime;
     private Long updatedBy;
 
-    public static UserBasicDto fromEntity(User entity) {
-        UserBasicDto dto = new UserBasicDto();
+    public static SystemConfigBasicDto fromEntity(SystemConfig entity) {
+        SystemConfigBasicDto dto = new SystemConfigBasicDto();
         dto.setId(entity.getId());
         dto.setTenantId(entity.getTenantId());
-        dto.setDeptId(entity.getDeptId());
-        dto.setUsername(entity.getUsername());
-        dto.setPassword(entity.getPassword());
-        dto.setNickname(entity.getNickname());
-        dto.setMobile(entity.getMobile());
-        dto.setAvatar(entity.getAvatar());
-        dto.setEnabled(entity.getEnabled());
+        dto.setName(entity.getName());
+        dto.setCode(entity.getCode());
+        dto.setValue(entity.getValue());
+        dto.setBuiltIn(entity.getBuiltIn());
         dto.setCreatedTime(entity.getCreatedTime());
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setUpdatedTime(entity.getUpdatedTime());
@@ -47,10 +41,9 @@ public class UserBasicDto {
         return dto;
     }
 
-    public User toReferencedEntity() {
-        User referencedEntity = new User();
+    public SystemConfig toReferencedEntity() {
+        SystemConfig referencedEntity = new SystemConfig();
         referencedEntity.setId(this.id);
         return referencedEntity;
     }
-
 }

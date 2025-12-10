@@ -2,7 +2,7 @@ package com.sct.system.dto;
 
 import java.time.Instant;
 
-import com.sct.system.entity.Param;
+import com.sct.system.entity.DictItem;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -10,30 +10,39 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ParamBasicDto {
+public class DictItemBasicDto {
 
     private Long id;
+    private Long dictTypeId;
     private String label;
-    private String key;
     private String value;
+    private Integer sortOrder;
+    private Boolean enabled;
+
     @Schema(format = "instant")
     private Instant createdTime;
+    private Long createdBy;
     @Schema(format = "instant")
     private Instant updatedTime;
+    private Long updatedBy;
 
-    public static ParamBasicDto fromEntity(Param entity) {
-        ParamBasicDto dto = new ParamBasicDto();
+    public static DictItemBasicDto fromEntity(DictItem entity) {
+        DictItemBasicDto dto = new DictItemBasicDto();
         dto.setId(entity.getId());
+        dto.setDictTypeId(entity.getDictTypeId());
         dto.setLabel(entity.getLabel());
-        dto.setKey(entity.getKey());
         dto.setValue(entity.getValue());
+        dto.setSortOrder(entity.getSortOrder());
+        dto.setEnabled(entity.getEnabled());
         dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedBy(entity.getCreatedBy());
         dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }
 
-    public Param toReferencedEntity() {
-        Param referencedEntity = new Param();
+    public DictItem toReferencedEntity() {
+        DictItem referencedEntity = new DictItem();
         referencedEntity.setId(this.id);
         return referencedEntity;
     }

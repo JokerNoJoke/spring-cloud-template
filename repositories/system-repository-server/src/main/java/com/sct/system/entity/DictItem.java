@@ -1,27 +1,22 @@
 package com.sct.system.entity;
 
 import java.time.Instant;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SoftDelete;
-import org.hibernate.annotations.TenantId;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -30,50 +25,34 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "`user`", indexes = {
-        @Index(columnList = "tenant_id, username", unique = true),
-        @Index(columnList = "mobile")
+@Table(indexes = {
+        @Index(columnList = "dict_type_id, value", unique = true)
 })
 @SoftDelete(columnName = "is_deleted")
 @DynamicInsert
 @DynamicUpdate
-public class User {
+public class DictItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "tenant_id", updatable = false)
-    @TenantId
-    private Long tenantId;
+    @Column(name = "dict_type_id", updatable = false)
+    private Long dictTypeId;
 
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false)
-    private Tenant tenant;
-
-    @Column(name = "dept_id", updatable = false)
-    private Long deptId;
-
-    @ManyToOne
-    @JoinColumn(insertable = false, updatable = false)
-    private Dept dept;
+    private DictType dictType;
 
     @Column(nullable = false)
-    private String username;
+    private String label;
 
-    private String password;
+    @Column(nullable = false)
+    private String value;
 
-    private String nickname;
-
-    private String mobile;
-
-    private String avatar;
+    private Integer sortOrder;
 
     private Boolean enabled;
-
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_role_user_id")), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_role_role_id")))
-    private List<Role> roles;
 
     @Column(updatable = false)
     @CreationTimestamp

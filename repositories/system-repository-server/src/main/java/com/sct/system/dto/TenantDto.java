@@ -1,10 +1,9 @@
 package com.sct.system.dto;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.Optional;
 
-import com.sct.system.entity.Role;
+import com.sct.system.entity.Tenant;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -12,13 +11,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RoleDto {
+public class TenantDto {
 
     private Long id;
     private String name;
-    private String code;
     private Boolean enabled;
-    private List<MenuBasicDto> menus;
 
     @Schema(format = "instant")
     private Instant createdTime;
@@ -27,18 +24,14 @@ public class RoleDto {
     private Instant updatedTime;
     private Long updatedBy;
 
-    public static RoleDto fromEntity(Role entity) {
-
+    public static TenantDto fromEntity(Tenant entity) {
         if (entity == null) {
             return null;
         }
-        RoleDto dto = new RoleDto();
+        TenantDto dto = new TenantDto();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
-        dto.setCode(entity.getCode());
         dto.setEnabled(entity.getEnabled());
-        dto.setMenus(Optional.ofNullable(entity.getMenus()).orElse(List.of()).stream().map(MenuBasicDto::fromEntity)
-                .toList());
         dto.setCreatedTime(entity.getCreatedTime());
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setUpdatedTime(entity.getUpdatedTime());
@@ -46,25 +39,19 @@ public class RoleDto {
         return dto;
     }
 
-    public Role toCreatedEntity() {
-        Role createdEntity = new Role();
-        createdEntity.setName(this.name);
-        createdEntity.setCode(this.code);
-        createdEntity.setEnabled(this.enabled);
-        createdEntity.setMenus(Optional.ofNullable(this.menus).orElse(List.of()).stream()
-                .map(MenuBasicDto::toReferencedEntity).toList());
-        return createdEntity;
+    public Tenant toCreatedEntity() {
+        Tenant entity = new Tenant();
+        entity.setName(this.name);
+        entity.setEnabled(this.enabled);
+        return entity;
     }
 
-    public Role updateEntity(Role entity) {
+    public Tenant updateEntity(Tenant entity) {
         if (entity == null) {
             return null;
         }
         entity.setName(Optional.ofNullable(this.name).orElse(entity.getName()));
-        entity.setCode(Optional.ofNullable(this.code).orElse(entity.getCode()));
         entity.setEnabled(Optional.ofNullable(this.enabled).orElse(entity.getEnabled()));
-        entity.setMenus(Optional.ofNullable(this.menus).orElse(List.of()).stream()
-                .map(MenuBasicDto::toReferencedEntity).toList());
         return entity;
     }
 }

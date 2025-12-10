@@ -2,7 +2,7 @@ package com.sct.system.dto;
 
 import java.time.Instant;
 
-import com.sct.system.entity.Dict;
+import com.sct.system.entity.Tenant;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -10,28 +10,33 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DictBasicDto {
+public class TenantBasicDto {
 
     private Long id;
-    private String label;
-    private String key;
+    private String name;
+    private Boolean enabled;
+
     @Schema(format = "instant")
     private Instant createdTime;
+    private Long createdBy;
     @Schema(format = "instant")
     private Instant updatedTime;
+    private Long updatedBy;
 
-    public static DictBasicDto fromEntity(Dict entity) {
-        DictBasicDto dto = new DictBasicDto();
+    public static TenantBasicDto fromEntity(Tenant entity) {
+        TenantBasicDto dto = new TenantBasicDto();
         dto.setId(entity.getId());
-        dto.setLabel(entity.getLabel());
-        dto.setKey(entity.getKey());
+        dto.setName(entity.getName());
+        dto.setEnabled(entity.getEnabled());
         dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedBy(entity.getCreatedBy());
         dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }
 
-    public Dict toReferencedEntity() {
-        Dict referencedEntity = new Dict();
+    public Tenant toReferencedEntity() {
+        Tenant referencedEntity = new Tenant();
         referencedEntity.setId(this.id);
         return referencedEntity;
     }

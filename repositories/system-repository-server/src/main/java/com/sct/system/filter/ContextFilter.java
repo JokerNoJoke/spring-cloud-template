@@ -6,13 +6,15 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 
 import com.sct.system.context.TenantContext;
+import com.sct.system.context.UserContext;
 
 import reactor.core.publisher.Mono;
 
 @Component
-public class TenantFilter implements WebFilter {
+public class ContextFilter implements WebFilter {
 
     private static final String TENANT_HEADER = "X-Tenant-Id";
+    private static final String USER_HEADER = "X-User-Id";
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
@@ -20,7 +22,14 @@ public class TenantFilter implements WebFilter {
         if (tenantId != null && !tenantId.isBlank()) {
             TenantContext.setId(Long.parseLong(tenantId));
         }
-        return chain.filter(exchange).doFinally(signalType -> TenantContext.clear());
+        String userId = exchange.getRequest().getHeaders().getFirst(USER_HEADER);
+        if (userId != null && !userId.isBlank()) {
+            UserContext.setId(Long.parseLong(userId));
+        }
+        return chain.filter(exchange).doFinally(signalType -> {
+            TenantContext.clear();
+            UserContext.clear();
+        });
     }
 
 }

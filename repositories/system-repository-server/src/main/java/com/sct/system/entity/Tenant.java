@@ -1,6 +1,5 @@
 package com.sct.system.entity;
 
-import java.io.Serializable;
 import java.time.Instant;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,6 +7,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SoftDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,30 +23,35 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "param", indexes = {
-        @Index(name = "idx_param_code", columnList = "code"),
-        @Index(name = "idx_param_name", columnList = "name")
+@Table(indexes = {
+        @Index(columnList = "name", unique = true)
 })
 @SoftDelete(columnName = "is_deleted")
 @DynamicInsert
 @DynamicUpdate
-public class Param implements Serializable {
+public class Tenant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String label;
+    @Column(nullable = false)
+    private String name;
 
-    private String key;
-
-    private String value;
+    private Boolean enabled;
 
     @Column(updatable = false)
     @CreationTimestamp
     private Instant createdTime;
 
+    @Column(updatable = false)
+    @CreatedBy
+    private Long createdBy;
+
     @UpdateTimestamp
     private Instant updatedTime;
+
+    @LastModifiedBy
+    private Long updatedBy;
 
 }

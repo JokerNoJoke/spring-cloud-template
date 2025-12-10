@@ -1,7 +1,6 @@
 package com.sct.system.entity;
 
 import java.time.Instant;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -14,14 +13,11 @@ import org.springframework.data.annotation.LastModifiedBy;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -30,14 +26,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "`user`", indexes = {
-        @Index(columnList = "tenant_id, username", unique = true),
-        @Index(columnList = "mobile")
+@Table(indexes = {
+        @Index(columnList = "tenant_id, code", unique = true)
 })
 @SoftDelete(columnName = "is_deleted")
 @DynamicInsert
 @DynamicUpdate
-public class User {
+public class SystemConfig {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,29 +46,19 @@ public class User {
     @JoinColumn(insertable = false, updatable = false)
     private Tenant tenant;
 
-    @Column(name = "dept_id", updatable = false)
-    private Long deptId;
-
-    @ManyToOne
-    @JoinColumn(insertable = false, updatable = false)
-    private Dept dept;
+    @Column(nullable = false)
+    private String name;
 
     @Column(nullable = false)
-    private String username;
+    private String code;
 
-    private String password;
+    @Column(columnDefinition = "TEXT")
+    private String value;
 
-    private String nickname;
-
-    private String mobile;
-
-    private String avatar;
-
-    private Boolean enabled;
-
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_role_user_id")), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_role_role_id")))
-    private List<Role> roles;
+    /**
+     * Is built-in parameter (cannot be deleted)
+     */
+    private Boolean builtIn;
 
     @Column(updatable = false)
     @CreationTimestamp

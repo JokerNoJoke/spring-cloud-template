@@ -1,16 +1,14 @@
 package com.sct.system.entity;
 
-import java.io.Serializable;
 import java.time.Instant;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.SoftDelete;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.type.SqlTypes;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +16,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,38 +25,53 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "dict", indexes = {
-        @Index(name = "idx_dict_code", columnList = "code"),
-        @Index(name = "idx_dict_name", columnList = "name")
+@Table(indexes = {
+        @Index(columnList = "parent_id")
 })
 @SoftDelete(columnName = "is_deleted")
 @DynamicInsert
 @DynamicUpdate
-public class Dict implements Serializable {
+public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String label;
+    @Column(name = "parent_id", updatable = false)
+    private Long parentId;
 
-    private String key;
+    @ManyToOne
+    @JoinColumn(insertable = false, updatable = false)
+    private Menu parent;
 
-    @JdbcTypeCode(SqlTypes.JSON)
-    private List<Value> values;
+    @Column(nullable = false)
+    private Integer type;
+
+    @Column(nullable = false)
+    private String name;
+
+    private String icon;
+
+    private String path;
+
+    private String permission;
+
+    private Integer sortOrder;
+
+    private Boolean enabled;
 
     @Column(updatable = false)
     @CreationTimestamp
     private Instant createdTime;
 
+    @Column(updatable = false)
+    @CreatedBy
+    private Long createdBy;
+
     @UpdateTimestamp
     private Instant updatedTime;
 
-    @Getter
-    @Setter
-    public static class Value {
-        private String key;
-        private String value;
-    }
+    @LastModifiedBy
+    private Long updatedBy;
 
 }

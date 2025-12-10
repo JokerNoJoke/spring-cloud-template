@@ -20,58 +20,59 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sct.system.common.PageResponseDto;
-import com.sct.system.dto.ParamBasicDto;
-import com.sct.system.dto.ParamDto;
-import com.sct.system.dto.ParamQueryDto;
-import com.sct.system.entity.Param;
-import com.sct.system.repository.ParamRepository;
+import com.sct.system.dto.OperationLogBasicDto;
+import com.sct.system.dto.OperationLogDto;
+import com.sct.system.dto.OperationLogQueryDto;
+import com.sct.system.entity.OperationLog;
+import com.sct.system.repository.OperationLogRepository;
 
 @RestController
-@RequestMapping("param")
-public class ParamController {
+@RequestMapping("operation-log")
+public class OperationLogController {
 
     @Autowired
-    private ParamRepository repository;
+    private OperationLogRepository repository;
 
     @PostMapping
-    public ResponseEntity<Void> createParam(@RequestBody ParamDto dto) {
-        Param createdEntity = dto.toCreatedEntity();
-        Param savedEntity = repository.save(createdEntity);
+    public ResponseEntity<Void> createOperationLog(@RequestBody OperationLogDto dto) {
+        OperationLog createdEntity = dto.toCreatedEntity();
+        OperationLog savedEntity = repository.save(createdEntity);
         return ResponseEntity.created(URI.create(savedEntity.getId().toString())).build();
     }
 
     @GetMapping
-    public ResponseEntity<List<ParamDto>> findAllParamBy(@ModelAttribute ParamQueryDto dto) {
-        List<Param> list = (List<Param>) repository.findAll(dto.toPredicate());
-        List<ParamDto> dtos = list.stream().map(ParamDto::fromEntity).toList();
+    public ResponseEntity<List<OperationLogDto>> findAllOperationLogBy(@ModelAttribute OperationLogQueryDto dto) {
+        List<OperationLog> list = (List<OperationLog>) repository.findAll(dto.toPredicate());
+        List<OperationLogDto> dtos = list.stream().map(OperationLogDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("basic")
-    public ResponseEntity<List<ParamBasicDto>> findAllParamBasicBy(@ModelAttribute ParamQueryDto dto) {
-        List<Param> list = (List<Param>) repository.findAll(dto.toPredicate());
-        List<ParamBasicDto> dtos = list.stream().map(ParamBasicDto::fromEntity).toList();
+    public ResponseEntity<List<OperationLogBasicDto>> findAllOperationLogBasicBy(
+            @ModelAttribute OperationLogQueryDto dto) {
+        List<OperationLog> list = (List<OperationLog>) repository.findAll(dto.toPredicate());
+        List<OperationLogBasicDto> dtos = list.stream().map(OperationLogBasicDto::fromEntity).toList();
         return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("count")
-    public ResponseEntity<Long> countAllParamBy(@ModelAttribute ParamQueryDto dto) {
+    public ResponseEntity<Long> countAllOperationLogBy(@ModelAttribute OperationLogQueryDto dto) {
         Long count = repository.count(dto.toPredicate());
         return ResponseEntity.ok(count);
     }
 
     @GetMapping("page")
-    public ResponseEntity<PageResponseDto<ParamDto>> findAllParamPageBy(
-            @ModelAttribute ParamQueryDto queryDto,
+    public ResponseEntity<PageResponseDto<OperationLogDto>> findAllOperationLogPageBy(
+            @ModelAttribute OperationLogQueryDto queryDto,
             @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(defaultValue = "10") Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
-        Page<Param> page = repository.findAll(queryDto.toPredicate(), pageable);
+        Page<OperationLog> page = repository.findAll(queryDto.toPredicate(), pageable);
 
-        List<ParamDto> dtos = page.getContent().stream()
-                .map(ParamDto::fromEntity)
+        List<OperationLogDto> dtos = page.getContent().stream()
+                .map(OperationLogDto::fromEntity)
                 .toList();
-        PageResponseDto<ParamDto> response = new PageResponseDto<>(
+        PageResponseDto<OperationLogDto> response = new PageResponseDto<>(
                 dtos,
                 page.getTotalElements(),
                 page.getTotalPages());
@@ -79,15 +80,15 @@ public class ParamController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ParamDto> findParamById(@PathVariable("id") Long id) {
+    public ResponseEntity<OperationLogDto> findOperationLogById(@PathVariable("id") Long id) {
         return repository.findById(id)
-                .map(ParamDto::fromEntity)
+                .map(OperationLogDto::fromEntity)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> updateParamById(@PathVariable("id") Long id, @RequestBody ParamDto dto) {
+    public ResponseEntity<Void> updateOperationLogById(@PathVariable("id") Long id, @RequestBody OperationLogDto dto) {
         return repository.findById(id)
                 .map(dto::updateEntity)
                 .map(repository::save)
@@ -96,8 +97,9 @@ public class ParamController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteParamById(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteOperationLogById(@PathVariable("id") Long id) {
         repository.deleteById(id);
         return ResponseEntity.ok().<Void>build();
     }
+
 }

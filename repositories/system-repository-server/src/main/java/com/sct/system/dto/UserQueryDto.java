@@ -11,6 +11,8 @@ import lombok.Setter;
 @Setter
 public class UserQueryDto {
 
+    private Long tenantId;
+    private Long deptId;
     private String username;
     private String nickname;
     private String mobile;
@@ -19,6 +21,12 @@ public class UserQueryDto {
         QUser qEntity = QUser.user;
         BooleanBuilder builder = new BooleanBuilder();
 
+        if (tenantId != null) {
+            builder.and(qEntity.tenantId.eq(tenantId));
+        }
+        if (deptId != null) {
+            builder.and(qEntity.deptId.eq(deptId));
+        }
         if (username != null && !username.isBlank()) {
             builder.and(qEntity.username.contains(username));
         }

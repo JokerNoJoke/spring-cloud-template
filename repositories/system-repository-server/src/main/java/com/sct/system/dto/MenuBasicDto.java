@@ -2,7 +2,7 @@ package com.sct.system.dto;
 
 import java.time.Instant;
 
-import com.sct.system.entity.User;
+import com.sct.system.entity.Menu;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -10,16 +10,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserBasicDto {
+public class MenuBasicDto {
 
     private Long id;
-    private Long tenantId;
-    private Long deptId;
-    private String username;
-    private String password;
-    private String nickname;
-    private String mobile;
-    private String avatar;
+    private Long parentId;
+    private Integer type;
+    private String name;
+    private String icon;
+    private String path;
+    private String permission;
+    private Integer sortOrder;
     private Boolean enabled;
 
     @Schema(format = "instant")
@@ -29,16 +29,16 @@ public class UserBasicDto {
     private Instant updatedTime;
     private Long updatedBy;
 
-    public static UserBasicDto fromEntity(User entity) {
-        UserBasicDto dto = new UserBasicDto();
+    public static MenuBasicDto fromEntity(Menu entity) {
+        MenuBasicDto dto = new MenuBasicDto();
         dto.setId(entity.getId());
-        dto.setTenantId(entity.getTenantId());
-        dto.setDeptId(entity.getDeptId());
-        dto.setUsername(entity.getUsername());
-        dto.setPassword(entity.getPassword());
-        dto.setNickname(entity.getNickname());
-        dto.setMobile(entity.getMobile());
-        dto.setAvatar(entity.getAvatar());
+        dto.setParentId(entity.getParentId());
+        dto.setType(entity.getType());
+        dto.setName(entity.getName());
+        dto.setIcon(entity.getIcon());
+        dto.setPath(entity.getPath());
+        dto.setPermission(entity.getPermission());
+        dto.setSortOrder(entity.getSortOrder());
         dto.setEnabled(entity.getEnabled());
         dto.setCreatedTime(entity.getCreatedTime());
         dto.setCreatedBy(entity.getCreatedBy());
@@ -47,8 +47,8 @@ public class UserBasicDto {
         return dto;
     }
 
-    public User toReferencedEntity() {
-        User referencedEntity = new User();
+    public Menu toReferencedEntity() {
+        Menu referencedEntity = new Menu();
         referencedEntity.setId(this.id);
         return referencedEntity;
     }

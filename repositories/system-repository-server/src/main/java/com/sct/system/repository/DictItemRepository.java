@@ -3,8 +3,8 @@ package com.sct.system.repository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
-import com.sct.system.entity.Dict;
+import com.sct.system.entity.DictItem;
 
-public interface DictRepository extends CrudRepository<Dict, Long>, QuerydslPredicateExecutor<Dict> {
+public interface DictItemRepository extends CrudRepository<DictItem, Long>, QuerydslPredicateExecutor<DictItem> {
 
 }

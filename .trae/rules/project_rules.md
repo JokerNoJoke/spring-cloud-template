@@ -194,6 +194,8 @@ public class ${EntityName}Dto {
         // TODO: Map fields for creation
         // entity.setName(this.name);
         
+        // NOTE: Do NOT map fields marked with insertable = false.
+        
         // Example: Map Relationship for Creation
         // entity.setOrganization(this.organization != null ? this.organization.toReferencedEntity() : null);
 
@@ -207,6 +209,8 @@ public class ${EntityName}Dto {
         
         // TODO: Map fields for update using Optional
         // entity.setName(Optional.ofNullable(this.name).orElse(entity.getName()));
+        
+        // NOTE: Do NOT map fields marked with updatable = false.
         
         // Example: Map Relationship for Update
         // entity.setOrganization(Optional.ofNullable(this.organization)

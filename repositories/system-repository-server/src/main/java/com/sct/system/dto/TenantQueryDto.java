@@ -2,28 +2,24 @@ package com.sct.system.dto;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
-import com.sct.system.entity.QRole;
+import com.sct.system.entity.QTenant;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class RoleQueryDto {
+public class TenantQueryDto {
 
     private String name;
-    private String code;
     private Boolean enabled;
 
     public Predicate toPredicate() {
-        QRole qEntity = QRole.role;
+        QTenant qEntity = QTenant.tenant;
         BooleanBuilder builder = new BooleanBuilder();
 
         if (name != null && !name.isBlank()) {
             builder.and(qEntity.name.contains(name));
-        }
-        if (code != null && !code.isBlank()) {
-            builder.and(qEntity.code.contains(code));
         }
         if (enabled != null) {
             builder.and(qEntity.enabled.eq(enabled));

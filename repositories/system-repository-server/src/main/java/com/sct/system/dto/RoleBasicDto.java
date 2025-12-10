@@ -13,22 +13,27 @@ import lombok.Setter;
 public class RoleBasicDto {
 
     private Long id;
-    private String code;
     private String name;
-    private String description;
+    private String code;
+    private Boolean enabled;
+
     @Schema(format = "instant")
     private Instant createdTime;
+    private Long createdBy;
     @Schema(format = "instant")
     private Instant updatedTime;
+    private Long updatedBy;
 
     public static RoleBasicDto fromEntity(Role entity) {
         RoleBasicDto dto = new RoleBasicDto();
         dto.setId(entity.getId());
-        dto.setCode(entity.getCode());
         dto.setName(entity.getName());
-        dto.setDescription(entity.getDescription());
+        dto.setCode(entity.getCode());
+        dto.setEnabled(entity.getEnabled());
         dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedBy(entity.getCreatedBy());
         dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }
 

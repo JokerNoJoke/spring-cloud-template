@@ -1,7 +1,6 @@
 package com.sct.system.entity;
 
 import java.time.Instant;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -14,14 +13,10 @@ import org.springframework.data.annotation.LastModifiedBy;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -30,14 +25,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "`user`", indexes = {
-        @Index(columnList = "tenant_id, username", unique = true),
-        @Index(columnList = "mobile")
-})
+@Table
 @SoftDelete(columnName = "is_deleted")
 @DynamicInsert
 @DynamicUpdate
-public class User {
+public class Dept {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,29 +43,17 @@ public class User {
     @JoinColumn(insertable = false, updatable = false)
     private Tenant tenant;
 
-    @Column(name = "dept_id", updatable = false)
-    private Long deptId;
+    @Column(name = "parent_id", updatable = false)
+    private Long parentId;
 
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false)
-    private Dept dept;
+    private Dept parent;
 
     @Column(nullable = false)
-    private String username;
-
-    private String password;
-
-    private String nickname;
-
-    private String mobile;
-
-    private String avatar;
+    private String name;
 
     private Boolean enabled;
-
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_role_user_id")), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_role_role_id")))
-    private List<Role> roles;
 
     @Column(updatable = false)
     @CreationTimestamp
