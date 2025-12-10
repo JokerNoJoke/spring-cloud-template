@@ -16,11 +16,11 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleBasicDto
+ * DictTypeBasicDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleBasicDto {
+public class DictTypeBasicDto {
 
   private @Nullable Long id;
 
@@ -38,7 +38,7 @@ public class RoleBasicDto {
 
   private @Nullable Long updatedBy;
 
-  public RoleBasicDto id(@Nullable Long id) {
+  public DictTypeBasicDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -58,7 +58,7 @@ public class RoleBasicDto {
     this.id = id;
   }
 
-  public RoleBasicDto name(@Nullable String name) {
+  public DictTypeBasicDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -78,7 +78,7 @@ public class RoleBasicDto {
     this.name = name;
   }
 
-  public RoleBasicDto code(@Nullable String code) {
+  public DictTypeBasicDto code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -98,7 +98,7 @@ public class RoleBasicDto {
     this.code = code;
   }
 
-  public RoleBasicDto enabled(@Nullable Boolean enabled) {
+  public DictTypeBasicDto enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -118,7 +118,7 @@ public class RoleBasicDto {
     this.enabled = enabled;
   }
 
-  public RoleBasicDto createdTime(@Nullable Instant createdTime) {
+  public DictTypeBasicDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -138,7 +138,7 @@ public class RoleBasicDto {
     this.createdTime = createdTime;
   }
 
-  public RoleBasicDto createdBy(@Nullable Long createdBy) {
+  public DictTypeBasicDto createdBy(@Nullable Long createdBy) {
     this.createdBy = createdBy;
     return this;
   }
@@ -158,7 +158,7 @@ public class RoleBasicDto {
     this.createdBy = createdBy;
   }
 
-  public RoleBasicDto updatedTime(@Nullable Instant updatedTime) {
+  public DictTypeBasicDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -178,7 +178,7 @@ public class RoleBasicDto {
     this.updatedTime = updatedTime;
   }
 
-  public RoleBasicDto updatedBy(@Nullable Long updatedBy) {
+  public DictTypeBasicDto updatedBy(@Nullable Long updatedBy) {
     this.updatedBy = updatedBy;
     return this;
   }
@@ -206,15 +206,15 @@ public class RoleBasicDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleBasicDto roleBasicDto = (RoleBasicDto) o;
-    return Objects.equals(this.id, roleBasicDto.id) &&
-        Objects.equals(this.name, roleBasicDto.name) &&
-        Objects.equals(this.code, roleBasicDto.code) &&
-        Objects.equals(this.enabled, roleBasicDto.enabled) &&
-        Objects.equals(this.createdTime, roleBasicDto.createdTime) &&
-        Objects.equals(this.createdBy, roleBasicDto.createdBy) &&
-        Objects.equals(this.updatedTime, roleBasicDto.updatedTime) &&
-        Objects.equals(this.updatedBy, roleBasicDto.updatedBy);
+    DictTypeBasicDto dictTypeBasicDto = (DictTypeBasicDto) o;
+    return Objects.equals(this.id, dictTypeBasicDto.id) &&
+        Objects.equals(this.name, dictTypeBasicDto.name) &&
+        Objects.equals(this.code, dictTypeBasicDto.code) &&
+        Objects.equals(this.enabled, dictTypeBasicDto.enabled) &&
+        Objects.equals(this.createdTime, dictTypeBasicDto.createdTime) &&
+        Objects.equals(this.createdBy, dictTypeBasicDto.createdBy) &&
+        Objects.equals(this.updatedTime, dictTypeBasicDto.updatedTime) &&
+        Objects.equals(this.updatedBy, dictTypeBasicDto.updatedBy);
   }
 
   @Override
@@ -225,7 +225,7 @@ public class RoleBasicDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleBasicDto {\n");
+    sb.append("class DictTypeBasicDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");

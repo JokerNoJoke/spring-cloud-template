@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.sct.system.client.model.OrgDto;
+import com.sct.system.client.model.SystemConfigDto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,25 +19,25 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * PageResponseDtoOrgDto
+ * PageResponseDtoSystemConfigDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class PageResponseDtoOrgDto {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public class PageResponseDtoSystemConfigDto {
 
   
-  private List<OrgDto> content = new ArrayList<>();
+  private List<SystemConfigDto> content = new ArrayList<>();
 
   private @Nullable Long totalElements;
 
   private @Nullable Integer totalPages;
 
-  public PageResponseDtoOrgDto content(List<OrgDto> content) {
+  public PageResponseDtoSystemConfigDto content(List<SystemConfigDto> content) {
     this.content = content;
     return this;
   }
 
-  public PageResponseDtoOrgDto addContentItem(OrgDto contentItem) {
+  public PageResponseDtoSystemConfigDto addContentItem(SystemConfigDto contentItem) {
     if (this.content == null) {
       this.content = new ArrayList<>();
     }
@@ -52,15 +52,15 @@ public class PageResponseDtoOrgDto {
   
   @Schema(name = "content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content")
-  public List<OrgDto> getContent() {
+  public List<SystemConfigDto> getContent() {
     return content;
   }
 
-  public void setContent(List<OrgDto> content) {
+  public void setContent(List<SystemConfigDto> content) {
     this.content = content;
   }
 
-  public PageResponseDtoOrgDto totalElements(@Nullable Long totalElements) {
+  public PageResponseDtoSystemConfigDto totalElements(@Nullable Long totalElements) {
     this.totalElements = totalElements;
     return this;
   }
@@ -80,7 +80,7 @@ public class PageResponseDtoOrgDto {
     this.totalElements = totalElements;
   }
 
-  public PageResponseDtoOrgDto totalPages(@Nullable Integer totalPages) {
+  public PageResponseDtoSystemConfigDto totalPages(@Nullable Integer totalPages) {
     this.totalPages = totalPages;
     return this;
   }
@@ -108,10 +108,10 @@ public class PageResponseDtoOrgDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageResponseDtoOrgDto pageResponseDtoOrgDto = (PageResponseDtoOrgDto) o;
-    return Objects.equals(this.content, pageResponseDtoOrgDto.content) &&
-        Objects.equals(this.totalElements, pageResponseDtoOrgDto.totalElements) &&
-        Objects.equals(this.totalPages, pageResponseDtoOrgDto.totalPages);
+    PageResponseDtoSystemConfigDto pageResponseDtoSystemConfigDto = (PageResponseDtoSystemConfigDto) o;
+    return Objects.equals(this.content, pageResponseDtoSystemConfigDto.content) &&
+        Objects.equals(this.totalElements, pageResponseDtoSystemConfigDto.totalElements) &&
+        Objects.equals(this.totalPages, pageResponseDtoSystemConfigDto.totalPages);
   }
 
   @Override
@@ -122,7 +122,7 @@ public class PageResponseDtoOrgDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageResponseDtoOrgDto {\n");
+    sb.append("class PageResponseDtoSystemConfigDto {\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");

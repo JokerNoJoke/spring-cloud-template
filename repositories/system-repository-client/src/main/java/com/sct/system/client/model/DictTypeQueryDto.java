@@ -15,11 +15,11 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleQueryDto
+ * DictTypeQueryDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleQueryDto {
+public class DictTypeQueryDto {
 
   private @Nullable String name;
 
@@ -27,7 +27,7 @@ public class RoleQueryDto {
 
   private @Nullable Boolean enabled;
 
-  public RoleQueryDto name(@Nullable String name) {
+  public DictTypeQueryDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -47,7 +47,7 @@ public class RoleQueryDto {
     this.name = name;
   }
 
-  public RoleQueryDto code(@Nullable String code) {
+  public DictTypeQueryDto code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -67,7 +67,7 @@ public class RoleQueryDto {
     this.code = code;
   }
 
-  public RoleQueryDto enabled(@Nullable Boolean enabled) {
+  public DictTypeQueryDto enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -95,10 +95,10 @@ public class RoleQueryDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleQueryDto roleQueryDto = (RoleQueryDto) o;
-    return Objects.equals(this.name, roleQueryDto.name) &&
-        Objects.equals(this.code, roleQueryDto.code) &&
-        Objects.equals(this.enabled, roleQueryDto.enabled);
+    DictTypeQueryDto dictTypeQueryDto = (DictTypeQueryDto) o;
+    return Objects.equals(this.name, dictTypeQueryDto.name) &&
+        Objects.equals(this.code, dictTypeQueryDto.code) &&
+        Objects.equals(this.enabled, dictTypeQueryDto.enabled);
   }
 
   @Override
@@ -109,7 +109,7 @@ public class RoleQueryDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleQueryDto {\n");
+    sb.append("class DictTypeQueryDto {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");

@@ -6,10 +6,10 @@
 package com.sct.system.client.api;
 
 import org.springframework.lang.Nullable;
-import com.sct.system.client.model.OrgBasicDto;
-import com.sct.system.client.model.OrgDto;
-import com.sct.system.client.model.OrgQueryDto;
-import com.sct.system.client.model.PageResponseDtoOrgDto;
+import com.sct.system.client.model.OperationLogBasicDto;
+import com.sct.system.client.model.OperationLogDto;
+import com.sct.system.client.model.OperationLogQueryDto;
+import com.sct.system.client.model.PageResponseDtoOperationLogDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -23,92 +23,92 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public interface OrgControllerApi {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public interface OperationLogControllerApi {
 
     /**
-     * GET /org/count
+     * GET /operation-log/count
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/org/count",
+        value = "/operation-log/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllOrgBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OrgQueryDto dto
+    ResponseEntity<Long> countAllOperationLogBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto dto
     );
 
 
     /**
-     * POST /org
+     * POST /operation-log
      *
-     * @param orgDto  (required)
+     * @param operationLogDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "POST",
-        value = "/org",
+        value = "/operation-log",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> createOrg(
-        @Parameter(name = "OrgDto", description = "", required = true) @RequestBody OrgDto orgDto
+    ResponseEntity<Void> createOperationLog(
+        @Parameter(name = "OperationLogDto", description = "", required = true) @RequestBody OperationLogDto operationLogDto
     );
 
 
     /**
-     * DELETE /org/{id}
+     * DELETE /operation-log/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "DELETE",
-        value = "/org/{id}",
+        value = "/operation-log/{id}",
         accept = { "application/json" }
     )
-    ResponseEntity<Void> deleteOrgById(
+    ResponseEntity<Void> deleteOperationLogById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * GET /org/basic
+     * GET /operation-log/basic
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/org/basic",
+        value = "/operation-log/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<OrgBasicDto>> findAllOrgBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OrgQueryDto dto
+    ResponseEntity<List<OperationLogBasicDto>> findAllOperationLogBasicBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto dto
     );
 
 
     /**
-     * GET /org
+     * GET /operation-log
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/org",
+        value = "/operation-log",
         accept = { "*/*" }
     )
-    ResponseEntity<List<OrgDto>> findAllOrgBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OrgQueryDto dto
+    ResponseEntity<List<OperationLogDto>> findAllOperationLogBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto dto
     );
 
 
     /**
-     * GET /org/page
+     * GET /operation-log/page
      *
      * @param queryDto  (required)
      * @param pageNum  (optional, default to 1)
@@ -117,48 +117,48 @@ public interface OrgControllerApi {
      */
     @HttpExchange(
         method = "GET",
-        value = "/org/page",
+        value = "/operation-log/page",
         accept = { "*/*" }
     )
-    ResponseEntity<PageResponseDtoOrgDto> findAllOrgPageBy(
-        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) OrgQueryDto queryDto,
+    ResponseEntity<PageResponseDtoOperationLogDto> findAllOperationLogPageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto queryDto,
         @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
         @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 
     /**
-     * GET /org/{id}
+     * GET /operation-log/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/org/{id}",
+        value = "/operation-log/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<OrgDto> findOrgById(
+    ResponseEntity<OperationLogDto> findOperationLogById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * PUT /org/{id}
+     * PUT /operation-log/{id}
      *
      * @param id  (required)
-     * @param orgDto  (required)
+     * @param operationLogDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "PUT",
-        value = "/org/{id}",
+        value = "/operation-log/{id}",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> updateOrgById(
+    ResponseEntity<Void> updateOperationLogById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
-        @Parameter(name = "OrgDto", description = "", required = true) @RequestBody OrgDto orgDto
+        @Parameter(name = "OperationLogDto", description = "", required = true) @RequestBody OperationLogDto operationLogDto
     );
 
 }

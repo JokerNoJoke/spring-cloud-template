@@ -16,11 +16,11 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleBasicDto
+ * DictTypeDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleBasicDto {
+public class DictTypeDto {
 
   private @Nullable Long id;
 
@@ -38,7 +38,7 @@ public class RoleBasicDto {
 
   private @Nullable Long updatedBy;
 
-  public RoleBasicDto id(@Nullable Long id) {
+  public DictTypeDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -58,7 +58,7 @@ public class RoleBasicDto {
     this.id = id;
   }
 
-  public RoleBasicDto name(@Nullable String name) {
+  public DictTypeDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -78,7 +78,7 @@ public class RoleBasicDto {
     this.name = name;
   }
 
-  public RoleBasicDto code(@Nullable String code) {
+  public DictTypeDto code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -98,7 +98,7 @@ public class RoleBasicDto {
     this.code = code;
   }
 
-  public RoleBasicDto enabled(@Nullable Boolean enabled) {
+  public DictTypeDto enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -118,7 +118,7 @@ public class RoleBasicDto {
     this.enabled = enabled;
   }
 
-  public RoleBasicDto createdTime(@Nullable Instant createdTime) {
+  public DictTypeDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -138,7 +138,7 @@ public class RoleBasicDto {
     this.createdTime = createdTime;
   }
 
-  public RoleBasicDto createdBy(@Nullable Long createdBy) {
+  public DictTypeDto createdBy(@Nullable Long createdBy) {
     this.createdBy = createdBy;
     return this;
   }
@@ -158,7 +158,7 @@ public class RoleBasicDto {
     this.createdBy = createdBy;
   }
 
-  public RoleBasicDto updatedTime(@Nullable Instant updatedTime) {
+  public DictTypeDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -178,7 +178,7 @@ public class RoleBasicDto {
     this.updatedTime = updatedTime;
   }
 
-  public RoleBasicDto updatedBy(@Nullable Long updatedBy) {
+  public DictTypeDto updatedBy(@Nullable Long updatedBy) {
     this.updatedBy = updatedBy;
     return this;
   }
@@ -206,15 +206,15 @@ public class RoleBasicDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleBasicDto roleBasicDto = (RoleBasicDto) o;
-    return Objects.equals(this.id, roleBasicDto.id) &&
-        Objects.equals(this.name, roleBasicDto.name) &&
-        Objects.equals(this.code, roleBasicDto.code) &&
-        Objects.equals(this.enabled, roleBasicDto.enabled) &&
-        Objects.equals(this.createdTime, roleBasicDto.createdTime) &&
-        Objects.equals(this.createdBy, roleBasicDto.createdBy) &&
-        Objects.equals(this.updatedTime, roleBasicDto.updatedTime) &&
-        Objects.equals(this.updatedBy, roleBasicDto.updatedBy);
+    DictTypeDto dictTypeDto = (DictTypeDto) o;
+    return Objects.equals(this.id, dictTypeDto.id) &&
+        Objects.equals(this.name, dictTypeDto.name) &&
+        Objects.equals(this.code, dictTypeDto.code) &&
+        Objects.equals(this.enabled, dictTypeDto.enabled) &&
+        Objects.equals(this.createdTime, dictTypeDto.createdTime) &&
+        Objects.equals(this.createdBy, dictTypeDto.createdBy) &&
+        Objects.equals(this.updatedTime, dictTypeDto.updatedTime) &&
+        Objects.equals(this.updatedBy, dictTypeDto.updatedBy);
   }
 
   @Override
@@ -225,7 +225,7 @@ public class RoleBasicDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleBasicDto {\n");
+    sb.append("class DictTypeDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");

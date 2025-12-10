@@ -5,11 +5,11 @@
  */
 package com.sct.system.client.api;
 
+import com.sct.system.client.model.DictTypeBasicDto;
+import com.sct.system.client.model.DictTypeDto;
+import com.sct.system.client.model.DictTypeQueryDto;
 import org.springframework.lang.Nullable;
-import com.sct.system.client.model.PageResponseDtoUserDto;
-import com.sct.system.client.model.UserBasicDto;
-import com.sct.system.client.model.UserDto;
-import com.sct.system.client.model.UserQueryDto;
+import com.sct.system.client.model.PageResponseDtoDictTypeDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -24,91 +24,91 @@ import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public interface UserControllerApi {
+public interface DictTypeControllerApi {
 
     /**
-     * GET /user/count
+     * GET /dict-type/count
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/count",
+        value = "/dict-type/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllUserBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<Long> countAllDictTypeBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictTypeQueryDto dto
     );
 
 
     /**
-     * POST /user
+     * POST /dict-type
      *
-     * @param userDto  (required)
+     * @param dictTypeDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "POST",
-        value = "/user",
+        value = "/dict-type",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> createUser(
-        @Parameter(name = "UserDto", description = "", required = true) @RequestBody UserDto userDto
+    ResponseEntity<Void> createDictType(
+        @Parameter(name = "DictTypeDto", description = "", required = true) @RequestBody DictTypeDto dictTypeDto
     );
 
 
     /**
-     * DELETE /user/{id}
+     * DELETE /dict-type/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "DELETE",
-        value = "/user/{id}",
+        value = "/dict-type/{id}",
         accept = { "application/json" }
     )
-    ResponseEntity<Void> deleteUserById(
+    ResponseEntity<Void> deleteDictTypeById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * GET /user/basic
+     * GET /dict-type/basic
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/basic",
+        value = "/dict-type/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<UserBasicDto>> findAllUserBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<List<DictTypeBasicDto>> findAllDictTypeBasicBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictTypeQueryDto dto
     );
 
 
     /**
-     * GET /user
+     * GET /dict-type
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user",
+        value = "/dict-type",
         accept = { "*/*" }
     )
-    ResponseEntity<List<UserDto>> findAllUserBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<List<DictTypeDto>> findAllDictTypeBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictTypeQueryDto dto
     );
 
 
     /**
-     * GET /user/page
+     * GET /dict-type/page
      *
      * @param queryDto  (required)
      * @param pageNum  (optional, default to 1)
@@ -117,48 +117,48 @@ public interface UserControllerApi {
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/page",
+        value = "/dict-type/page",
         accept = { "*/*" }
     )
-    ResponseEntity<PageResponseDtoUserDto> findAllUserPageBy(
-        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto queryDto,
+    ResponseEntity<PageResponseDtoDictTypeDto> findAllDictTypePageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DictTypeQueryDto queryDto,
         @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
         @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 
     /**
-     * GET /user/{id}
+     * GET /dict-type/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/{id}",
+        value = "/dict-type/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<UserDto> findUserById(
+    ResponseEntity<DictTypeDto> findDictTypeById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * PUT /user/{id}
+     * PUT /dict-type/{id}
      *
      * @param id  (required)
-     * @param userDto  (required)
+     * @param dictTypeDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "PUT",
-        value = "/user/{id}",
+        value = "/dict-type/{id}",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> updateUserById(
+    ResponseEntity<Void> updateDictTypeById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
-        @Parameter(name = "UserDto", description = "", required = true) @RequestBody UserDto userDto
+        @Parameter(name = "DictTypeDto", description = "", required = true) @RequestBody DictTypeDto dictTypeDto
     );
 
 }

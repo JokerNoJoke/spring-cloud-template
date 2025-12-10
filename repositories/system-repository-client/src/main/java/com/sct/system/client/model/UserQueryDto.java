@@ -18,14 +18,58 @@ import jakarta.annotation.Generated;
  * UserQueryDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class UserQueryDto {
+
+  private @Nullable Long tenantId;
+
+  private @Nullable Long deptId;
 
   private @Nullable String username;
 
   private @Nullable String nickname;
 
   private @Nullable String mobile;
+
+  public UserQueryDto tenantId(@Nullable Long tenantId) {
+    this.tenantId = tenantId;
+    return this;
+  }
+
+  /**
+   * Get tenantId
+   * @return tenantId
+   */
+  
+  @Schema(name = "tenantId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("tenantId")
+  public @Nullable Long getTenantId() {
+    return tenantId;
+  }
+
+  public void setTenantId(@Nullable Long tenantId) {
+    this.tenantId = tenantId;
+  }
+
+  public UserQueryDto deptId(@Nullable Long deptId) {
+    this.deptId = deptId;
+    return this;
+  }
+
+  /**
+   * Get deptId
+   * @return deptId
+   */
+  
+  @Schema(name = "deptId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("deptId")
+  public @Nullable Long getDeptId() {
+    return deptId;
+  }
+
+  public void setDeptId(@Nullable Long deptId) {
+    this.deptId = deptId;
+  }
 
   public UserQueryDto username(@Nullable String username) {
     this.username = username;
@@ -96,20 +140,24 @@ public class UserQueryDto {
       return false;
     }
     UserQueryDto userQueryDto = (UserQueryDto) o;
-    return Objects.equals(this.username, userQueryDto.username) &&
+    return Objects.equals(this.tenantId, userQueryDto.tenantId) &&
+        Objects.equals(this.deptId, userQueryDto.deptId) &&
+        Objects.equals(this.username, userQueryDto.username) &&
         Objects.equals(this.nickname, userQueryDto.nickname) &&
         Objects.equals(this.mobile, userQueryDto.mobile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, nickname, mobile);
+    return Objects.hash(tenantId, deptId, username, nickname, mobile);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserQueryDto {\n");
+    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    deptId: ").append(toIndentedString(deptId)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    nickname: ").append(toIndentedString(nickname)).append("\n");
     sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");

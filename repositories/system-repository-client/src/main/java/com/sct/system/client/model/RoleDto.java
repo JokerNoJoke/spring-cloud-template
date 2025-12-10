@@ -4,7 +4,11 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.sct.system.client.model.MenuBasicDto;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -19,20 +23,27 @@ import jakarta.annotation.Generated;
  * RoleDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class RoleDto {
 
   private @Nullable Long id;
 
-  private @Nullable String code;
-
   private @Nullable String name;
 
-  private @Nullable String description;
+  private @Nullable String code;
+
+  private @Nullable Boolean enabled;
+
+  
+  private List<MenuBasicDto> menus = new ArrayList<>();
 
   private @Nullable Instant createdTime;
 
+  private @Nullable Long createdBy;
+
   private @Nullable Instant updatedTime;
+
+  private @Nullable Long updatedBy;
 
   public RoleDto id(@Nullable Long id) {
     this.id = id;
@@ -52,26 +63,6 @@ public class RoleDto {
 
   public void setId(@Nullable Long id) {
     this.id = id;
-  }
-
-  public RoleDto code(@Nullable String code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  
-  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("code")
-  public @Nullable String getCode() {
-    return code;
-  }
-
-  public void setCode(@Nullable String code) {
-    this.code = code;
   }
 
   public RoleDto name(@Nullable String name) {
@@ -94,24 +85,72 @@ public class RoleDto {
     this.name = name;
   }
 
-  public RoleDto description(@Nullable String description) {
-    this.description = description;
+  public RoleDto code(@Nullable String code) {
+    this.code = code;
     return this;
   }
 
   /**
-   * Get description
-   * @return description
+   * Get code
+   * @return code
    */
   
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public @Nullable String getDescription() {
-    return description;
+  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("code")
+  public @Nullable String getCode() {
+    return code;
   }
 
-  public void setDescription(@Nullable String description) {
-    this.description = description;
+  public void setCode(@Nullable String code) {
+    this.code = code;
+  }
+
+  public RoleDto enabled(@Nullable Boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
+
+  /**
+   * Get enabled
+   * @return enabled
+   */
+  
+  @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("enabled")
+  public @Nullable Boolean getEnabled() {
+    return enabled;
+  }
+
+  public void setEnabled(@Nullable Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+  public RoleDto menus(List<MenuBasicDto> menus) {
+    this.menus = menus;
+    return this;
+  }
+
+  public RoleDto addMenusItem(MenuBasicDto menusItem) {
+    if (this.menus == null) {
+      this.menus = new ArrayList<>();
+    }
+    this.menus.add(menusItem);
+    return this;
+  }
+
+  /**
+   * Get menus
+   * @return menus
+   */
+  
+  @Schema(name = "menus", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("menus")
+  public List<MenuBasicDto> getMenus() {
+    return menus;
+  }
+
+  public void setMenus(List<MenuBasicDto> menus) {
+    this.menus = menus;
   }
 
   public RoleDto createdTime(@Nullable Instant createdTime) {
@@ -134,6 +173,26 @@ public class RoleDto {
     this.createdTime = createdTime;
   }
 
+  public RoleDto createdBy(@Nullable Long createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+  /**
+   * Get createdBy
+   * @return createdBy
+   */
+  
+  @Schema(name = "createdBy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("createdBy")
+  public @Nullable Long getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(@Nullable Long createdBy) {
+    this.createdBy = createdBy;
+  }
+
   public RoleDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
@@ -154,6 +213,26 @@ public class RoleDto {
     this.updatedTime = updatedTime;
   }
 
+  public RoleDto updatedBy(@Nullable Long updatedBy) {
+    this.updatedBy = updatedBy;
+    return this;
+  }
+
+  /**
+   * Get updatedBy
+   * @return updatedBy
+   */
+  
+  @Schema(name = "updatedBy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updatedBy")
+  public @Nullable Long getUpdatedBy() {
+    return updatedBy;
+  }
+
+  public void setUpdatedBy(@Nullable Long updatedBy) {
+    this.updatedBy = updatedBy;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -164,16 +243,19 @@ public class RoleDto {
     }
     RoleDto roleDto = (RoleDto) o;
     return Objects.equals(this.id, roleDto.id) &&
-        Objects.equals(this.code, roleDto.code) &&
         Objects.equals(this.name, roleDto.name) &&
-        Objects.equals(this.description, roleDto.description) &&
+        Objects.equals(this.code, roleDto.code) &&
+        Objects.equals(this.enabled, roleDto.enabled) &&
+        Objects.equals(this.menus, roleDto.menus) &&
         Objects.equals(this.createdTime, roleDto.createdTime) &&
-        Objects.equals(this.updatedTime, roleDto.updatedTime);
+        Objects.equals(this.createdBy, roleDto.createdBy) &&
+        Objects.equals(this.updatedTime, roleDto.updatedTime) &&
+        Objects.equals(this.updatedBy, roleDto.updatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, name, description, createdTime, updatedTime);
+    return Objects.hash(id, name, code, enabled, menus, createdTime, createdBy, updatedTime, updatedBy);
   }
 
   @Override
@@ -181,11 +263,14 @@ public class RoleDto {
     StringBuilder sb = new StringBuilder();
     sb.append("class RoleDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    menus: ").append(toIndentedString(menus)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
+    sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }

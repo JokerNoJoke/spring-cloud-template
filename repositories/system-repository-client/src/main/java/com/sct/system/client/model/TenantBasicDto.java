@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.sct.system.client.model.OrgBasicDto;
 import java.time.Instant;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -17,23 +16,27 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * OrgDto
+ * TenantBasicDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class OrgDto {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public class TenantBasicDto {
 
   private @Nullable Long id;
 
   private @Nullable String name;
 
+  private @Nullable Boolean enabled;
+
   private @Nullable Instant createdTime;
+
+  private @Nullable Long createdBy;
 
   private @Nullable Instant updatedTime;
 
-  private @Nullable OrgBasicDto parent;
+  private @Nullable Long updatedBy;
 
-  public OrgDto id(@Nullable Long id) {
+  public TenantBasicDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -53,7 +56,7 @@ public class OrgDto {
     this.id = id;
   }
 
-  public OrgDto name(@Nullable String name) {
+  public TenantBasicDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -73,7 +76,27 @@ public class OrgDto {
     this.name = name;
   }
 
-  public OrgDto createdTime(@Nullable Instant createdTime) {
+  public TenantBasicDto enabled(@Nullable Boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
+
+  /**
+   * Get enabled
+   * @return enabled
+   */
+  
+  @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("enabled")
+  public @Nullable Boolean getEnabled() {
+    return enabled;
+  }
+
+  public void setEnabled(@Nullable Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+  public TenantBasicDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -93,7 +116,27 @@ public class OrgDto {
     this.createdTime = createdTime;
   }
 
-  public OrgDto updatedTime(@Nullable Instant updatedTime) {
+  public TenantBasicDto createdBy(@Nullable Long createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+  /**
+   * Get createdBy
+   * @return createdBy
+   */
+  
+  @Schema(name = "createdBy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("createdBy")
+  public @Nullable Long getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(@Nullable Long createdBy) {
+    this.createdBy = createdBy;
+  }
+
+  public TenantBasicDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -113,24 +156,24 @@ public class OrgDto {
     this.updatedTime = updatedTime;
   }
 
-  public OrgDto parent(@Nullable OrgBasicDto parent) {
-    this.parent = parent;
+  public TenantBasicDto updatedBy(@Nullable Long updatedBy) {
+    this.updatedBy = updatedBy;
     return this;
   }
 
   /**
-   * Get parent
-   * @return parent
+   * Get updatedBy
+   * @return updatedBy
    */
   
-  @Schema(name = "parent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("parent")
-  public @Nullable OrgBasicDto getParent() {
-    return parent;
+  @Schema(name = "updatedBy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updatedBy")
+  public @Nullable Long getUpdatedBy() {
+    return updatedBy;
   }
 
-  public void setParent(@Nullable OrgBasicDto parent) {
-    this.parent = parent;
+  public void setUpdatedBy(@Nullable Long updatedBy) {
+    this.updatedBy = updatedBy;
   }
 
   @Override
@@ -141,28 +184,32 @@ public class OrgDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OrgDto orgDto = (OrgDto) o;
-    return Objects.equals(this.id, orgDto.id) &&
-        Objects.equals(this.name, orgDto.name) &&
-        Objects.equals(this.createdTime, orgDto.createdTime) &&
-        Objects.equals(this.updatedTime, orgDto.updatedTime) &&
-        Objects.equals(this.parent, orgDto.parent);
+    TenantBasicDto tenantBasicDto = (TenantBasicDto) o;
+    return Objects.equals(this.id, tenantBasicDto.id) &&
+        Objects.equals(this.name, tenantBasicDto.name) &&
+        Objects.equals(this.enabled, tenantBasicDto.enabled) &&
+        Objects.equals(this.createdTime, tenantBasicDto.createdTime) &&
+        Objects.equals(this.createdBy, tenantBasicDto.createdBy) &&
+        Objects.equals(this.updatedTime, tenantBasicDto.updatedTime) &&
+        Objects.equals(this.updatedBy, tenantBasicDto.updatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdTime, updatedTime, parent);
+    return Objects.hash(id, name, enabled, createdTime, createdBy, updatedTime, updatedBy);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OrgDto {\n");
+    sb.append("class TenantBasicDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
-    sb.append("    parent: ").append(toIndentedString(parent)).append("\n");
+    sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }

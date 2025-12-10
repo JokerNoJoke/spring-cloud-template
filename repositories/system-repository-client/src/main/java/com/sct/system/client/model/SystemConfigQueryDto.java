@@ -15,19 +15,19 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleQueryDto
+ * SystemConfigQueryDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleQueryDto {
+public class SystemConfigQueryDto {
 
   private @Nullable String name;
 
   private @Nullable String code;
 
-  private @Nullable Boolean enabled;
+  private @Nullable Boolean builtIn;
 
-  public RoleQueryDto name(@Nullable String name) {
+  public SystemConfigQueryDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -47,7 +47,7 @@ public class RoleQueryDto {
     this.name = name;
   }
 
-  public RoleQueryDto code(@Nullable String code) {
+  public SystemConfigQueryDto code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -67,24 +67,24 @@ public class RoleQueryDto {
     this.code = code;
   }
 
-  public RoleQueryDto enabled(@Nullable Boolean enabled) {
-    this.enabled = enabled;
+  public SystemConfigQueryDto builtIn(@Nullable Boolean builtIn) {
+    this.builtIn = builtIn;
     return this;
   }
 
   /**
-   * Get enabled
-   * @return enabled
+   * Get builtIn
+   * @return builtIn
    */
   
-  @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("enabled")
-  public @Nullable Boolean getEnabled() {
-    return enabled;
+  @Schema(name = "builtIn", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("builtIn")
+  public @Nullable Boolean getBuiltIn() {
+    return builtIn;
   }
 
-  public void setEnabled(@Nullable Boolean enabled) {
-    this.enabled = enabled;
+  public void setBuiltIn(@Nullable Boolean builtIn) {
+    this.builtIn = builtIn;
   }
 
   @Override
@@ -95,24 +95,24 @@ public class RoleQueryDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleQueryDto roleQueryDto = (RoleQueryDto) o;
-    return Objects.equals(this.name, roleQueryDto.name) &&
-        Objects.equals(this.code, roleQueryDto.code) &&
-        Objects.equals(this.enabled, roleQueryDto.enabled);
+    SystemConfigQueryDto systemConfigQueryDto = (SystemConfigQueryDto) o;
+    return Objects.equals(this.name, systemConfigQueryDto.name) &&
+        Objects.equals(this.code, systemConfigQueryDto.code) &&
+        Objects.equals(this.builtIn, systemConfigQueryDto.builtIn);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, code, enabled);
+    return Objects.hash(name, code, builtIn);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleQueryDto {\n");
+    sb.append("class SystemConfigQueryDto {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    builtIn: ").append(toIndentedString(builtIn)).append("\n");
     sb.append("}");
     return sb.toString();
   }

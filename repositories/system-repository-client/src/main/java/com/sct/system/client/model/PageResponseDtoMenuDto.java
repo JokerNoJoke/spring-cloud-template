@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.sct.system.client.model.ParamDto;
+import com.sct.system.client.model.MenuDto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,25 +19,25 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * PageResponseDtoParamDto
+ * PageResponseDtoMenuDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class PageResponseDtoParamDto {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public class PageResponseDtoMenuDto {
 
   
-  private List<ParamDto> content = new ArrayList<>();
+  private List<MenuDto> content = new ArrayList<>();
 
   private @Nullable Long totalElements;
 
   private @Nullable Integer totalPages;
 
-  public PageResponseDtoParamDto content(List<ParamDto> content) {
+  public PageResponseDtoMenuDto content(List<MenuDto> content) {
     this.content = content;
     return this;
   }
 
-  public PageResponseDtoParamDto addContentItem(ParamDto contentItem) {
+  public PageResponseDtoMenuDto addContentItem(MenuDto contentItem) {
     if (this.content == null) {
       this.content = new ArrayList<>();
     }
@@ -52,15 +52,15 @@ public class PageResponseDtoParamDto {
   
   @Schema(name = "content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content")
-  public List<ParamDto> getContent() {
+  public List<MenuDto> getContent() {
     return content;
   }
 
-  public void setContent(List<ParamDto> content) {
+  public void setContent(List<MenuDto> content) {
     this.content = content;
   }
 
-  public PageResponseDtoParamDto totalElements(@Nullable Long totalElements) {
+  public PageResponseDtoMenuDto totalElements(@Nullable Long totalElements) {
     this.totalElements = totalElements;
     return this;
   }
@@ -80,7 +80,7 @@ public class PageResponseDtoParamDto {
     this.totalElements = totalElements;
   }
 
-  public PageResponseDtoParamDto totalPages(@Nullable Integer totalPages) {
+  public PageResponseDtoMenuDto totalPages(@Nullable Integer totalPages) {
     this.totalPages = totalPages;
     return this;
   }
@@ -108,10 +108,10 @@ public class PageResponseDtoParamDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageResponseDtoParamDto pageResponseDtoParamDto = (PageResponseDtoParamDto) o;
-    return Objects.equals(this.content, pageResponseDtoParamDto.content) &&
-        Objects.equals(this.totalElements, pageResponseDtoParamDto.totalElements) &&
-        Objects.equals(this.totalPages, pageResponseDtoParamDto.totalPages);
+    PageResponseDtoMenuDto pageResponseDtoMenuDto = (PageResponseDtoMenuDto) o;
+    return Objects.equals(this.content, pageResponseDtoMenuDto.content) &&
+        Objects.equals(this.totalElements, pageResponseDtoMenuDto.totalElements) &&
+        Objects.equals(this.totalPages, pageResponseDtoMenuDto.totalPages);
   }
 
   @Override
@@ -122,7 +122,7 @@ public class PageResponseDtoParamDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageResponseDtoParamDto {\n");
+    sb.append("class PageResponseDtoMenuDto {\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");

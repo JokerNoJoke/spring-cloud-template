@@ -5,11 +5,11 @@
  */
 package com.sct.system.client.api;
 
+import com.sct.system.client.model.LoginLogBasicDto;
+import com.sct.system.client.model.LoginLogDto;
+import com.sct.system.client.model.LoginLogQueryDto;
 import org.springframework.lang.Nullable;
-import com.sct.system.client.model.PageResponseDtoUserDto;
-import com.sct.system.client.model.UserBasicDto;
-import com.sct.system.client.model.UserDto;
-import com.sct.system.client.model.UserQueryDto;
+import com.sct.system.client.model.PageResponseDtoLoginLogDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -24,91 +24,91 @@ import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public interface UserControllerApi {
+public interface LoginLogControllerApi {
 
     /**
-     * GET /user/count
+     * GET /login-log/count
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/count",
+        value = "/login-log/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllUserBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<Long> countAllLoginLogBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) LoginLogQueryDto dto
     );
 
 
     /**
-     * POST /user
+     * POST /login-log
      *
-     * @param userDto  (required)
+     * @param loginLogDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "POST",
-        value = "/user",
+        value = "/login-log",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> createUser(
-        @Parameter(name = "UserDto", description = "", required = true) @RequestBody UserDto userDto
+    ResponseEntity<Void> createLoginLog(
+        @Parameter(name = "LoginLogDto", description = "", required = true) @RequestBody LoginLogDto loginLogDto
     );
 
 
     /**
-     * DELETE /user/{id}
+     * DELETE /login-log/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "DELETE",
-        value = "/user/{id}",
+        value = "/login-log/{id}",
         accept = { "application/json" }
     )
-    ResponseEntity<Void> deleteUserById(
+    ResponseEntity<Void> deleteLoginLogById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * GET /user/basic
+     * GET /login-log/basic
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/basic",
+        value = "/login-log/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<UserBasicDto>> findAllUserBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<List<LoginLogBasicDto>> findAllLoginLogBasicBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) LoginLogQueryDto dto
     );
 
 
     /**
-     * GET /user
+     * GET /login-log
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user",
+        value = "/login-log",
         accept = { "*/*" }
     )
-    ResponseEntity<List<UserDto>> findAllUserBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<List<LoginLogDto>> findAllLoginLogBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) LoginLogQueryDto dto
     );
 
 
     /**
-     * GET /user/page
+     * GET /login-log/page
      *
      * @param queryDto  (required)
      * @param pageNum  (optional, default to 1)
@@ -117,48 +117,48 @@ public interface UserControllerApi {
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/page",
+        value = "/login-log/page",
         accept = { "*/*" }
     )
-    ResponseEntity<PageResponseDtoUserDto> findAllUserPageBy(
-        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto queryDto,
+    ResponseEntity<PageResponseDtoLoginLogDto> findAllLoginLogPageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) LoginLogQueryDto queryDto,
         @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
         @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 
     /**
-     * GET /user/{id}
+     * GET /login-log/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/{id}",
+        value = "/login-log/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<UserDto> findUserById(
+    ResponseEntity<LoginLogDto> findLoginLogById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * PUT /user/{id}
+     * PUT /login-log/{id}
      *
      * @param id  (required)
-     * @param userDto  (required)
+     * @param loginLogDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "PUT",
-        value = "/user/{id}",
+        value = "/login-log/{id}",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> updateUserById(
+    ResponseEntity<Void> updateLoginLogById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
-        @Parameter(name = "UserDto", description = "", required = true) @RequestBody UserDto userDto
+        @Parameter(name = "LoginLogDto", description = "", required = true) @RequestBody LoginLogDto loginLogDto
     );
 
 }

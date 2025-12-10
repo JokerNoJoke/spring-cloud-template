@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.sct.system.client.model.RoleDto;
+import com.sct.system.client.model.DeptDto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,25 +19,25 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * PageResponseDtoRoleDto
+ * PageResponseDtoDeptDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class PageResponseDtoRoleDto {
+public class PageResponseDtoDeptDto {
 
   
-  private List<RoleDto> content = new ArrayList<>();
+  private List<DeptDto> content = new ArrayList<>();
 
   private @Nullable Long totalElements;
 
   private @Nullable Integer totalPages;
 
-  public PageResponseDtoRoleDto content(List<RoleDto> content) {
+  public PageResponseDtoDeptDto content(List<DeptDto> content) {
     this.content = content;
     return this;
   }
 
-  public PageResponseDtoRoleDto addContentItem(RoleDto contentItem) {
+  public PageResponseDtoDeptDto addContentItem(DeptDto contentItem) {
     if (this.content == null) {
       this.content = new ArrayList<>();
     }
@@ -52,15 +52,15 @@ public class PageResponseDtoRoleDto {
   
   @Schema(name = "content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content")
-  public List<RoleDto> getContent() {
+  public List<DeptDto> getContent() {
     return content;
   }
 
-  public void setContent(List<RoleDto> content) {
+  public void setContent(List<DeptDto> content) {
     this.content = content;
   }
 
-  public PageResponseDtoRoleDto totalElements(@Nullable Long totalElements) {
+  public PageResponseDtoDeptDto totalElements(@Nullable Long totalElements) {
     this.totalElements = totalElements;
     return this;
   }
@@ -80,7 +80,7 @@ public class PageResponseDtoRoleDto {
     this.totalElements = totalElements;
   }
 
-  public PageResponseDtoRoleDto totalPages(@Nullable Integer totalPages) {
+  public PageResponseDtoDeptDto totalPages(@Nullable Integer totalPages) {
     this.totalPages = totalPages;
     return this;
   }
@@ -108,10 +108,10 @@ public class PageResponseDtoRoleDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageResponseDtoRoleDto pageResponseDtoRoleDto = (PageResponseDtoRoleDto) o;
-    return Objects.equals(this.content, pageResponseDtoRoleDto.content) &&
-        Objects.equals(this.totalElements, pageResponseDtoRoleDto.totalElements) &&
-        Objects.equals(this.totalPages, pageResponseDtoRoleDto.totalPages);
+    PageResponseDtoDeptDto pageResponseDtoDeptDto = (PageResponseDtoDeptDto) o;
+    return Objects.equals(this.content, pageResponseDtoDeptDto.content) &&
+        Objects.equals(this.totalElements, pageResponseDtoDeptDto.totalElements) &&
+        Objects.equals(this.totalPages, pageResponseDtoDeptDto.totalPages);
   }
 
   @Override
@@ -122,7 +122,7 @@ public class PageResponseDtoRoleDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageResponseDtoRoleDto {\n");
+    sb.append("class PageResponseDtoDeptDto {\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");

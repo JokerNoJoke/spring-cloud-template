@@ -16,19 +16,23 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleBasicDto
+ * SystemConfigBasicDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleBasicDto {
+public class SystemConfigBasicDto {
 
   private @Nullable Long id;
+
+  private @Nullable Long tenantId;
 
   private @Nullable String name;
 
   private @Nullable String code;
 
-  private @Nullable Boolean enabled;
+  private @Nullable String value;
+
+  private @Nullable Boolean builtIn;
 
   private @Nullable Instant createdTime;
 
@@ -38,7 +42,7 @@ public class RoleBasicDto {
 
   private @Nullable Long updatedBy;
 
-  public RoleBasicDto id(@Nullable Long id) {
+  public SystemConfigBasicDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -58,7 +62,27 @@ public class RoleBasicDto {
     this.id = id;
   }
 
-  public RoleBasicDto name(@Nullable String name) {
+  public SystemConfigBasicDto tenantId(@Nullable Long tenantId) {
+    this.tenantId = tenantId;
+    return this;
+  }
+
+  /**
+   * Get tenantId
+   * @return tenantId
+   */
+  
+  @Schema(name = "tenantId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("tenantId")
+  public @Nullable Long getTenantId() {
+    return tenantId;
+  }
+
+  public void setTenantId(@Nullable Long tenantId) {
+    this.tenantId = tenantId;
+  }
+
+  public SystemConfigBasicDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -78,7 +102,7 @@ public class RoleBasicDto {
     this.name = name;
   }
 
-  public RoleBasicDto code(@Nullable String code) {
+  public SystemConfigBasicDto code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -98,27 +122,47 @@ public class RoleBasicDto {
     this.code = code;
   }
 
-  public RoleBasicDto enabled(@Nullable Boolean enabled) {
-    this.enabled = enabled;
+  public SystemConfigBasicDto value(@Nullable String value) {
+    this.value = value;
     return this;
   }
 
   /**
-   * Get enabled
-   * @return enabled
+   * Get value
+   * @return value
    */
   
-  @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("enabled")
-  public @Nullable Boolean getEnabled() {
-    return enabled;
+  @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("value")
+  public @Nullable String getValue() {
+    return value;
   }
 
-  public void setEnabled(@Nullable Boolean enabled) {
-    this.enabled = enabled;
+  public void setValue(@Nullable String value) {
+    this.value = value;
   }
 
-  public RoleBasicDto createdTime(@Nullable Instant createdTime) {
+  public SystemConfigBasicDto builtIn(@Nullable Boolean builtIn) {
+    this.builtIn = builtIn;
+    return this;
+  }
+
+  /**
+   * Get builtIn
+   * @return builtIn
+   */
+  
+  @Schema(name = "builtIn", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("builtIn")
+  public @Nullable Boolean getBuiltIn() {
+    return builtIn;
+  }
+
+  public void setBuiltIn(@Nullable Boolean builtIn) {
+    this.builtIn = builtIn;
+  }
+
+  public SystemConfigBasicDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -138,7 +182,7 @@ public class RoleBasicDto {
     this.createdTime = createdTime;
   }
 
-  public RoleBasicDto createdBy(@Nullable Long createdBy) {
+  public SystemConfigBasicDto createdBy(@Nullable Long createdBy) {
     this.createdBy = createdBy;
     return this;
   }
@@ -158,7 +202,7 @@ public class RoleBasicDto {
     this.createdBy = createdBy;
   }
 
-  public RoleBasicDto updatedTime(@Nullable Instant updatedTime) {
+  public SystemConfigBasicDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -178,7 +222,7 @@ public class RoleBasicDto {
     this.updatedTime = updatedTime;
   }
 
-  public RoleBasicDto updatedBy(@Nullable Long updatedBy) {
+  public SystemConfigBasicDto updatedBy(@Nullable Long updatedBy) {
     this.updatedBy = updatedBy;
     return this;
   }
@@ -206,30 +250,34 @@ public class RoleBasicDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleBasicDto roleBasicDto = (RoleBasicDto) o;
-    return Objects.equals(this.id, roleBasicDto.id) &&
-        Objects.equals(this.name, roleBasicDto.name) &&
-        Objects.equals(this.code, roleBasicDto.code) &&
-        Objects.equals(this.enabled, roleBasicDto.enabled) &&
-        Objects.equals(this.createdTime, roleBasicDto.createdTime) &&
-        Objects.equals(this.createdBy, roleBasicDto.createdBy) &&
-        Objects.equals(this.updatedTime, roleBasicDto.updatedTime) &&
-        Objects.equals(this.updatedBy, roleBasicDto.updatedBy);
+    SystemConfigBasicDto systemConfigBasicDto = (SystemConfigBasicDto) o;
+    return Objects.equals(this.id, systemConfigBasicDto.id) &&
+        Objects.equals(this.tenantId, systemConfigBasicDto.tenantId) &&
+        Objects.equals(this.name, systemConfigBasicDto.name) &&
+        Objects.equals(this.code, systemConfigBasicDto.code) &&
+        Objects.equals(this.value, systemConfigBasicDto.value) &&
+        Objects.equals(this.builtIn, systemConfigBasicDto.builtIn) &&
+        Objects.equals(this.createdTime, systemConfigBasicDto.createdTime) &&
+        Objects.equals(this.createdBy, systemConfigBasicDto.createdBy) &&
+        Objects.equals(this.updatedTime, systemConfigBasicDto.updatedTime) &&
+        Objects.equals(this.updatedBy, systemConfigBasicDto.updatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, code, enabled, createdTime, createdBy, updatedTime, updatedBy);
+    return Objects.hash(id, tenantId, name, code, value, builtIn, createdTime, createdBy, updatedTime, updatedBy);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleBasicDto {\n");
+    sb.append("class SystemConfigBasicDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    builtIn: ").append(toIndentedString(builtIn)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");

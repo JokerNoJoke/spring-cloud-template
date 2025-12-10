@@ -6,10 +6,10 @@
 package com.sct.system.client.api;
 
 import org.springframework.lang.Nullable;
-import com.sct.system.client.model.PageResponseDtoParamDto;
-import com.sct.system.client.model.ParamBasicDto;
-import com.sct.system.client.model.ParamDto;
-import com.sct.system.client.model.ParamQueryDto;
+import com.sct.system.client.model.PageResponseDtoTenantDto;
+import com.sct.system.client.model.TenantBasicDto;
+import com.sct.system.client.model.TenantDto;
+import com.sct.system.client.model.TenantQueryDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -23,92 +23,92 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public interface ParamControllerApi {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public interface TenantControllerApi {
 
     /**
-     * GET /param/count
+     * GET /tenant/count
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/param/count",
+        value = "/tenant/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllParamBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) ParamQueryDto dto
+    ResponseEntity<Long> countAllTenantBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto dto
     );
 
 
     /**
-     * POST /param
+     * POST /tenant
      *
-     * @param paramDto  (required)
+     * @param tenantDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "POST",
-        value = "/param",
+        value = "/tenant",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> createParam(
-        @Parameter(name = "ParamDto", description = "", required = true) @RequestBody ParamDto paramDto
+    ResponseEntity<Void> createTenant(
+        @Parameter(name = "TenantDto", description = "", required = true) @RequestBody TenantDto tenantDto
     );
 
 
     /**
-     * DELETE /param/{id}
+     * DELETE /tenant/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "DELETE",
-        value = "/param/{id}",
+        value = "/tenant/{id}",
         accept = { "application/json" }
     )
-    ResponseEntity<Void> deleteParamById(
+    ResponseEntity<Void> deleteTenantById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * GET /param/basic
+     * GET /tenant/basic
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/param/basic",
+        value = "/tenant/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<ParamBasicDto>> findAllParamBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) ParamQueryDto dto
+    ResponseEntity<List<TenantBasicDto>> findAllTenantBasicBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto dto
     );
 
 
     /**
-     * GET /param
+     * GET /tenant
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/param",
+        value = "/tenant",
         accept = { "*/*" }
     )
-    ResponseEntity<List<ParamDto>> findAllParamBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) ParamQueryDto dto
+    ResponseEntity<List<TenantDto>> findAllTenantBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto dto
     );
 
 
     /**
-     * GET /param/page
+     * GET /tenant/page
      *
      * @param queryDto  (required)
      * @param pageNum  (optional, default to 1)
@@ -117,48 +117,48 @@ public interface ParamControllerApi {
      */
     @HttpExchange(
         method = "GET",
-        value = "/param/page",
+        value = "/tenant/page",
         accept = { "*/*" }
     )
-    ResponseEntity<PageResponseDtoParamDto> findAllParamPageBy(
-        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) ParamQueryDto queryDto,
+    ResponseEntity<PageResponseDtoTenantDto> findAllTenantPageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto queryDto,
         @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
         @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 
     /**
-     * GET /param/{id}
+     * GET /tenant/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/param/{id}",
+        value = "/tenant/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<ParamDto> findParamById(
+    ResponseEntity<TenantDto> findTenantById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * PUT /param/{id}
+     * PUT /tenant/{id}
      *
      * @param id  (required)
-     * @param paramDto  (required)
+     * @param tenantDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "PUT",
-        value = "/param/{id}",
+        value = "/tenant/{id}",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> updateParamById(
+    ResponseEntity<Void> updateTenantById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
-        @Parameter(name = "ParamDto", description = "", required = true) @RequestBody ParamDto paramDto
+        @Parameter(name = "TenantDto", description = "", required = true) @RequestBody TenantDto tenantDto
     );
 
 }

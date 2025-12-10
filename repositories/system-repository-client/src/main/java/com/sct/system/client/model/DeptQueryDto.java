@@ -15,19 +15,17 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleQueryDto
+ * DeptQueryDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleQueryDto {
+public class DeptQueryDto {
 
   private @Nullable String name;
 
-  private @Nullable String code;
-
   private @Nullable Boolean enabled;
 
-  public RoleQueryDto name(@Nullable String name) {
+  public DeptQueryDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -47,27 +45,7 @@ public class RoleQueryDto {
     this.name = name;
   }
 
-  public RoleQueryDto code(@Nullable String code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  
-  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("code")
-  public @Nullable String getCode() {
-    return code;
-  }
-
-  public void setCode(@Nullable String code) {
-    this.code = code;
-  }
-
-  public RoleQueryDto enabled(@Nullable Boolean enabled) {
+  public DeptQueryDto enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -95,23 +73,21 @@ public class RoleQueryDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleQueryDto roleQueryDto = (RoleQueryDto) o;
-    return Objects.equals(this.name, roleQueryDto.name) &&
-        Objects.equals(this.code, roleQueryDto.code) &&
-        Objects.equals(this.enabled, roleQueryDto.enabled);
+    DeptQueryDto deptQueryDto = (DeptQueryDto) o;
+    return Objects.equals(this.name, deptQueryDto.name) &&
+        Objects.equals(this.enabled, deptQueryDto.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, code, enabled);
+    return Objects.hash(name, enabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleQueryDto {\n");
+    sb.append("class DeptQueryDto {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();

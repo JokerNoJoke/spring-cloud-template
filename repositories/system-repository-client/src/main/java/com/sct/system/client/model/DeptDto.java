@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.sct.system.client.model.DeptBasicDto;
 import java.time.Instant;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -16,27 +17,21 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * UserBasicDto
+ * DeptDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class UserBasicDto {
+public class DeptDto {
 
   private @Nullable Long id;
 
   private @Nullable Long tenantId;
 
-  private @Nullable Long deptId;
+  private @Nullable Long parentId;
 
-  private @Nullable String username;
+  private @Nullable DeptBasicDto parent;
 
-  private @Nullable String password;
-
-  private @Nullable String nickname;
-
-  private @Nullable String mobile;
-
-  private @Nullable String avatar;
+  private @Nullable String name;
 
   private @Nullable Boolean enabled;
 
@@ -48,7 +43,7 @@ public class UserBasicDto {
 
   private @Nullable Long updatedBy;
 
-  public UserBasicDto id(@Nullable Long id) {
+  public DeptDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -68,7 +63,7 @@ public class UserBasicDto {
     this.id = id;
   }
 
-  public UserBasicDto tenantId(@Nullable Long tenantId) {
+  public DeptDto tenantId(@Nullable Long tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -88,127 +83,67 @@ public class UserBasicDto {
     this.tenantId = tenantId;
   }
 
-  public UserBasicDto deptId(@Nullable Long deptId) {
-    this.deptId = deptId;
+  public DeptDto parentId(@Nullable Long parentId) {
+    this.parentId = parentId;
     return this;
   }
 
   /**
-   * Get deptId
-   * @return deptId
+   * Get parentId
+   * @return parentId
    */
   
-  @Schema(name = "deptId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("deptId")
-  public @Nullable Long getDeptId() {
-    return deptId;
+  @Schema(name = "parentId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("parentId")
+  public @Nullable Long getParentId() {
+    return parentId;
   }
 
-  public void setDeptId(@Nullable Long deptId) {
-    this.deptId = deptId;
+  public void setParentId(@Nullable Long parentId) {
+    this.parentId = parentId;
   }
 
-  public UserBasicDto username(@Nullable String username) {
-    this.username = username;
+  public DeptDto parent(@Nullable DeptBasicDto parent) {
+    this.parent = parent;
     return this;
   }
 
   /**
-   * Get username
-   * @return username
+   * Get parent
+   * @return parent
    */
   
-  @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("username")
-  public @Nullable String getUsername() {
-    return username;
+  @Schema(name = "parent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("parent")
+  public @Nullable DeptBasicDto getParent() {
+    return parent;
   }
 
-  public void setUsername(@Nullable String username) {
-    this.username = username;
+  public void setParent(@Nullable DeptBasicDto parent) {
+    this.parent = parent;
   }
 
-  public UserBasicDto password(@Nullable String password) {
-    this.password = password;
+  public DeptDto name(@Nullable String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get password
-   * @return password
+   * Get name
+   * @return name
    */
   
-  @Schema(name = "password", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("password")
-  public @Nullable String getPassword() {
-    return password;
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public @Nullable String getName() {
+    return name;
   }
 
-  public void setPassword(@Nullable String password) {
-    this.password = password;
+  public void setName(@Nullable String name) {
+    this.name = name;
   }
 
-  public UserBasicDto nickname(@Nullable String nickname) {
-    this.nickname = nickname;
-    return this;
-  }
-
-  /**
-   * Get nickname
-   * @return nickname
-   */
-  
-  @Schema(name = "nickname", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("nickname")
-  public @Nullable String getNickname() {
-    return nickname;
-  }
-
-  public void setNickname(@Nullable String nickname) {
-    this.nickname = nickname;
-  }
-
-  public UserBasicDto mobile(@Nullable String mobile) {
-    this.mobile = mobile;
-    return this;
-  }
-
-  /**
-   * Get mobile
-   * @return mobile
-   */
-  
-  @Schema(name = "mobile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("mobile")
-  public @Nullable String getMobile() {
-    return mobile;
-  }
-
-  public void setMobile(@Nullable String mobile) {
-    this.mobile = mobile;
-  }
-
-  public UserBasicDto avatar(@Nullable String avatar) {
-    this.avatar = avatar;
-    return this;
-  }
-
-  /**
-   * Get avatar
-   * @return avatar
-   */
-  
-  @Schema(name = "avatar", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("avatar")
-  public @Nullable String getAvatar() {
-    return avatar;
-  }
-
-  public void setAvatar(@Nullable String avatar) {
-    this.avatar = avatar;
-  }
-
-  public UserBasicDto enabled(@Nullable Boolean enabled) {
+  public DeptDto enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -228,7 +163,7 @@ public class UserBasicDto {
     this.enabled = enabled;
   }
 
-  public UserBasicDto createdTime(@Nullable Instant createdTime) {
+  public DeptDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -248,7 +183,7 @@ public class UserBasicDto {
     this.createdTime = createdTime;
   }
 
-  public UserBasicDto createdBy(@Nullable Long createdBy) {
+  public DeptDto createdBy(@Nullable Long createdBy) {
     this.createdBy = createdBy;
     return this;
   }
@@ -268,7 +203,7 @@ public class UserBasicDto {
     this.createdBy = createdBy;
   }
 
-  public UserBasicDto updatedTime(@Nullable Instant updatedTime) {
+  public DeptDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -288,7 +223,7 @@ public class UserBasicDto {
     this.updatedTime = updatedTime;
   }
 
-  public UserBasicDto updatedBy(@Nullable Long updatedBy) {
+  public DeptDto updatedBy(@Nullable Long updatedBy) {
     this.updatedBy = updatedBy;
     return this;
   }
@@ -316,39 +251,33 @@ public class UserBasicDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserBasicDto userBasicDto = (UserBasicDto) o;
-    return Objects.equals(this.id, userBasicDto.id) &&
-        Objects.equals(this.tenantId, userBasicDto.tenantId) &&
-        Objects.equals(this.deptId, userBasicDto.deptId) &&
-        Objects.equals(this.username, userBasicDto.username) &&
-        Objects.equals(this.password, userBasicDto.password) &&
-        Objects.equals(this.nickname, userBasicDto.nickname) &&
-        Objects.equals(this.mobile, userBasicDto.mobile) &&
-        Objects.equals(this.avatar, userBasicDto.avatar) &&
-        Objects.equals(this.enabled, userBasicDto.enabled) &&
-        Objects.equals(this.createdTime, userBasicDto.createdTime) &&
-        Objects.equals(this.createdBy, userBasicDto.createdBy) &&
-        Objects.equals(this.updatedTime, userBasicDto.updatedTime) &&
-        Objects.equals(this.updatedBy, userBasicDto.updatedBy);
+    DeptDto deptDto = (DeptDto) o;
+    return Objects.equals(this.id, deptDto.id) &&
+        Objects.equals(this.tenantId, deptDto.tenantId) &&
+        Objects.equals(this.parentId, deptDto.parentId) &&
+        Objects.equals(this.parent, deptDto.parent) &&
+        Objects.equals(this.name, deptDto.name) &&
+        Objects.equals(this.enabled, deptDto.enabled) &&
+        Objects.equals(this.createdTime, deptDto.createdTime) &&
+        Objects.equals(this.createdBy, deptDto.createdBy) &&
+        Objects.equals(this.updatedTime, deptDto.updatedTime) &&
+        Objects.equals(this.updatedBy, deptDto.updatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tenantId, deptId, username, password, nickname, mobile, avatar, enabled, createdTime, createdBy, updatedTime, updatedBy);
+    return Objects.hash(id, tenantId, parentId, parent, name, enabled, createdTime, createdBy, updatedTime, updatedBy);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserBasicDto {\n");
+    sb.append("class DeptDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
-    sb.append("    deptId: ").append(toIndentedString(deptId)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    nickname: ").append(toIndentedString(nickname)).append("\n");
-    sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");
-    sb.append("    avatar: ").append(toIndentedString(avatar)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
+    sb.append("    parent: ").append(toIndentedString(parent)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");

@@ -5,11 +5,11 @@
  */
 package com.sct.system.client.api;
 
+import com.sct.system.client.model.MenuBasicDto;
+import com.sct.system.client.model.MenuDto;
+import com.sct.system.client.model.MenuQueryDto;
 import org.springframework.lang.Nullable;
-import com.sct.system.client.model.PageResponseDtoUserDto;
-import com.sct.system.client.model.UserBasicDto;
-import com.sct.system.client.model.UserDto;
-import com.sct.system.client.model.UserQueryDto;
+import com.sct.system.client.model.PageResponseDtoMenuDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -24,91 +24,91 @@ import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public interface UserControllerApi {
+public interface MenuControllerApi {
 
     /**
-     * GET /user/count
+     * GET /menu/count
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/count",
+        value = "/menu/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllUserBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<Long> countAllMenuBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) MenuQueryDto dto
     );
 
 
     /**
-     * POST /user
+     * POST /menu
      *
-     * @param userDto  (required)
+     * @param menuDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "POST",
-        value = "/user",
+        value = "/menu",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> createUser(
-        @Parameter(name = "UserDto", description = "", required = true) @RequestBody UserDto userDto
+    ResponseEntity<Void> createMenu(
+        @Parameter(name = "MenuDto", description = "", required = true) @RequestBody MenuDto menuDto
     );
 
 
     /**
-     * DELETE /user/{id}
+     * DELETE /menu/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "DELETE",
-        value = "/user/{id}",
+        value = "/menu/{id}",
         accept = { "application/json" }
     )
-    ResponseEntity<Void> deleteUserById(
+    ResponseEntity<Void> deleteMenuById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * GET /user/basic
+     * GET /menu/basic
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/basic",
+        value = "/menu/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<UserBasicDto>> findAllUserBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<List<MenuBasicDto>> findAllMenuBasicBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) MenuQueryDto dto
     );
 
 
     /**
-     * GET /user
+     * GET /menu
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user",
+        value = "/menu",
         accept = { "*/*" }
     )
-    ResponseEntity<List<UserDto>> findAllUserBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto dto
+    ResponseEntity<List<MenuDto>> findAllMenuBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) MenuQueryDto dto
     );
 
 
     /**
-     * GET /user/page
+     * GET /menu/page
      *
      * @param queryDto  (required)
      * @param pageNum  (optional, default to 1)
@@ -117,48 +117,48 @@ public interface UserControllerApi {
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/page",
+        value = "/menu/page",
         accept = { "*/*" }
     )
-    ResponseEntity<PageResponseDtoUserDto> findAllUserPageBy(
-        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) UserQueryDto queryDto,
+    ResponseEntity<PageResponseDtoMenuDto> findAllMenuPageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) MenuQueryDto queryDto,
         @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
         @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 
     /**
-     * GET /user/{id}
+     * GET /menu/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/user/{id}",
+        value = "/menu/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<UserDto> findUserById(
+    ResponseEntity<MenuDto> findMenuById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * PUT /user/{id}
+     * PUT /menu/{id}
      *
      * @param id  (required)
-     * @param userDto  (required)
+     * @param menuDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "PUT",
-        value = "/user/{id}",
+        value = "/menu/{id}",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> updateUserById(
+    ResponseEntity<Void> updateMenuById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
-        @Parameter(name = "UserDto", description = "", required = true) @RequestBody UserDto userDto
+        @Parameter(name = "MenuDto", description = "", required = true) @RequestBody MenuDto menuDto
     );
 
 }

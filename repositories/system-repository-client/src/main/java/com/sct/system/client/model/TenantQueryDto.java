@@ -15,15 +15,17 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * OrgQueryDto
+ * TenantQueryDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class OrgQueryDto {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public class TenantQueryDto {
 
   private @Nullable String name;
 
-  public OrgQueryDto name(@Nullable String name) {
+  private @Nullable Boolean enabled;
+
+  public TenantQueryDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -43,6 +45,26 @@ public class OrgQueryDto {
     this.name = name;
   }
 
+  public TenantQueryDto enabled(@Nullable Boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
+
+  /**
+   * Get enabled
+   * @return enabled
+   */
+  
+  @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("enabled")
+  public @Nullable Boolean getEnabled() {
+    return enabled;
+  }
+
+  public void setEnabled(@Nullable Boolean enabled) {
+    this.enabled = enabled;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -51,20 +73,22 @@ public class OrgQueryDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OrgQueryDto orgQueryDto = (OrgQueryDto) o;
-    return Objects.equals(this.name, orgQueryDto.name);
+    TenantQueryDto tenantQueryDto = (TenantQueryDto) o;
+    return Objects.equals(this.name, tenantQueryDto.name) &&
+        Objects.equals(this.enabled, tenantQueryDto.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(name, enabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OrgQueryDto {\n");
+    sb.append("class TenantQueryDto {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

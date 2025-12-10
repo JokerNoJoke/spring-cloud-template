@@ -5,11 +5,11 @@
  */
 package com.sct.system.client.api;
 
-import com.sct.system.client.model.DictBasicDto;
-import com.sct.system.client.model.DictDto;
-import com.sct.system.client.model.DictQueryDto;
 import org.springframework.lang.Nullable;
-import com.sct.system.client.model.PageResponseDtoDictDto;
+import com.sct.system.client.model.PageResponseDtoSystemConfigDto;
+import com.sct.system.client.model.SystemConfigBasicDto;
+import com.sct.system.client.model.SystemConfigDto;
+import com.sct.system.client.model.SystemConfigQueryDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.*;
@@ -23,92 +23,92 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-06T19:37:11.351265800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public interface DictControllerApi {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public interface SystemConfigControllerApi {
 
     /**
-     * GET /dict/count
+     * GET /system-config/count
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/dict/count",
+        value = "/system-config/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllDictBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictQueryDto dto
+    ResponseEntity<Long> countAllSystemConfigBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto dto
     );
 
 
     /**
-     * POST /dict
+     * POST /system-config
      *
-     * @param dictDto  (required)
+     * @param systemConfigDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "POST",
-        value = "/dict",
+        value = "/system-config",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> createDict(
-        @Parameter(name = "DictDto", description = "", required = true) @RequestBody DictDto dictDto
+    ResponseEntity<Void> createSystemConfig(
+        @Parameter(name = "SystemConfigDto", description = "", required = true) @RequestBody SystemConfigDto systemConfigDto
     );
 
 
     /**
-     * DELETE /dict/{id}
+     * DELETE /system-config/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "DELETE",
-        value = "/dict/{id}",
+        value = "/system-config/{id}",
         accept = { "application/json" }
     )
-    ResponseEntity<Void> deleteDictById(
+    ResponseEntity<Void> deleteSystemConfigById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * GET /dict/basic
+     * GET /system-config/basic
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/dict/basic",
+        value = "/system-config/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<DictBasicDto>> findAllDictBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictQueryDto dto
+    ResponseEntity<List<SystemConfigBasicDto>> findAllSystemConfigBasicBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto dto
     );
 
 
     /**
-     * GET /dict
+     * GET /system-config
      *
      * @param dto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/dict",
+        value = "/system-config",
         accept = { "*/*" }
     )
-    ResponseEntity<List<DictDto>> findAllDictBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictQueryDto dto
+    ResponseEntity<List<SystemConfigDto>> findAllSystemConfigBy(
+        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto dto
     );
 
 
     /**
-     * GET /dict/page
+     * GET /system-config/page
      *
      * @param queryDto  (required)
      * @param pageNum  (optional, default to 1)
@@ -117,48 +117,48 @@ public interface DictControllerApi {
      */
     @HttpExchange(
         method = "GET",
-        value = "/dict/page",
+        value = "/system-config/page",
         accept = { "*/*" }
     )
-    ResponseEntity<PageResponseDtoDictDto> findAllDictPageBy(
-        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DictQueryDto queryDto,
+    ResponseEntity<PageResponseDtoSystemConfigDto> findAllSystemConfigPageBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto queryDto,
         @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
         @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
     );
 
 
     /**
-     * GET /dict/{id}
+     * GET /system-config/{id}
      *
      * @param id  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "GET",
-        value = "/dict/{id}",
+        value = "/system-config/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<DictDto> findDictById(
+    ResponseEntity<SystemConfigDto> findSystemConfigById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
 
     /**
-     * PUT /dict/{id}
+     * PUT /system-config/{id}
      *
      * @param id  (required)
-     * @param dictDto  (required)
+     * @param systemConfigDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
         method = "PUT",
-        value = "/dict/{id}",
+        value = "/system-config/{id}",
         accept = { "application/json" },
         contentType = "application/json"
     )
-    ResponseEntity<Void> updateDictById(
+    ResponseEntity<Void> updateSystemConfigById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
-        @Parameter(name = "DictDto", description = "", required = true) @RequestBody DictDto dictDto
+        @Parameter(name = "SystemConfigDto", description = "", required = true) @RequestBody SystemConfigDto systemConfigDto
     );
 
 }

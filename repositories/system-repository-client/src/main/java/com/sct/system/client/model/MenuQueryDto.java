@@ -15,19 +15,41 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleQueryDto
+ * MenuQueryDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleQueryDto {
+public class MenuQueryDto {
+
+  private @Nullable Long parentId;
 
   private @Nullable String name;
 
-  private @Nullable String code;
+  private @Nullable String permission;
 
   private @Nullable Boolean enabled;
 
-  public RoleQueryDto name(@Nullable String name) {
+  public MenuQueryDto parentId(@Nullable Long parentId) {
+    this.parentId = parentId;
+    return this;
+  }
+
+  /**
+   * Get parentId
+   * @return parentId
+   */
+  
+  @Schema(name = "parentId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("parentId")
+  public @Nullable Long getParentId() {
+    return parentId;
+  }
+
+  public void setParentId(@Nullable Long parentId) {
+    this.parentId = parentId;
+  }
+
+  public MenuQueryDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -47,27 +69,27 @@ public class RoleQueryDto {
     this.name = name;
   }
 
-  public RoleQueryDto code(@Nullable String code) {
-    this.code = code;
+  public MenuQueryDto permission(@Nullable String permission) {
+    this.permission = permission;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * Get permission
+   * @return permission
    */
   
-  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("code")
-  public @Nullable String getCode() {
-    return code;
+  @Schema(name = "permission", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("permission")
+  public @Nullable String getPermission() {
+    return permission;
   }
 
-  public void setCode(@Nullable String code) {
-    this.code = code;
+  public void setPermission(@Nullable String permission) {
+    this.permission = permission;
   }
 
-  public RoleQueryDto enabled(@Nullable Boolean enabled) {
+  public MenuQueryDto enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -95,23 +117,25 @@ public class RoleQueryDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleQueryDto roleQueryDto = (RoleQueryDto) o;
-    return Objects.equals(this.name, roleQueryDto.name) &&
-        Objects.equals(this.code, roleQueryDto.code) &&
-        Objects.equals(this.enabled, roleQueryDto.enabled);
+    MenuQueryDto menuQueryDto = (MenuQueryDto) o;
+    return Objects.equals(this.parentId, menuQueryDto.parentId) &&
+        Objects.equals(this.name, menuQueryDto.name) &&
+        Objects.equals(this.permission, menuQueryDto.permission) &&
+        Objects.equals(this.enabled, menuQueryDto.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, code, enabled);
+    return Objects.hash(parentId, name, permission, enabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleQueryDto {\n");
+    sb.append("class MenuQueryDto {\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    permission: ").append(toIndentedString(permission)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();

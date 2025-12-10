@@ -5,10 +5,15 @@
 */
 package com.sct.system.client.config;
 
-import com.sct.system.client.api.DictControllerApi;
-import com.sct.system.client.api.OrgControllerApi;
-import com.sct.system.client.api.ParamControllerApi;
+import com.sct.system.client.api.DeptControllerApi;
+import com.sct.system.client.api.DictItemControllerApi;
+import com.sct.system.client.api.DictTypeControllerApi;
+import com.sct.system.client.api.LoginLogControllerApi;
+import com.sct.system.client.api.MenuControllerApi;
+import com.sct.system.client.api.OperationLogControllerApi;
 import com.sct.system.client.api.RoleControllerApi;
+import com.sct.system.client.api.SystemConfigControllerApi;
+import com.sct.system.client.api.TenantControllerApi;
 import com.sct.system.client.api.UserControllerApi;
 
 import org.springframework.context.annotation.Bean;
@@ -24,28 +29,58 @@ public abstract class HttpInterfacesAbstractConfigurator {
         this.webClient = webClient;
     }
 
-    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.dictController")
-    DictControllerApi dictControllerHttpProxy() {
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.deptController")
+    DeptControllerApi deptControllerHttpProxy() {
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
-        return factory.createClient(DictControllerApi.class);
+        return factory.createClient(DeptControllerApi.class);
     }
 
-    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.orgController")
-    OrgControllerApi orgControllerHttpProxy() {
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.dictItemController")
+    DictItemControllerApi dictItemControllerHttpProxy() {
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
-        return factory.createClient(OrgControllerApi.class);
+        return factory.createClient(DictItemControllerApi.class);
     }
 
-    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.paramController")
-    ParamControllerApi paramControllerHttpProxy() {
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.dictTypeController")
+    DictTypeControllerApi dictTypeControllerHttpProxy() {
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
-        return factory.createClient(ParamControllerApi.class);
+        return factory.createClient(DictTypeControllerApi.class);
+    }
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.loginLogController")
+    LoginLogControllerApi loginLogControllerHttpProxy() {
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
+        return factory.createClient(LoginLogControllerApi.class);
+    }
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.menuController")
+    MenuControllerApi menuControllerHttpProxy() {
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
+        return factory.createClient(MenuControllerApi.class);
+    }
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.operationLogController")
+    OperationLogControllerApi operationLogControllerHttpProxy() {
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
+        return factory.createClient(OperationLogControllerApi.class);
     }
 
     @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.roleController")
     RoleControllerApi roleControllerHttpProxy() {
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
         return factory.createClient(RoleControllerApi.class);
+    }
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.systemConfigController")
+    SystemConfigControllerApi systemConfigControllerHttpProxy() {
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
+        return factory.createClient(SystemConfigControllerApi.class);
+    }
+
+    @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.tenantController")
+    TenantControllerApi tenantControllerHttpProxy() {
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
+        return factory.createClient(TenantControllerApi.class);
     }
 
     @Bean(name = "com.sct.system.client.config.HttpInterfacesAbstractConfigurator.userController")

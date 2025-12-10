@@ -16,17 +16,27 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * RoleBasicDto
+ * MenuBasicDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class RoleBasicDto {
+public class MenuBasicDto {
 
   private @Nullable Long id;
 
+  private @Nullable Long parentId;
+
+  private @Nullable Integer type;
+
   private @Nullable String name;
 
-  private @Nullable String code;
+  private @Nullable String icon;
+
+  private @Nullable String path;
+
+  private @Nullable String permission;
+
+  private @Nullable Integer sortOrder;
 
   private @Nullable Boolean enabled;
 
@@ -38,7 +48,7 @@ public class RoleBasicDto {
 
   private @Nullable Long updatedBy;
 
-  public RoleBasicDto id(@Nullable Long id) {
+  public MenuBasicDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -58,7 +68,47 @@ public class RoleBasicDto {
     this.id = id;
   }
 
-  public RoleBasicDto name(@Nullable String name) {
+  public MenuBasicDto parentId(@Nullable Long parentId) {
+    this.parentId = parentId;
+    return this;
+  }
+
+  /**
+   * Get parentId
+   * @return parentId
+   */
+  
+  @Schema(name = "parentId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("parentId")
+  public @Nullable Long getParentId() {
+    return parentId;
+  }
+
+  public void setParentId(@Nullable Long parentId) {
+    this.parentId = parentId;
+  }
+
+  public MenuBasicDto type(@Nullable Integer type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  
+  @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
+  public @Nullable Integer getType() {
+    return type;
+  }
+
+  public void setType(@Nullable Integer type) {
+    this.type = type;
+  }
+
+  public MenuBasicDto name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -78,27 +128,87 @@ public class RoleBasicDto {
     this.name = name;
   }
 
-  public RoleBasicDto code(@Nullable String code) {
-    this.code = code;
+  public MenuBasicDto icon(@Nullable String icon) {
+    this.icon = icon;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * Get icon
+   * @return icon
    */
   
-  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("code")
-  public @Nullable String getCode() {
-    return code;
+  @Schema(name = "icon", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("icon")
+  public @Nullable String getIcon() {
+    return icon;
   }
 
-  public void setCode(@Nullable String code) {
-    this.code = code;
+  public void setIcon(@Nullable String icon) {
+    this.icon = icon;
   }
 
-  public RoleBasicDto enabled(@Nullable Boolean enabled) {
+  public MenuBasicDto path(@Nullable String path) {
+    this.path = path;
+    return this;
+  }
+
+  /**
+   * Get path
+   * @return path
+   */
+  
+  @Schema(name = "path", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("path")
+  public @Nullable String getPath() {
+    return path;
+  }
+
+  public void setPath(@Nullable String path) {
+    this.path = path;
+  }
+
+  public MenuBasicDto permission(@Nullable String permission) {
+    this.permission = permission;
+    return this;
+  }
+
+  /**
+   * Get permission
+   * @return permission
+   */
+  
+  @Schema(name = "permission", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("permission")
+  public @Nullable String getPermission() {
+    return permission;
+  }
+
+  public void setPermission(@Nullable String permission) {
+    this.permission = permission;
+  }
+
+  public MenuBasicDto sortOrder(@Nullable Integer sortOrder) {
+    this.sortOrder = sortOrder;
+    return this;
+  }
+
+  /**
+   * Get sortOrder
+   * @return sortOrder
+   */
+  
+  @Schema(name = "sortOrder", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("sortOrder")
+  public @Nullable Integer getSortOrder() {
+    return sortOrder;
+  }
+
+  public void setSortOrder(@Nullable Integer sortOrder) {
+    this.sortOrder = sortOrder;
+  }
+
+  public MenuBasicDto enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -118,7 +228,7 @@ public class RoleBasicDto {
     this.enabled = enabled;
   }
 
-  public RoleBasicDto createdTime(@Nullable Instant createdTime) {
+  public MenuBasicDto createdTime(@Nullable Instant createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -138,7 +248,7 @@ public class RoleBasicDto {
     this.createdTime = createdTime;
   }
 
-  public RoleBasicDto createdBy(@Nullable Long createdBy) {
+  public MenuBasicDto createdBy(@Nullable Long createdBy) {
     this.createdBy = createdBy;
     return this;
   }
@@ -158,7 +268,7 @@ public class RoleBasicDto {
     this.createdBy = createdBy;
   }
 
-  public RoleBasicDto updatedTime(@Nullable Instant updatedTime) {
+  public MenuBasicDto updatedTime(@Nullable Instant updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -178,7 +288,7 @@ public class RoleBasicDto {
     this.updatedTime = updatedTime;
   }
 
-  public RoleBasicDto updatedBy(@Nullable Long updatedBy) {
+  public MenuBasicDto updatedBy(@Nullable Long updatedBy) {
     this.updatedBy = updatedBy;
     return this;
   }
@@ -206,29 +316,39 @@ public class RoleBasicDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleBasicDto roleBasicDto = (RoleBasicDto) o;
-    return Objects.equals(this.id, roleBasicDto.id) &&
-        Objects.equals(this.name, roleBasicDto.name) &&
-        Objects.equals(this.code, roleBasicDto.code) &&
-        Objects.equals(this.enabled, roleBasicDto.enabled) &&
-        Objects.equals(this.createdTime, roleBasicDto.createdTime) &&
-        Objects.equals(this.createdBy, roleBasicDto.createdBy) &&
-        Objects.equals(this.updatedTime, roleBasicDto.updatedTime) &&
-        Objects.equals(this.updatedBy, roleBasicDto.updatedBy);
+    MenuBasicDto menuBasicDto = (MenuBasicDto) o;
+    return Objects.equals(this.id, menuBasicDto.id) &&
+        Objects.equals(this.parentId, menuBasicDto.parentId) &&
+        Objects.equals(this.type, menuBasicDto.type) &&
+        Objects.equals(this.name, menuBasicDto.name) &&
+        Objects.equals(this.icon, menuBasicDto.icon) &&
+        Objects.equals(this.path, menuBasicDto.path) &&
+        Objects.equals(this.permission, menuBasicDto.permission) &&
+        Objects.equals(this.sortOrder, menuBasicDto.sortOrder) &&
+        Objects.equals(this.enabled, menuBasicDto.enabled) &&
+        Objects.equals(this.createdTime, menuBasicDto.createdTime) &&
+        Objects.equals(this.createdBy, menuBasicDto.createdBy) &&
+        Objects.equals(this.updatedTime, menuBasicDto.updatedTime) &&
+        Objects.equals(this.updatedBy, menuBasicDto.updatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, code, enabled, createdTime, createdBy, updatedTime, updatedBy);
+    return Objects.hash(id, parentId, type, name, icon, path, permission, sortOrder, enabled, createdTime, createdBy, updatedTime, updatedBy);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleBasicDto {\n");
+    sb.append("class MenuBasicDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    path: ").append(toIndentedString(path)).append("\n");
+    sb.append("    permission: ").append(toIndentedString(permission)).append("\n");
+    sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
