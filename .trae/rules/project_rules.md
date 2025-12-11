@@ -17,7 +17,6 @@ Use these templates when generating new domain objects. Replace placeholders lik
 ```java
 package com.sct.${Module}.entity;
 
-import java.io.Serializable;
 import java.time.Instant;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -41,7 +40,7 @@ import lombok.Setter;
 @SoftDelete(columnName = "is_deleted")
 @DynamicInsert
 @DynamicUpdate
-public class ${EntityName} implements Serializable {
+public class ${EntityName} {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
