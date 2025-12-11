@@ -271,22 +271,32 @@ public class ${EntityName}QueryDto {
 ```java
 package com.sct.${Module}.controller;
 
+import java.net.URI;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.querydsl.core.types.Predicate;
+import com.sct.${Module}.common.PageRequestDto;
+import com.sct.${Module}.common.PageResponseDto;
 import com.sct.${Module}.dto.${EntityName}BasicDto;
 import com.sct.${Module}.dto.${EntityName}Dto;
 import com.sct.${Module}.dto.${EntityName}QueryDto;
-import com.sct.${Module}.common.PageResponseDto;
 import com.sct.${Module}.entity.${EntityName};
 import com.sct.${Module}.repository.${EntityName}Repository;
-import com.querydsl.core.types.Predicate;
 
 @RestController
 @RequestMapping("/api/v1/${Module}/${PathName}")
@@ -303,58 +313,66 @@ public class ${EntityName}Controller {
         return ResponseEntity.created(URI.create(savedEntity.getId().toString())).build();
     }
 
-    // Find All
+    // Find All (List/Page)
     @GetMapping
-    public ResponseEntity<List<${EntityName}Dto>> findAll${EntityName}By(@ModelAttribute ${EntityName}QueryDto queryDto) {
+    public ResponseEntity<PageResponseDto<${EntityName}Dto>> findAll${EntityName}By(
+            @ModelAttribute ${EntityName}QueryDto queryDto,
+            @ModelAttribute PageRequestDto pageRequestDto) {
         Predicate predicate = queryDto.toPredicate();
-        List<${EntityName}> list = (List<${EntityName}>) repository.findAll(predicate);
-        List<${EntityName}Dto> dtos = list.stream()
-                .map(${EntityName}Dto::fromEntity)
-                .toList();
-        return ResponseEntity.ok(dtos);
+        PageResponseDto<${EntityName}Dto> response;
+        if (pageRequestDto.hasPagination()) {
+            Pageable pageable = pageRequestDto.toPageable();
+            Page<${EntityName}> page = repository.findAll(predicate, pageable);
+            List<${EntityName}Dto> dtos = page.getContent().stream()
+                    .map(${EntityName}Dto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, page.getTotalElements(), page.getTotalPages());
+        } else {
+            Sort sort = pageRequestDto.toSort();
+            List<${EntityName}> list = (List<${EntityName}>) repository.findAll(predicate, sort);
+            List<${EntityName}Dto> dtos = list.stream()
+                    .map(${EntityName}Dto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, Long.valueOf(list.size()), 1);
+        }
+        return ResponseEntity.ok(response);
     }
 
-    // Find Basic Info
-    @GetMapping("/basic")
-    public ResponseEntity<List<${EntityName}BasicDto>> findAll${EntityName}BasicBy(@ModelAttribute ${EntityName}QueryDto queryDto) {
+    // Find All Basic (List/Page)
+    @GetMapping("basic")
+    public ResponseEntity<PageResponseDto<${EntityName}BasicDto>> findAll${EntityName}BasicBy(
+            @ModelAttribute ${EntityName}QueryDto queryDto,
+            @ModelAttribute PageRequestDto pageRequestDto) {
         Predicate predicate = queryDto.toPredicate();
-        List<${EntityName}> list = (List<${EntityName}>) repository.findAll(predicate);
-        List<${EntityName}BasicDto> dtos = list.stream()
-                .map(${EntityName}BasicDto::fromEntity)
-                .toList();
-        return ResponseEntity.ok(dtos);
+        PageResponseDto<${EntityName}BasicDto> response;
+        if (pageRequestDto.hasPagination()) {
+            Pageable pageable = pageRequestDto.toPageable();
+            Page<${EntityName}> page = repository.findAll(predicate, pageable);
+            List<${EntityName}BasicDto> dtos = page.getContent().stream()
+                    .map(${EntityName}BasicDto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, page.getTotalElements(), page.getTotalPages());
+        } else {
+            Sort sort = pageRequestDto.toSort();
+            List<${EntityName}> list = (List<${EntityName}>) repository.findAll(predicate, sort);
+            List<${EntityName}BasicDto> dtos = list.stream()
+                    .map(${EntityName}BasicDto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, Long.valueOf(list.size()), 1);
+        }
+        return ResponseEntity.ok(response);
     }
 
     // Count
-    @GetMapping("/count")
+    @GetMapping("count")
     public ResponseEntity<Long> count${EntityName}By(@ModelAttribute ${EntityName}QueryDto queryDto) {
         Predicate predicate = queryDto.toPredicate();
         Long count = repository.count(predicate);
         return ResponseEntity.ok(count);
     }
 
-    // Page
-    @GetMapping("/page")
-    public ResponseEntity<PageResponseDto<${EntityName}Dto>> findAll${EntityName}PageBy(
-            @ModelAttribute ${EntityName}QueryDto queryDto,
-            @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "10") Integer pageSize) {
-        Predicate predicate = queryDto.toPredicate();
-        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
-        Page<${EntityName}> page = repository.findAll(predicate, pageable);
-        
-        List<${EntityName}Dto> dtos = page.getContent().stream()
-                .map(${EntityName}Dto::fromEntity)
-                .toList();
-        PageResponseDto<${EntityName}Dto> response = new PageResponseDto<>(
-                dtos,
-                page.getTotalElements(),
-                page.getTotalPages());
-        return ResponseEntity.ok(response);
-    }
-
-    // Get By ID
-    @GetMapping("/{id}")
+    // Get By Id
+    @GetMapping("{id}")
     public ResponseEntity<${EntityName}Dto> get${EntityName}ById(@PathVariable("id") Long id) {
         return repository.findById(id)
                 .map(${EntityName}Dto::fromEntity)
@@ -363,7 +381,7 @@ public class ${EntityName}Controller {
     }
 
     // Update
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Void> update${EntityName}ById(
             @PathVariable("id") Long id,
             @RequestBody ${EntityName}Dto dto) {
@@ -375,10 +393,11 @@ public class ${EntityName}Controller {
     }
 
     // Delete
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Void> delete${EntityName}ById(@PathVariable("id") Long id) {
         repository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
 }
+```

@@ -5,10 +5,10 @@
  */
 package com.sct.system.client.api;
 
-import com.sct.system.client.model.DictItemBasicDto;
 import com.sct.system.client.model.DictItemDto;
 import com.sct.system.client.model.DictItemQueryDto;
-import org.springframework.lang.Nullable;
+import com.sct.system.client.model.PageRequestDto;
+import com.sct.system.client.model.PageResponseDtoDictItemBasicDto;
 import com.sct.system.client.model.PageResponseDtoDictItemDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +23,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-11T14:51:39.505559+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface DictItemControllerApi {
 
     /**
      * GET /dict-item/count
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -37,8 +37,8 @@ public interface DictItemControllerApi {
         value = "/dict-item/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllDictItemBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictItemQueryDto dto
+    ResponseEntity<Long> countDictItemBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DictItemQueryDto queryDto
     );
 
 
@@ -78,7 +78,8 @@ public interface DictItemControllerApi {
     /**
      * GET /dict-item/basic
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -86,15 +87,17 @@ public interface DictItemControllerApi {
         value = "/dict-item/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<DictItemBasicDto>> findAllDictItemBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictItemQueryDto dto
+    ResponseEntity<PageResponseDtoDictItemBasicDto> findAllDictItemBasicBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DictItemQueryDto queryDto,
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
     /**
      * GET /dict-item
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -102,28 +105,9 @@ public interface DictItemControllerApi {
         value = "/dict-item",
         accept = { "*/*" }
     )
-    ResponseEntity<List<DictItemDto>> findAllDictItemBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DictItemQueryDto dto
-    );
-
-
-    /**
-     * GET /dict-item/page
-     *
-     * @param queryDto  (required)
-     * @param pageNum  (optional, default to 1)
-     * @param pageSize  (optional, default to 10)
-     * @return OK (status code 200)
-     */
-    @HttpExchange(
-        method = "GET",
-        value = "/dict-item/page",
-        accept = { "*/*" }
-    )
-    ResponseEntity<PageResponseDtoDictItemDto> findAllDictItemPageBy(
+    ResponseEntity<PageResponseDtoDictItemDto> findAllDictItemBy(
         @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DictItemQueryDto queryDto,
-        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
-        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
@@ -138,7 +122,7 @@ public interface DictItemControllerApi {
         value = "/dict-item/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<DictItemDto> findDictItemById(
+    ResponseEntity<DictItemDto> getDictItemById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 

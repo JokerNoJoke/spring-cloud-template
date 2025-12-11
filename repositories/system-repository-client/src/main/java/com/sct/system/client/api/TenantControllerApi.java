@@ -5,9 +5,9 @@
  */
 package com.sct.system.client.api;
 
-import org.springframework.lang.Nullable;
+import com.sct.system.client.model.PageRequestDto;
+import com.sct.system.client.model.PageResponseDtoTenantBasicDto;
 import com.sct.system.client.model.PageResponseDtoTenantDto;
-import com.sct.system.client.model.TenantBasicDto;
 import com.sct.system.client.model.TenantDto;
 import com.sct.system.client.model.TenantQueryDto;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +23,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-11T14:51:39.505559+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface TenantControllerApi {
 
     /**
      * GET /tenant/count
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -37,8 +37,8 @@ public interface TenantControllerApi {
         value = "/tenant/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllTenantBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto dto
+    ResponseEntity<Long> countTenantBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto queryDto
     );
 
 
@@ -78,7 +78,8 @@ public interface TenantControllerApi {
     /**
      * GET /tenant/basic
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -86,15 +87,17 @@ public interface TenantControllerApi {
         value = "/tenant/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<TenantBasicDto>> findAllTenantBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto dto
+    ResponseEntity<PageResponseDtoTenantBasicDto> findAllTenantBasicBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto queryDto,
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
     /**
      * GET /tenant
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -102,28 +105,9 @@ public interface TenantControllerApi {
         value = "/tenant",
         accept = { "*/*" }
     )
-    ResponseEntity<List<TenantDto>> findAllTenantBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto dto
-    );
-
-
-    /**
-     * GET /tenant/page
-     *
-     * @param queryDto  (required)
-     * @param pageNum  (optional, default to 1)
-     * @param pageSize  (optional, default to 10)
-     * @return OK (status code 200)
-     */
-    @HttpExchange(
-        method = "GET",
-        value = "/tenant/page",
-        accept = { "*/*" }
-    )
-    ResponseEntity<PageResponseDtoTenantDto> findAllTenantPageBy(
+    ResponseEntity<PageResponseDtoTenantDto> findAllTenantBy(
         @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) TenantQueryDto queryDto,
-        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
-        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
@@ -138,7 +122,7 @@ public interface TenantControllerApi {
         value = "/tenant/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<TenantDto> findTenantById(
+    ResponseEntity<TenantDto> getTenantById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 

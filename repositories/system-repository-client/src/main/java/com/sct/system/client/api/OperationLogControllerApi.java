@@ -5,10 +5,10 @@
  */
 package com.sct.system.client.api;
 
-import org.springframework.lang.Nullable;
-import com.sct.system.client.model.OperationLogBasicDto;
 import com.sct.system.client.model.OperationLogDto;
 import com.sct.system.client.model.OperationLogQueryDto;
+import com.sct.system.client.model.PageRequestDto;
+import com.sct.system.client.model.PageResponseDtoOperationLogBasicDto;
 import com.sct.system.client.model.PageResponseDtoOperationLogDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +23,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-11T14:51:39.505559+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface OperationLogControllerApi {
 
     /**
      * GET /operation-log/count
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -37,8 +37,8 @@ public interface OperationLogControllerApi {
         value = "/operation-log/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllOperationLogBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto dto
+    ResponseEntity<Long> countOperationLogBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto queryDto
     );
 
 
@@ -78,7 +78,8 @@ public interface OperationLogControllerApi {
     /**
      * GET /operation-log/basic
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -86,15 +87,17 @@ public interface OperationLogControllerApi {
         value = "/operation-log/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<OperationLogBasicDto>> findAllOperationLogBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto dto
+    ResponseEntity<PageResponseDtoOperationLogBasicDto> findAllOperationLogBasicBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto queryDto,
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
     /**
      * GET /operation-log
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -102,28 +105,9 @@ public interface OperationLogControllerApi {
         value = "/operation-log",
         accept = { "*/*" }
     )
-    ResponseEntity<List<OperationLogDto>> findAllOperationLogBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto dto
-    );
-
-
-    /**
-     * GET /operation-log/page
-     *
-     * @param queryDto  (required)
-     * @param pageNum  (optional, default to 1)
-     * @param pageSize  (optional, default to 10)
-     * @return OK (status code 200)
-     */
-    @HttpExchange(
-        method = "GET",
-        value = "/operation-log/page",
-        accept = { "*/*" }
-    )
-    ResponseEntity<PageResponseDtoOperationLogDto> findAllOperationLogPageBy(
+    ResponseEntity<PageResponseDtoOperationLogDto> findAllOperationLogBy(
         @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) OperationLogQueryDto queryDto,
-        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
-        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
@@ -138,7 +122,7 @@ public interface OperationLogControllerApi {
         value = "/operation-log/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<OperationLogDto> findOperationLogById(
+    ResponseEntity<OperationLogDto> getOperationLogById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 

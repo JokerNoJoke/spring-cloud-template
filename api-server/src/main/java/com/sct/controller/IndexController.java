@@ -1,17 +1,15 @@
 package com.sct.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sct.demo.client.api.DemoControllerApi;
-import com.sct.demo.client.model.DemoDto;
 import com.sct.demo.client.model.DemoQueryDto;
+import com.sct.demo.client.model.PageResponseDtoDemoDto;
 import com.sct.system.client.api.UserControllerApi;
-import com.sct.system.client.model.UserDto;
+import com.sct.system.client.model.PageResponseDtoUserDto;
 import com.sct.system.client.model.UserQueryDto;
 
 @RestController
@@ -29,13 +27,15 @@ public class IndexController {
     }
 
     @GetMapping("demo")
-    public ResponseEntity<List<DemoDto>> demo() {
-        return demoControllerApiClient.findAllDemoBy(new DemoQueryDto());
+    public ResponseEntity<PageResponseDtoDemoDto> demo() {
+        return demoControllerApiClient.findAllDemoBy(new DemoQueryDto(),
+                new com.sct.demo.client.model.PageRequestDto());
     }
 
     @GetMapping("user")
-    public ResponseEntity<List<UserDto>> findAllUser() {
-        return userControllerApiClient.findAllUserBy(new UserQueryDto());
+    public ResponseEntity<PageResponseDtoUserDto> findAllUser() {
+        return userControllerApiClient.findAllUserBy(new UserQueryDto(),
+                new com.sct.system.client.model.PageRequestDto());
     }
 
 }

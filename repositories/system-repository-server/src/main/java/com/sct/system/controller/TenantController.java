@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.querydsl.core.types.Predicate;
+import com.sct.system.common.PageRequestDto;
 import com.sct.system.common.PageResponseDto;
 import com.sct.system.dto.TenantBasicDto;
 import com.sct.system.dto.TenantDto;
@@ -33,6 +34,7 @@ public class TenantController {
     @Autowired
     private TenantRepository repository;
 
+    // Create
     @PostMapping
     public ResponseEntity<Void> createTenant(@RequestBody TenantDto dto) {
         Tenant createdEntity = dto.toCreatedEntity();
@@ -40,52 +42,74 @@ public class TenantController {
         return ResponseEntity.created(URI.create(savedEntity.getId().toString())).build();
     }
 
+    // Find All (List/Page)
     @GetMapping
-    public ResponseEntity<List<TenantDto>> findAllTenantBy(@ModelAttribute TenantQueryDto dto) {
-        List<Tenant> list = (List<Tenant>) repository.findAll(dto.toPredicate());
-        List<TenantDto> dtos = list.stream().map(TenantDto::fromEntity).toList();
-        return ResponseEntity.ok(dtos);
-    }
-
-    @GetMapping("basic")
-    public ResponseEntity<List<TenantBasicDto>> findAllTenantBasicBy(@ModelAttribute TenantQueryDto dto) {
-        List<Tenant> list = (List<Tenant>) repository.findAll(dto.toPredicate());
-        List<TenantBasicDto> dtos = list.stream().map(TenantBasicDto::fromEntity).toList();
-        return ResponseEntity.ok(dtos);
-    }
-
-    @GetMapping("count")
-    public ResponseEntity<Long> countAllTenantBy(@ModelAttribute TenantQueryDto dto) {
-        Long count = repository.count(dto.toPredicate());
-        return ResponseEntity.ok(count);
-    }
-
-    @GetMapping("page")
-    public ResponseEntity<PageResponseDto<TenantDto>> findAllTenantPageBy(
+    public ResponseEntity<PageResponseDto<TenantDto>> findAllTenantBy(
             @ModelAttribute TenantQueryDto queryDto,
-            @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "10") Integer pageSize) {
-        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
-        Page<Tenant> page = repository.findAll(queryDto.toPredicate(), pageable);
-
-        List<TenantDto> dtos = page.getContent().stream()
-                .map(TenantDto::fromEntity)
-                .toList();
-        PageResponseDto<TenantDto> response = new PageResponseDto<>(
-                dtos,
-                page.getTotalElements(),
-                page.getTotalPages());
+            @ModelAttribute PageRequestDto pageRequestDto) {
+        Predicate predicate = queryDto.toPredicate();
+        PageResponseDto<TenantDto> response;
+        if (pageRequestDto.hasPagination()) {
+            Pageable pageable = pageRequestDto.toPageable();
+            Page<Tenant> page = repository.findAll(predicate, pageable);
+            List<TenantDto> dtos = page.getContent().stream()
+                    .map(TenantDto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, page.getTotalElements(), page.getTotalPages());
+        } else {
+            Sort sort = pageRequestDto.toSort();
+            List<Tenant> list = (List<Tenant>) repository.findAll(predicate, sort);
+            List<TenantDto> dtos = list.stream()
+                    .map(TenantDto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, Long.valueOf(list.size()), 1);
+        }
         return ResponseEntity.ok(response);
     }
 
+    // Find All Basic (List/Page)
+    @GetMapping("basic")
+    public ResponseEntity<PageResponseDto<TenantBasicDto>> findAllTenantBasicBy(
+            @ModelAttribute TenantQueryDto queryDto,
+            @ModelAttribute PageRequestDto pageRequestDto) {
+        Predicate predicate = queryDto.toPredicate();
+        PageResponseDto<TenantBasicDto> response;
+        if (pageRequestDto.hasPagination()) {
+            Pageable pageable = pageRequestDto.toPageable();
+            Page<Tenant> page = repository.findAll(predicate, pageable);
+            List<TenantBasicDto> dtos = page.getContent().stream()
+                    .map(TenantBasicDto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, page.getTotalElements(), page.getTotalPages());
+        } else {
+            Sort sort = pageRequestDto.toSort();
+            List<Tenant> list = (List<Tenant>) repository.findAll(predicate, sort);
+            List<TenantBasicDto> dtos = list.stream()
+                    .map(TenantBasicDto::fromEntity)
+                    .toList();
+            response = new PageResponseDto<>(dtos, Long.valueOf(list.size()), 1);
+        }
+        return ResponseEntity.ok(response);
+    }
+
+    // Count
+    @GetMapping("count")
+    public ResponseEntity<Long> countTenantBy(@ModelAttribute TenantQueryDto queryDto) {
+        Predicate predicate = queryDto.toPredicate();
+        Long count = repository.count(predicate);
+        return ResponseEntity.ok(count);
+    }
+
+    // Get By Id
     @GetMapping("{id}")
-    public ResponseEntity<TenantDto> findTenantById(@PathVariable("id") Long id) {
+    public ResponseEntity<TenantDto> getTenantById(@PathVariable("id") Long id) {
         return repository.findById(id)
                 .map(TenantDto::fromEntity)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // Update
     @PutMapping("{id}")
     public ResponseEntity<Void> updateTenantById(@PathVariable("id") Long id, @RequestBody TenantDto dto) {
         return repository.findById(id)
@@ -95,6 +119,7 @@ public class TenantController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // Delete
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteTenantById(@PathVariable("id") Long id) {
         repository.deleteById(id);

@@ -5,9 +5,9 @@
  */
 package com.sct.system.client.api;
 
-import org.springframework.lang.Nullable;
+import com.sct.system.client.model.PageRequestDto;
+import com.sct.system.client.model.PageResponseDtoSystemConfigBasicDto;
 import com.sct.system.client.model.PageResponseDtoSystemConfigDto;
-import com.sct.system.client.model.SystemConfigBasicDto;
 import com.sct.system.client.model.SystemConfigDto;
 import com.sct.system.client.model.SystemConfigQueryDto;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +23,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-11T14:51:39.505559+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface SystemConfigControllerApi {
 
     /**
      * GET /system-config/count
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -37,8 +37,8 @@ public interface SystemConfigControllerApi {
         value = "/system-config/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllSystemConfigBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto dto
+    ResponseEntity<Long> countSystemConfigBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto queryDto
     );
 
 
@@ -78,7 +78,8 @@ public interface SystemConfigControllerApi {
     /**
      * GET /system-config/basic
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -86,15 +87,17 @@ public interface SystemConfigControllerApi {
         value = "/system-config/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<SystemConfigBasicDto>> findAllSystemConfigBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto dto
+    ResponseEntity<PageResponseDtoSystemConfigBasicDto> findAllSystemConfigBasicBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto queryDto,
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
     /**
      * GET /system-config
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -102,28 +105,9 @@ public interface SystemConfigControllerApi {
         value = "/system-config",
         accept = { "*/*" }
     )
-    ResponseEntity<List<SystemConfigDto>> findAllSystemConfigBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto dto
-    );
-
-
-    /**
-     * GET /system-config/page
-     *
-     * @param queryDto  (required)
-     * @param pageNum  (optional, default to 1)
-     * @param pageSize  (optional, default to 10)
-     * @return OK (status code 200)
-     */
-    @HttpExchange(
-        method = "GET",
-        value = "/system-config/page",
-        accept = { "*/*" }
-    )
-    ResponseEntity<PageResponseDtoSystemConfigDto> findAllSystemConfigPageBy(
+    ResponseEntity<PageResponseDtoSystemConfigDto> findAllSystemConfigBy(
         @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) SystemConfigQueryDto queryDto,
-        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
-        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
@@ -138,7 +122,7 @@ public interface SystemConfigControllerApi {
         value = "/system-config/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<SystemConfigDto> findSystemConfigById(
+    ResponseEntity<SystemConfigDto> getSystemConfigById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 

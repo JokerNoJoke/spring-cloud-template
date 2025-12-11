@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.sct.system.client.model.DictTypeDto;
+import com.sct.system.client.model.DictItemBasicDto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,25 +19,25 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * PageResponseDtoDictTypeDto
+ * PageResponseDtoDictItemBasicDto
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-11T14:51:39.505559+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class PageResponseDtoDictTypeDto {
+public class PageResponseDtoDictItemBasicDto {
 
   
-  private List<DictTypeDto> content = new ArrayList<>();
+  private List<DictItemBasicDto> content = new ArrayList<>();
 
   private @Nullable Long totalElements;
 
   private @Nullable Integer totalPages;
 
-  public PageResponseDtoDictTypeDto content(List<DictTypeDto> content) {
+  public PageResponseDtoDictItemBasicDto content(List<DictItemBasicDto> content) {
     this.content = content;
     return this;
   }
 
-  public PageResponseDtoDictTypeDto addContentItem(DictTypeDto contentItem) {
+  public PageResponseDtoDictItemBasicDto addContentItem(DictItemBasicDto contentItem) {
     if (this.content == null) {
       this.content = new ArrayList<>();
     }
@@ -52,15 +52,15 @@ public class PageResponseDtoDictTypeDto {
   
   @Schema(name = "content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content")
-  public List<DictTypeDto> getContent() {
+  public List<DictItemBasicDto> getContent() {
     return content;
   }
 
-  public void setContent(List<DictTypeDto> content) {
+  public void setContent(List<DictItemBasicDto> content) {
     this.content = content;
   }
 
-  public PageResponseDtoDictTypeDto totalElements(@Nullable Long totalElements) {
+  public PageResponseDtoDictItemBasicDto totalElements(@Nullable Long totalElements) {
     this.totalElements = totalElements;
     return this;
   }
@@ -80,7 +80,7 @@ public class PageResponseDtoDictTypeDto {
     this.totalElements = totalElements;
   }
 
-  public PageResponseDtoDictTypeDto totalPages(@Nullable Integer totalPages) {
+  public PageResponseDtoDictItemBasicDto totalPages(@Nullable Integer totalPages) {
     this.totalPages = totalPages;
     return this;
   }
@@ -108,10 +108,10 @@ public class PageResponseDtoDictTypeDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageResponseDtoDictTypeDto pageResponseDtoDictTypeDto = (PageResponseDtoDictTypeDto) o;
-    return Objects.equals(this.content, pageResponseDtoDictTypeDto.content) &&
-        Objects.equals(this.totalElements, pageResponseDtoDictTypeDto.totalElements) &&
-        Objects.equals(this.totalPages, pageResponseDtoDictTypeDto.totalPages);
+    PageResponseDtoDictItemBasicDto pageResponseDtoDictItemBasicDto = (PageResponseDtoDictItemBasicDto) o;
+    return Objects.equals(this.content, pageResponseDtoDictItemBasicDto.content) &&
+        Objects.equals(this.totalElements, pageResponseDtoDictItemBasicDto.totalElements) &&
+        Objects.equals(this.totalPages, pageResponseDtoDictItemBasicDto.totalPages);
   }
 
   @Override
@@ -122,7 +122,7 @@ public class PageResponseDtoDictTypeDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageResponseDtoDictTypeDto {\n");
+    sb.append("class PageResponseDtoDictItemBasicDto {\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");

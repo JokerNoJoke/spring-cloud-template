@@ -5,9 +5,9 @@
  */
 package com.sct.system.client.api;
 
-import org.springframework.lang.Nullable;
+import com.sct.system.client.model.PageRequestDto;
+import com.sct.system.client.model.PageResponseDtoRoleBasicDto;
 import com.sct.system.client.model.PageResponseDtoRoleDto;
-import com.sct.system.client.model.RoleBasicDto;
 import com.sct.system.client.model.RoleDto;
 import com.sct.system.client.model.RoleQueryDto;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +23,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-11T14:51:39.505559+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface RoleControllerApi {
 
     /**
      * GET /role/count
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -37,8 +37,8 @@ public interface RoleControllerApi {
         value = "/role/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllRoleBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto dto
+    ResponseEntity<Long> countRoleBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto queryDto
     );
 
 
@@ -78,7 +78,8 @@ public interface RoleControllerApi {
     /**
      * GET /role/basic
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -86,15 +87,17 @@ public interface RoleControllerApi {
         value = "/role/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<RoleBasicDto>> findAllRoleBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto dto
+    ResponseEntity<PageResponseDtoRoleBasicDto> findAllRoleBasicBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto queryDto,
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
     /**
      * GET /role
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -102,28 +105,9 @@ public interface RoleControllerApi {
         value = "/role",
         accept = { "*/*" }
     )
-    ResponseEntity<List<RoleDto>> findAllRoleBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto dto
-    );
-
-
-    /**
-     * GET /role/page
-     *
-     * @param queryDto  (required)
-     * @param pageNum  (optional, default to 1)
-     * @param pageSize  (optional, default to 10)
-     * @return OK (status code 200)
-     */
-    @HttpExchange(
-        method = "GET",
-        value = "/role/page",
-        accept = { "*/*" }
-    )
-    ResponseEntity<PageResponseDtoRoleDto> findAllRolePageBy(
+    ResponseEntity<PageResponseDtoRoleDto> findAllRoleBy(
         @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) RoleQueryDto queryDto,
-        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
-        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
@@ -138,7 +122,7 @@ public interface RoleControllerApi {
         value = "/role/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<RoleDto> findRoleById(
+    ResponseEntity<RoleDto> getRoleById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 

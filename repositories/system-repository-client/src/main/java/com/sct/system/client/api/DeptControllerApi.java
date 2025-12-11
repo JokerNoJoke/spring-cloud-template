@@ -5,10 +5,10 @@
  */
 package com.sct.system.client.api;
 
-import com.sct.system.client.model.DeptBasicDto;
 import com.sct.system.client.model.DeptDto;
 import com.sct.system.client.model.DeptQueryDto;
-import org.springframework.lang.Nullable;
+import com.sct.system.client.model.PageRequestDto;
+import com.sct.system.client.model.PageResponseDtoDeptBasicDto;
 import com.sct.system.client.model.PageResponseDtoDeptDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +23,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-10T10:12:59.932325+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-12-11T14:51:39.505559+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public interface DeptControllerApi {
 
     /**
      * GET /dept/count
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -37,8 +37,8 @@ public interface DeptControllerApi {
         value = "/dept/count",
         accept = { "*/*" }
     )
-    ResponseEntity<Long> countAllDeptBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DeptQueryDto dto
+    ResponseEntity<Long> countDeptBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DeptQueryDto queryDto
     );
 
 
@@ -78,7 +78,8 @@ public interface DeptControllerApi {
     /**
      * GET /dept/basic
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -86,15 +87,17 @@ public interface DeptControllerApi {
         value = "/dept/basic",
         accept = { "*/*" }
     )
-    ResponseEntity<List<DeptBasicDto>> findAllDeptBasicBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DeptQueryDto dto
+    ResponseEntity<PageResponseDtoDeptBasicDto> findAllDeptBasicBy(
+        @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DeptQueryDto queryDto,
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
     /**
      * GET /dept
      *
-     * @param dto  (required)
+     * @param queryDto  (required)
+     * @param pageRequestDto  (required)
      * @return OK (status code 200)
      */
     @HttpExchange(
@@ -102,28 +105,9 @@ public interface DeptControllerApi {
         value = "/dept",
         accept = { "*/*" }
     )
-    ResponseEntity<List<DeptDto>> findAllDeptBy(
-        @Parameter(name = "dto", description = "", required = true, in = ParameterIn.QUERY) DeptQueryDto dto
-    );
-
-
-    /**
-     * GET /dept/page
-     *
-     * @param queryDto  (required)
-     * @param pageNum  (optional, default to 1)
-     * @param pageSize  (optional, default to 10)
-     * @return OK (status code 200)
-     */
-    @HttpExchange(
-        method = "GET",
-        value = "/dept/page",
-        accept = { "*/*" }
-    )
-    ResponseEntity<PageResponseDtoDeptDto> findAllDeptPageBy(
+    ResponseEntity<PageResponseDtoDeptDto> findAllDeptBy(
         @Parameter(name = "queryDto", description = "", required = true, in = ParameterIn.QUERY) DeptQueryDto queryDto,
-        @Parameter(name = "pageNum", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
-        @Parameter(name = "pageSize", description = "", in = ParameterIn.QUERY) @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize
+        @Parameter(name = "pageRequestDto", description = "", required = true, in = ParameterIn.QUERY) PageRequestDto pageRequestDto
     );
 
 
@@ -138,7 +122,7 @@ public interface DeptControllerApi {
         value = "/dept/{id}",
         accept = { "*/*" }
     )
-    ResponseEntity<DeptDto> findDeptById(
+    ResponseEntity<DeptDto> getDeptById(
         @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     );
 
