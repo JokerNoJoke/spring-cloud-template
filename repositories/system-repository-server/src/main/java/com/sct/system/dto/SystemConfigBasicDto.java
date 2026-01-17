@@ -20,10 +20,10 @@ public class SystemConfigBasicDto {
     private Boolean builtIn;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
     @Schema(format = "instant")
-    private Instant updatedTime;
+    private Instant updatedAt;
     private Long updatedBy;
 
     public static SystemConfigBasicDto fromEntity(SystemConfig entity) {
@@ -34,9 +34,9 @@ public class SystemConfigBasicDto {
         dto.setCode(entity.getCode());
         dto.setValue(entity.getValue());
         dto.setBuiltIn(entity.getBuiltIn());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }

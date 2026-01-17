@@ -21,10 +21,10 @@ public class DeptDto {
     private Boolean enabled;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
     @Schema(format = "instant")
-    private Instant updatedTime;
+    private Instant updatedAt;
     private Long updatedBy;
 
     public static DeptDto fromEntity(Dept entity) {
@@ -38,9 +38,9 @@ public class DeptDto {
         dto.setParent(Optional.ofNullable(entity.getParent()).map(DeptBasicDto::fromEntity).orElse(null));
         dto.setName(entity.getName());
         dto.setEnabled(entity.getEnabled());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }

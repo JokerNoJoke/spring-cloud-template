@@ -24,7 +24,7 @@ public class LoginLogDto {
     private String message;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
 
     public static LoginLogDto fromEntity(LoginLog entity) {
         LoginLogDto dto = new LoginLogDto();
@@ -37,7 +37,7 @@ public class LoginLogDto {
         dto.setBrowser(entity.getBrowser());
         dto.setStatus(entity.getStatus());
         dto.setMessage(entity.getMessage());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         return dto;
     }
 

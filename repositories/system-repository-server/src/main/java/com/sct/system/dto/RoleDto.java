@@ -21,10 +21,10 @@ public class RoleDto {
     private List<MenuBasicDto> menus;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
     @Schema(format = "instant")
-    private Instant updatedTime;
+    private Instant updatedAt;
     private Long updatedBy;
 
     public static RoleDto fromEntity(Role entity) {
@@ -39,9 +39,9 @@ public class RoleDto {
         dto.setEnabled(entity.getEnabled());
         dto.setMenus(Optional.ofNullable(entity.getMenus()).orElse(List.of()).stream().map(MenuBasicDto::fromEntity)
                 .toList());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }

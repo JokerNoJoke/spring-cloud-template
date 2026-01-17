@@ -23,10 +23,10 @@ public class UserBasicDto {
     private Boolean enabled;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
     @Schema(format = "instant")
-    private Instant updatedTime;
+    private Instant updatedAt;
     private Long updatedBy;
 
     public static UserBasicDto fromEntity(User entity) {
@@ -40,9 +40,9 @@ public class UserBasicDto {
         dto.setMobile(entity.getMobile());
         dto.setAvatar(entity.getAvatar());
         dto.setEnabled(entity.getEnabled());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }

@@ -32,11 +32,11 @@ public class DeptBasicDto {
 
   private @Nullable Boolean enabled;
 
-  private @Nullable Instant createdTime;
+  private @Nullable Instant createdAt;
 
   private @Nullable Long createdBy;
 
-  private @Nullable Instant updatedTime;
+  private @Nullable Instant updatedAt;
 
   private @Nullable Long updatedBy;
 
@@ -140,24 +140,24 @@ public class DeptBasicDto {
     this.enabled = enabled;
   }
 
-  public DeptBasicDto createdTime(@Nullable Instant createdTime) {
-    this.createdTime = createdTime;
+  public DeptBasicDto createdAt(@Nullable Instant createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * Get createdTime
-   * @return createdTime
+   * Get createdAt
+   * @return createdAt
    */
   
-  @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("createdTime")
-  public @Nullable Instant getCreatedTime() {
-    return createdTime;
+  @Schema(name = "createdAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("createdAt")
+  public @Nullable Instant getCreatedAt() {
+    return createdAt;
   }
 
-  public void setCreatedTime(@Nullable Instant createdTime) {
-    this.createdTime = createdTime;
+  public void setCreatedAt(@Nullable Instant createdAt) {
+    this.createdAt = createdAt;
   }
 
   public DeptBasicDto createdBy(@Nullable Long createdBy) {
@@ -180,24 +180,24 @@ public class DeptBasicDto {
     this.createdBy = createdBy;
   }
 
-  public DeptBasicDto updatedTime(@Nullable Instant updatedTime) {
-    this.updatedTime = updatedTime;
+  public DeptBasicDto updatedAt(@Nullable Instant updatedAt) {
+    this.updatedAt = updatedAt;
     return this;
   }
 
   /**
-   * Get updatedTime
-   * @return updatedTime
+   * Get updatedAt
+   * @return updatedAt
    */
   
-  @Schema(name = "updatedTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("updatedTime")
-  public @Nullable Instant getUpdatedTime() {
-    return updatedTime;
+  @Schema(name = "updatedAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updatedAt")
+  public @Nullable Instant getUpdatedAt() {
+    return updatedAt;
   }
 
-  public void setUpdatedTime(@Nullable Instant updatedTime) {
-    this.updatedTime = updatedTime;
+  public void setUpdatedAt(@Nullable Instant updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
   public DeptBasicDto updatedBy(@Nullable Long updatedBy) {
@@ -234,15 +234,15 @@ public class DeptBasicDto {
         Objects.equals(this.parentId, deptBasicDto.parentId) &&
         Objects.equals(this.name, deptBasicDto.name) &&
         Objects.equals(this.enabled, deptBasicDto.enabled) &&
-        Objects.equals(this.createdTime, deptBasicDto.createdTime) &&
+        Objects.equals(this.createdAt, deptBasicDto.createdAt) &&
         Objects.equals(this.createdBy, deptBasicDto.createdBy) &&
-        Objects.equals(this.updatedTime, deptBasicDto.updatedTime) &&
+        Objects.equals(this.updatedAt, deptBasicDto.updatedAt) &&
         Objects.equals(this.updatedBy, deptBasicDto.updatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tenantId, parentId, name, enabled, createdTime, createdBy, updatedTime, updatedBy);
+    return Objects.hash(id, tenantId, parentId, name, enabled, createdAt, createdBy, updatedAt, updatedBy);
   }
 
   @Override
@@ -254,9 +254,9 @@ public class DeptBasicDto {
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -44,7 +44,7 @@ public class OperationLogBasicDto {
 
   private @Nullable Long time;
 
-  private @Nullable Instant createdTime;
+  private @Nullable Instant createdAt;
 
   private @Nullable Long createdBy;
 
@@ -268,24 +268,24 @@ public class OperationLogBasicDto {
     this.time = time;
   }
 
-  public OperationLogBasicDto createdTime(@Nullable Instant createdTime) {
-    this.createdTime = createdTime;
+  public OperationLogBasicDto createdAt(@Nullable Instant createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * Get createdTime
-   * @return createdTime
+   * Get createdAt
+   * @return createdAt
    */
   
-  @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("createdTime")
-  public @Nullable Instant getCreatedTime() {
-    return createdTime;
+  @Schema(name = "createdAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("createdAt")
+  public @Nullable Instant getCreatedAt() {
+    return createdAt;
   }
 
-  public void setCreatedTime(@Nullable Instant createdTime) {
-    this.createdTime = createdTime;
+  public void setCreatedAt(@Nullable Instant createdAt) {
+    this.createdAt = createdAt;
   }
 
   public OperationLogBasicDto createdBy(@Nullable Long createdBy) {
@@ -328,13 +328,13 @@ public class OperationLogBasicDto {
         Objects.equals(this.request, operationLogBasicDto.request) &&
         Objects.equals(this.response, operationLogBasicDto.response) &&
         Objects.equals(this.time, operationLogBasicDto.time) &&
-        Objects.equals(this.createdTime, operationLogBasicDto.createdTime) &&
+        Objects.equals(this.createdAt, operationLogBasicDto.createdAt) &&
         Objects.equals(this.createdBy, operationLogBasicDto.createdBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tenantId, ip, location, method, uri, os, browser, request, response, time, createdTime, createdBy);
+    return Objects.hash(id, tenantId, ip, location, method, uri, os, browser, request, response, time, createdAt, createdBy);
   }
 
   @Override
@@ -352,7 +352,7 @@ public class OperationLogBasicDto {
     sb.append("    request: ").append(toIndentedString(request)).append("\n");
     sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("}");
     return sb.toString();

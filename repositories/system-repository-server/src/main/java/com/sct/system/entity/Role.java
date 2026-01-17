@@ -54,14 +54,14 @@ public class Role {
 
     @Column(updatable = false)
     @CreationTimestamp
-    private Instant createdTime;
+    private Instant createdAt;
 
     @Column(updatable = false)
     @CreatedBy
     private Long createdBy;
 
     @UpdateTimestamp
-    private Instant updatedTime;
+    private Instant updatedAt;
 
     @LastModifiedBy
     private Long updatedBy;

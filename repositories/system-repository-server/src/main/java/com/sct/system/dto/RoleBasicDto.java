@@ -18,10 +18,10 @@ public class RoleBasicDto {
     private Boolean enabled;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
     @Schema(format = "instant")
-    private Instant updatedTime;
+    private Instant updatedAt;
     private Long updatedBy;
 
     public static RoleBasicDto fromEntity(Role entity) {
@@ -30,9 +30,9 @@ public class RoleBasicDto {
         dto.setName(entity.getName());
         dto.setCode(entity.getCode());
         dto.setEnabled(entity.getEnabled());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }

@@ -56,10 +56,10 @@ public class ${EntityName} {
 
     @Column(updatable = false)
     @CreationTimestamp
-    private Instant createdTime;
+    private Instant createdAt;
 
     @UpdateTimestamp
-    private Instant updatedTime;
+    private Instant updatedAt;
 
 }
 ```
@@ -104,9 +104,9 @@ public class ${EntityName}BasicDto {
     // Example:
     // private String name;
     @Schema(type = "string")
-    private Instant createdTime;
+    private Instant createdAt;
     @Schema(type = "string")
-    private Instant updatedTime;
+    private Instant updatedAt;
 
     public static ${EntityName}BasicDto fromEntity(${EntityName} entity) {
         if (entity == null) {
@@ -117,8 +117,8 @@ public class ${EntityName}BasicDto {
         // TODO: Map fields
         // dto.setName(entity.getName());
         
-        dto.setCreatedTime(entity.getCreatedTime());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         return dto;
     }
 
@@ -165,9 +165,9 @@ public class ${EntityName}Dto {
     // private OrganizationBasicDto organization;
 
     @Schema(type = "string")
-    private Instant createdTime;
+    private Instant createdAt;
     @Schema(type = "string")
-    private Instant updatedTime;
+    private Instant updatedAt;
 
     public static ${EntityName}Dto fromEntity(${EntityName} entity) {
         if (entity == null) {
@@ -182,8 +182,8 @@ public class ${EntityName}Dto {
         // Example: Map Relationship
         // dto.setOrganization(OrganizationBasicDto.fromEntity(entity.getOrganization()));
 
-        dto.setCreatedTime(entity.getCreatedTime());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         return dto;
     }
 

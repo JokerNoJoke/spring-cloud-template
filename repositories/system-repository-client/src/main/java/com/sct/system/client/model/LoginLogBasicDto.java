@@ -40,7 +40,7 @@ public class LoginLogBasicDto {
 
   private @Nullable String message;
 
-  private @Nullable Instant createdTime;
+  private @Nullable Instant createdAt;
 
   public LoginLogBasicDto id(@Nullable Long id) {
     this.id = id;
@@ -222,24 +222,24 @@ public class LoginLogBasicDto {
     this.message = message;
   }
 
-  public LoginLogBasicDto createdTime(@Nullable Instant createdTime) {
-    this.createdTime = createdTime;
+  public LoginLogBasicDto createdAt(@Nullable Instant createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * Get createdTime
-   * @return createdTime
+   * Get createdAt
+   * @return createdAt
    */
   
-  @Schema(name = "createdTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("createdTime")
-  public @Nullable Instant getCreatedTime() {
-    return createdTime;
+  @Schema(name = "createdAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("createdAt")
+  public @Nullable Instant getCreatedAt() {
+    return createdAt;
   }
 
-  public void setCreatedTime(@Nullable Instant createdTime) {
-    this.createdTime = createdTime;
+  public void setCreatedAt(@Nullable Instant createdAt) {
+    this.createdAt = createdAt;
   }
 
   @Override
@@ -260,12 +260,12 @@ public class LoginLogBasicDto {
         Objects.equals(this.browser, loginLogBasicDto.browser) &&
         Objects.equals(this.status, loginLogBasicDto.status) &&
         Objects.equals(this.message, loginLogBasicDto.message) &&
-        Objects.equals(this.createdTime, loginLogBasicDto.createdTime);
+        Objects.equals(this.createdAt, loginLogBasicDto.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tenantId, username, ip, location, os, browser, status, message, createdTime);
+    return Objects.hash(id, tenantId, username, ip, location, os, browser, status, message, createdAt);
   }
 
   @Override
@@ -281,7 +281,7 @@ public class LoginLogBasicDto {
     sb.append("    browser: ").append(toIndentedString(browser)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

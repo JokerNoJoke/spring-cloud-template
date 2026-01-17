@@ -27,7 +27,7 @@ public class OperationLogDto {
     private Long time;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
 
     public static OperationLogDto fromEntity(OperationLog entity) {
@@ -44,7 +44,7 @@ public class OperationLogDto {
         dto.setRequest(entity.getRequest());
         dto.setResponse(entity.getResponse());
         dto.setTime(entity.getTime());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
         return dto;
     }

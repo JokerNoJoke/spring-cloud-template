@@ -18,10 +18,10 @@ public class TenantDto {
     private Boolean enabled;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
     @Schema(format = "instant")
-    private Instant updatedTime;
+    private Instant updatedAt;
     private Long updatedBy;
 
     public static TenantDto fromEntity(Tenant entity) {
@@ -32,9 +32,9 @@ public class TenantDto {
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setEnabled(entity.getEnabled());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }

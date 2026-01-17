@@ -52,6 +52,6 @@ public class LoginLog {
 
     @Column(updatable = false)
     @CreationTimestamp
-    private Instant createdTime;
+    private Instant createdAt;
 
 }

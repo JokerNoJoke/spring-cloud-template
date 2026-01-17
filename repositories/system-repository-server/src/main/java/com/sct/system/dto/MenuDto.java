@@ -25,10 +25,10 @@ public class MenuDto {
     private Boolean enabled;
 
     @Schema(format = "instant")
-    private Instant createdTime;
+    private Instant createdAt;
     private Long createdBy;
     @Schema(format = "instant")
-    private Instant updatedTime;
+    private Instant updatedAt;
     private Long updatedBy;
 
     public static MenuDto fromEntity(Menu entity) {
@@ -43,9 +43,9 @@ public class MenuDto {
         dto.setPermission(entity.getPermission());
         dto.setSortOrder(entity.getSortOrder());
         dto.setEnabled(entity.getEnabled());
-        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setCreatedAt(entity.getCreatedAt());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setUpdatedTime(entity.getUpdatedTime());
+        dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setUpdatedBy(entity.getUpdatedBy());
         return dto;
     }

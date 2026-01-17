@@ -65,7 +65,7 @@ public class OperationLog {
 
     @Column(updatable = false)
     @CreationTimestamp
-    private Instant createdTime;
+    private Instant createdAt;
 
     @CreatedBy
     private Long createdBy;
